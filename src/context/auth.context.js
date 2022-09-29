@@ -6,6 +6,7 @@ const AuthContext = createContext();
 const API_URL = "http://localhost:5005";
 
 function AuthProviderWrapper(props) {
+	const [isLoading, setIsLoading] = useState(true);
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [user, setUser] = useState(null);
 
@@ -24,18 +25,20 @@ function AuthProviderWrapper(props) {
 					headers: { Authorization: `Bearer ${storedToken}` },
 				})
 				.then((response) => {
-					console.log("THIS IS THE RESPONSE", response);
 					const user = response.data;
 					setIsLoggedIn(true);
+					setIsLoading(false);
 					setUser(user);
 				})
 				.catch((err) => {
 					console.log(err);
 					setIsLoggedIn(false);
+					setIsLoading(false);
 					setUser(null);
 				});
 		} else {
 			setIsLoggedIn(false);
+			setIsLoading(false);
 			setUser(null);
 		}
 	};
@@ -47,7 +50,7 @@ function AuthProviderWrapper(props) {
 	const logout = () => {
 		removeToken();
 		authenticateUser();
-		navigate("/");
+		navigate("/login");
 	};
 
 	useEffect(() => {
@@ -56,7 +59,14 @@ function AuthProviderWrapper(props) {
 
 	return (
 		<AuthContext.Provider
-			value={{ isLoggedIn, user, storeToken, authenticateUser, logout }}
+			value={{
+				isLoggedIn,
+				user,
+				storeToken,
+				authenticateUser,
+				logout,
+				isLoading,
+			}}
 		>
 			{props.children}
 		</AuthContext.Provider>

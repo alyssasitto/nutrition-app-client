@@ -1,21 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Goal from "../GoalMenu/Goal";
+import ActivityLevel from "../ActivityLevelMenu/ActivityLevel";
+
+require("./dimensions.css");
 
 const API_URL = "http://localhost:5005";
 
-function Dimensions() {
-	const [inches, setInches] = useState("");
+function Dimensions(props) {
 	const [feet, setFeet] = useState("");
+	const [inches, setInches] = useState("");
 	const [age, setAge] = useState("");
 	const [weight, setWeight] = useState("");
 	const [gender, setGender] = useState("");
+	const [goal, setGoal] = useState("");
+	const [activityLevel, setActivityLevel] = useState("");
+	const [redirect, setRedirect] = useState(false);
 
-	const handleInches = (e) => {
-		setInches(e.target.value);
-	};
+	const [errMessage, setErrMessage] = useState(null);
+
+	const navigate = useNavigate();
 
 	const handleFeet = (e) => {
 		setFeet(e.target.value);
+	};
+
+	const handleInches = (e) => {
+		setInches(e.target.value);
 	};
 
 	const handleAge = (e) => {
@@ -31,16 +43,18 @@ function Dimensions() {
 	};
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-
 		const storedToken = localStorage.getItem("authToken");
 
+		e.preventDefault();
+
 		const body = {
-			inches,
 			feet,
+			inches,
 			age,
 			weight,
 			gender,
+			goal,
+			activityLevel,
 		};
 
 		axios
@@ -48,60 +62,64 @@ function Dimensions() {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
+				navigate("/profile");
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 	};
+
+	console.log(activityLevel, goal);
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<div>
-				<label>Height</label>
-				<label>
-					Inches
-					<input type="number" name="inches" onChange={handleInches} />
-				</label>
-
-				<label>
-					Feet
-					<input type="number" name="feet" onChange={handleFeet} />
-				</label>
+				<label htmlFor="feet">Feet</label>
+				<input type="number" name="feet" onChange={handleFeet} />
 			</div>
-
-			<label>
-				Age
-				<input type="number" name="age" onChange={handleAge} />
-			</label>
-
-			<label>
-				Weight
-				<input type="number" name="weight" onChange={handleWeight} />
-			</label>
 
 			<div>
-				<label>Gender</label>
-				<label>
-					Male
-					<input
-						type="radio"
-						name="gender"
-						onChange={handleGender}
-						value="male"
-					/>
-				</label>
-
-				<label>
-					Female
-					<input
-						type="radio"
-						name="gender"
-						onChange={handleGender}
-						value="female"
-					/>
-				</label>
+				<label htmlFor="inches">Inches</label>
+				<input type="number" name="inches" onChange={handleInches} />
 			</div>
+
+			<div>
+				<label>Age</label>
+				<input type="number" name="age" onChange={handleAge} />
+			</div>
+
+			<div>
+				<label htmlFor="weight">Weight</label>
+				<input type="number" name="weight" onChange={handleWeight} />
+			</div>
+
+			<div>
+				<label>Male</label>
+				<input
+					type="radio"
+					name="gender"
+					value="male"
+					onChange={handleGender}
+				/>
+			</div>
+
+			<div>
+				<label>Female</label>
+				<input
+					type="radio"
+					name="gender"
+					value="female"
+					onChange={handleGender}
+				/>
+			</div>
+
+			<div className="menus">
+				<Goal setGoal={setGoal} />
+
+				<ActivityLevel setActivityLevel={setActivityLevel} />
+			</div>
+
+			{errMessage && <p>{errMessage}</p>}
 
 			<button type="submit">Submit</button>
 		</form>

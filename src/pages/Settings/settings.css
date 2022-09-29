@@ -1,0 +1,29 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* .settings::after {
+	content: "";
+	height: 100%;
+	background-color: rgba(0, 0, 255, 0.505);
+	position: absolute;
+	z-index: 6;
+	top: 0;
+	left: 0;
+	right: 0;
+} */
+
+.overlay {
+	background-color: rgba(0, 0, 255, 0.571);
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 4;
+}
+
+.goal {
+	text-transform: capitalize;
+}

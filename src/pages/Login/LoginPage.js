@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
@@ -8,7 +8,7 @@ const API_URL = "http://localhost:5005";
 
 function LoginPage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	const { storeToken, authenticateUser } = useContext(AuthContext);
+	const { storeToken, authenticateUser, user } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -24,6 +24,25 @@ function LoginPage() {
 		setPassword(e.target.value);
 	};
 
+	const redirect = () => {
+		const storedToken = localStorage.getItem("authToken");
+
+		axios
+			.get(`${API_URL}/dimensions`, {
+				headers: { Authorization: `Bearer ${storedToken}` },
+			})
+			.then((response) => {
+				if (response.data.dimensions === null) {
+					navigate("/home");
+				} else {
+					navigate("/profile");
+				}
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
@@ -35,14 +54,14 @@ function LoginPage() {
 		axios
 			.post(`${API_URL}/login`, body)
 			.then((response) => {
-				console.log(response.data.accessToken);
 				storeToken(response.data.accessToken);
 				authenticateUser();
-				navigate("/profile");
+
+				redirect();
 			})
 			.catch((err) => {
 				console.log(err);
-				// setErrMessage(err.response.data.message);
+				setErrMessage(err.response.data.message);
 			});
 	};
 

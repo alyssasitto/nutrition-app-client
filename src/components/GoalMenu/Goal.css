@@ -1,0 +1,14 @@
+.custom-menu {
+	border-color: red;
+	/* outline: none; */
+	padding: 1rem 2rem;
+	border-radius: 0px !important;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.custom-menu option {
+	background-color: red;
+	border-radius: 0px !important;
+	margin-bottom: 1rem;
+}

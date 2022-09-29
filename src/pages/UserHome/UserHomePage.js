@@ -1,17 +1,15 @@
 import { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import { NavbarContext } from "../../context/navbar.context";
-import { AuthContext } from "../../context/auth.context";
-
-import "./profile.css";
+import Dimensions from "../../components/DimensionsForm/Dimensions";
+import Carousel from "../../components/Carousel/Carousel";
+import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
-function ProfilePage() {
+function UserHomePage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	const [loading, setLoading] = useState(true);
 	const [dimensions, setDimensions] = useState(null);
-	const { user } = useContext(AuthContext);
+	const [loading, setLoading] = useState(true);
 
 	const storedToken = localStorage.getItem("authToken");
 
@@ -23,8 +21,6 @@ function ProfilePage() {
 			.then((response) => {
 				setLoading(false);
 				setDimensions(response.data.dimensions);
-
-				console.log(dimensions);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -37,11 +33,32 @@ function ProfilePage() {
 
 	return (
 		<div className={bg}>
-			{loading && <p>Loading...</p>}
+			{loading && (
+				<>
+					<p>loading....</p>
+				</>
+			)}
 
-			{!loading && <p>profile</p>}
+			{!loading && (
+				<>
+					{!dimensions && (
+						<>
+							<Carousel>
+								<p>welcome</p>
+								<Dimensions setDimensions={setDimensions} />
+							</Carousel>
+						</>
+					)}
+
+					{dimensions && (
+						<>
+							<p>yaya</p>
+						</>
+					)}
+				</>
+			)}
 		</div>
 	);
 }
 
-export default ProfilePage;
+export default UserHomePage;

@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth.context";
 require("./navbar.css");
 
 function Navbar() {
-	const { show, setShow, bg, setBg, clicked, setClicked } =
+	const { show, setShow, setBg, clicked, setClicked } =
 		useContext(NavbarContext);
 
 	const { isLoggedIn, logout } = useContext(AuthContext);
@@ -44,7 +44,7 @@ function Navbar() {
 					{isLoggedIn && (
 						<>
 							<li>
-								<Link to="/" className="list-item">
+								<Link to="/home" className="list-item">
 									Home
 								</Link>
 							</li>
@@ -56,7 +56,15 @@ function Navbar() {
 							</li>
 
 							<li>
-								<button onClick={logout}>Logout</button>
+								<Link to="/settings" className="list-item">
+									Settings
+								</Link>
+							</li>
+
+							<li>
+								<button onClick={logout} className="list-item logout-btn">
+									Logout
+								</button>
 							</li>
 						</>
 					)}

@@ -7,6 +7,8 @@ import HomePage from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
 import SignupPage from "./pages/Signup/SignupPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
+import SettingsPage from "./pages/Settings/SettingsPage";
+import UserHomePage from "./pages/UserHome/UserHomePage";
 
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -14,17 +16,18 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 require("./app.css");
 
 function App() {
-	// if (show === "show") {
-	// 	setBg("dark");
-	// } else {
-	// 	setBg("");
-	// }
-
 	return (
 		<div className={"App "}>
 			<Navbar />
 			<Routes>
-				<Route path="/" element={<HomePage />} />
+				<Route
+					path="/"
+					element={
+						<IsAnon>
+							<HomePage />
+						</IsAnon>
+					}
+				/>
 				<Route
 					path="/login"
 					element={
@@ -49,6 +52,26 @@ function App() {
 						</IsPrivate>
 					}
 				/>
+
+				<Route
+					path="/settings"
+					element={
+						<IsPrivate>
+							<SettingsPage />
+						</IsPrivate>
+					}
+				/>
+
+				{
+					<Route
+						path="/home"
+						element={
+							<IsPrivate>
+								<UserHomePage />
+							</IsPrivate>
+						}
+					/>
+				}
 			</Routes>
 		</div>
 	);
