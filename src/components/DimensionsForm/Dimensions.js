@@ -63,6 +63,13 @@ function Dimensions(props) {
 			})
 			.then((response) => {
 				navigate("/profile");
+
+				return axios.post(`${API_URL}/macros`, body, {
+					headers: { Authorization: `Bearer ${storedToken}` },
+				});
+			})
+			.then((macros) => {
+				console.log(macros);
 			})
 			.catch((err) => {
 				setErrMessage(err.response.data.message);

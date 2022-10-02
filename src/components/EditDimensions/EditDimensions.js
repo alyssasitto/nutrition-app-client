@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { DimensionsContext } from "../../context/dimensions.context";
+import { AuthContext } from "../../context/auth.context";
 
 require("../Edit.css");
 
@@ -10,15 +12,21 @@ function EditDimensions(props) {
 	const [loading, setLoading] = useState(true);
 	const storedToken = localStorage.getItem("authToken");
 
+	const { getDimensions } = useContext(AuthContext);
+
 	const [feet, setFeet] = useState("");
 	const [inches, setInches] = useState("");
 	const [age, setAge] = useState("");
 	const [weight, setWeight] = useState("");
 	const [gender, setGender] = useState("");
+	const [goal, setGoal] = useState("");
+	const [activityLevel, setActivityLevel] = useState("");
 	const [male, setMale] = useState("male");
 	const [female, setFemale] = useState("female");
 	const [maleChecked, setMaleChecked] = useState(false);
 	const [femaleChecked, setFemaleChecked] = useState(false);
+
+	const [isSelected, setIsSelected] = useState("");
 
 	const [errMessage, setErrMessage] = useState(null);
 
@@ -42,10 +50,22 @@ function EditDimensions(props) {
 		setGender(e.target.value);
 	};
 
+	const handleGoal = (e) => {
+		setGoal(e.target.value);
+	};
+
+	const handleActivityLevel = (e) => {
+		setActivityLevel(e.target.value);
+	};
+
+	const checkValue = () => {
+		console.log("clicked");
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const body = { feet, inches, age, weight, gender };
+		const body = { feet, inches, age, weight, gender, activityLevel, goal };
 
 		axios
 			.post(`${API_URL}/edit/dimensions`, body, {
@@ -59,10 +79,21 @@ function EditDimensions(props) {
 				props.setAge(age);
 				props.setWeight(weight);
 				props.setGender(gender);
+				props.setGoal(goal);
+				props.setActivityLevel(activityLevel);
+
+				// getDimensions();
+
+				return axios.post(`${API_URL}/edit/macros`, body, {
+					headers: { Authorization: `Bearer ${storedToken}` },
+				});
+			})
+			.then((response) => {
+				console.log(response);
 			})
 			.catch((err) => {
 				console.log(err);
-				setErrMessage(err.response.data.message);
+				// setErrMessage(err.response.data.message);
 			});
 	};
 
@@ -81,6 +112,8 @@ function EditDimensions(props) {
 				setAge(response.data.dimensions.age);
 				setWeight(response.data.dimensions.weight);
 				setGender(response.data.dimensions.gender);
+				setGoal(response.data.dimensions.goal);
+				setActivityLevel(response.data.dimensions.activityLevel);
 
 				if (response.data.dimensions.gender === "male") {
 					setMaleChecked(true);
@@ -158,6 +191,35 @@ function EditDimensions(props) {
 							defaultChecked={femaleChecked}
 							onChange={handleGender}
 						/>
+					</div>
+
+					<div>
+						<select onChange={handleGoal}>
+							<option value={goal} disabled selected>
+								Goal
+							</option>
+							<option value="lose 0.5lb">Lose 0.5lb</option>
+							<option value="lose 1lb">Lose 1lb</option>
+							<option value="lose 2lb">Lose 2lb</option>
+							<option value="maintain">Maintain</option>
+							<option value="gain 0.5lb">Gain 0.5lb</option>
+							<option value="gain 1lb">Gain 1lb</option>
+							<option value="gain 2lb">Gain 2lb</option>
+						</select>
+					</div>
+
+					<div>
+						<select onChange={handleActivityLevel}>
+							<option value={activityLevel} disabled>
+								Activity level
+							</option>
+							<option value="sedentary" defaultChecked>
+								Sedentary
+							</option>
+							<option value="lightly active">Lightly active</option>
+							<option value="active">Active</option>
+							<option value="very active">Very Active</option>
+						</select>
 					</div>
 
 					{errMessage && <p>{errMessage}</p>}

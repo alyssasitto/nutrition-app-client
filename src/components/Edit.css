@@ -10,3 +10,7 @@
 	z-index: 7;
 	top: 0;
 }
+
+select {
+	text-transform: capitalize;
+}

@@ -6,25 +6,28 @@ const DimensionsContext = createContext();
 const API_URL = "http://localhost:5005";
 
 function DimensionsProviderWrapper(props) {
-	const [dimensions, setDimensions] = useState(null);
+	const [dimensions, setDimensions] = useState({});
 	const [loading, setLoading] = useState(true);
 
 	const navigate = useNavigate();
 
 	const storedToken = localStorage.getItem("authToken");
 
-	useEffect(() => {
+	const getDimensions = () => {
 		axios
 			.get(`${API_URL}/dimensions`, {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
 				setDimensions(response.data.dimensions);
-				setLoading(false);
 			})
 			.catch((err) => {
 				console.log(err);
 			});
+	};
+
+	useEffect(() => {
+		getDimensions();
 	}, []);
 
 	const redirect = () => {
@@ -36,7 +39,7 @@ function DimensionsProviderWrapper(props) {
 	};
 
 	return (
-		<DimensionsContext.Provider value={{ dimensions, redirect }}>
+		<DimensionsContext.Provider value={{ getDimensions, redirect, dimensions }}>
 			{props.children}
 		</DimensionsContext.Provider>
 	);

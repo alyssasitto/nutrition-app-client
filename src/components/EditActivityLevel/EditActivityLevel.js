@@ -38,11 +38,13 @@ function EditActivityLevel(props) {
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box">
 				<select onChange={handleActivityLevel}>
-					<option disabled>Activity level</option>
-					<option value="not-active">Not active</option>
-					<option value="lightly-active">Lightly active</option>
+					<option disabled selected>
+						Activity level
+					</option>
+					<option value="sedentary">Sedentary</option>
+					<option value="lightly active">Lightly active</option>
 					<option value="active">Active</option>
-					<option value="very-active">Very Active</option>
+					<option value="very active">Very Active</option>
 				</select>
 
 				<button type="submit">Change</button>

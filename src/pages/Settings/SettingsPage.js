@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
+import { DimensionsContext } from "../../context/dimensions.context";
 
 import EditName from "../../components/EditName/EditName";
 import EditEmail from "../../components/EditEmail/EditEmail";
@@ -19,6 +20,8 @@ function SettingsPage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const { user, authenticateUser } = useContext(AuthContext);
 
+	const { getDimensions } = useContext(DimensionsContext);
+
 	const [loading, setLoading] = useState(true);
 
 	const [overlay, setOverlay] = useState("");
@@ -26,8 +29,8 @@ function SettingsPage() {
 	const [emailForm, setEmailForm] = useState(false);
 	const [passwordForm, setPasswordForm] = useState(false);
 	const [dimensionsForm, setDimensionsForm] = useState(false);
-	const [goalForm, setGoalForm] = useState(false);
-	const [activityLevelForm, setActivityLevelForm] = useState(false);
+	// const [goalForm, setGoalForm] = useState(false);
+	// const [activityLevelForm, setActivityLevelForm] = useState(false);
 
 	const [name, setName] = useState(user.name);
 	const [email, setEmail] = useState(user.email);
@@ -39,6 +42,8 @@ function SettingsPage() {
 	const [gender, setGender] = useState(null);
 	const [goal, setGoal] = useState(null);
 	const [activityLevel, setActivityLevel] = useState(null);
+
+	const [chosenActivityLevel, setChosenActivityLevel] = useState("");
 
 	const [female, setFemale] = useState("female");
 	const [male, setMale] = useState("male");
@@ -68,15 +73,15 @@ function SettingsPage() {
 		setDimensionsForm(true);
 	};
 
-	const editGoal = () => {
-		setOverlay("overlay");
-		setGoalForm(true);
-	};
+	// const editGoal = () => {
+	// 	setOverlay("overlay");
+	// 	setGoalForm(true);
+	// };
 
-	const editActivityLevel = () => {
-		setOverlay("overlay");
-		setActivityLevelForm(true);
-	};
+	// const editActivityLevel = () => {
+	// 	setOverlay("overlay");
+	// 	setActivityLevelForm(true);
+	// };
 
 	const exit = () => {
 		setOverlay("");
@@ -84,8 +89,8 @@ function SettingsPage() {
 		setEmailForm(false);
 		setPasswordForm(false);
 		setDimensionsForm(false);
-		setGoalForm(false);
-		setActivityLevelForm(false);
+		// setGoalForm(false);
+		// setActivityLevelForm(false);
 	};
 
 	useEffect(() => {
@@ -111,6 +116,10 @@ function SettingsPage() {
 					setCheckedFemale("checked");
 					setMaleChecked("");
 				}
+
+				// getDimensions();
+
+				console.log(inches, feet, age, weight, gender, goal, activityLevel);
 
 				setLoading(false);
 			})
@@ -155,10 +164,12 @@ function SettingsPage() {
 					setAge={setAge}
 					setWeight={setWeight}
 					setGender={setGender}
+					setGoal={setGoal}
+					setActivityLevel={setActivityLevel}
 				/>
 			)}
 
-			{goalForm && (
+			{/* {goalForm && (
 				<EditGoal
 					setOverlay={setOverlay}
 					setGoal={setGoal}
@@ -172,7 +183,7 @@ function SettingsPage() {
 					setActivityLevel={setActivityLevel}
 					setActivityLevelForm={setActivityLevelForm}
 				/>
-			)}
+			)} */}
 
 			{loading && (
 				<>
@@ -257,10 +268,28 @@ function SettingsPage() {
 							/>
 						</label>
 
+						<div>
+							<h2>Goal</h2>
+							<select disabled>
+								<option disabled selected>
+									{goal}
+								</option>
+							</select>
+						</div>
+
+						<div>
+							<h2>Activity Level</h2>
+							<select disabled>
+								<option disabled selected>
+									{activityLevel}
+								</option>
+							</select>
+						</div>
+
 						<button onClick={editDimensions}>Edit</button>
 					</div>
 
-					<div>
+					{/* <div>
 						<h2>Goal</h2>
 						<select disabled>
 							<option>{goal}</option>
@@ -274,7 +303,7 @@ function SettingsPage() {
 							<option>{activityLevel}</option>
 						</select>
 						<button onClick={editActivityLevel}>Change</button>
-					</div>
+					</div> */}
 				</div>
 			)}
 		</div>
