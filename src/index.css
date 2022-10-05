@@ -33,7 +33,7 @@ h3 {
 	color: #2c374f;
 }
 
-ul {
+.nav {
 	position: absolute;
 	right: 0;
 	display: none;

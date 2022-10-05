@@ -1,0 +1,18 @@
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+/* .react-calendar__tile .react-calendar__tile--now .react-calendar__month-view__days__day */
+
+.react-calendar__tile--now {
+	background-color: pink !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:enabled:hover {
+	background-color: rebeccapurple !important;
+}

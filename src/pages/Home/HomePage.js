@@ -28,7 +28,7 @@ function HomePage() {
 			</header>
 
 			<section>
-				<h2>
+				<h2 className="heading">
 					Do you struggle to calculate what kind of nutrients you need each day?
 				</h2>
 				<img src="images/phone.jpeg"></img>
@@ -43,7 +43,7 @@ function HomePage() {
 			</section>
 
 			<section>
-				<h2>Looking for some delicious recipes?</h2>
+				<h2 className="heading">Looking for some delicious recipes?</h2>
 				<img src="images/recipe.jpeg"></img>
 				<p>
 					We've got you covered! Check out our plethora of recipes that are not

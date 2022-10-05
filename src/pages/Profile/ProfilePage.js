@@ -3,6 +3,10 @@ import axios from "axios";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 import { DimensionsContext } from "../../context/dimensions.context";
+import CalendarComponent from "../../components/Calendar/Calendar";
+import SearchPage from "../SearchPage/SearchPage";
+
+import { useNavigate, useNavigation } from "react-router-dom";
 
 import "./profile.css";
 
@@ -10,44 +14,41 @@ const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	// const { getDimensions, dimensions } = useContext(DimensionsContext);
-	const [dimensions, setDimensions] = useState(false);
+
+	const [food, setFood] = useState(null);
 	const [loading, setLoading] = useState(true);
-	// const [feet, setFeet] = useState("");
-	// const [inches, setInches] = useState("");
-	// const [age, setAge] = useState("");
-	// const [weight, setWeight] = useState("");
-	// const [gender, setGender] = useState("");
-	// const [goal, setGoal] = useState("");
-	// const [activityLevel, setActivityLevel] = useState("");
+	const [dropdown, setDropdown] = useState("hide");
+	const [showDropdown, setShowDropdown] = useState(false);
 
 	const storedToken = localStorage.getItem("authToken");
 
-	let body = {
-		feet: "",
-		inches: "",
-		age: "",
-		weight: "",
-		gender: "",
-		goal: "",
-		activityLevel: "",
+	const handleClick = (e) => {
+		console.log(e.target.value);
+	};
+
+	console.log(dropdown, setShowDropdown);
+
+	const navigate = useNavigate();
+
+	const searchBreakfast = () => {
+		navigate("/search", { state: { foodType: "Breakfast" } });
+	};
+
+	const searchLunch = () => {
+		navigate("/search", { state: { foodType: "Lunch" } });
+	};
+
+	const searchDinner = () => {
+		navigate("/search", { state: { foodType: "Dinner" } });
 	};
 
 	useEffect(() => {
 		axios
-			.get(`${API_URL}/dimensions`, {
+			.get(`${API_URL}/day`, {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				body.feet = response.data.dimensions.feet;
-				body.inches = response.data.dimensions.inches;
-				body.age = response.data.dimensions.age;
-				body.weight = response.data.dimensions.weight;
-				body.gender = response.data.dimensions.gender;
-				body.activityLevel = response.data.dimensions.activityLevel;
-				body.goal = response.data.dimensions.goal;
-
-				setDimensions(true);
+				console.log(response);
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -65,12 +66,24 @@ function ProfilePage() {
 
 			{!loading && (
 				<>
-					{/* <p>{inches}</p> */}
-					{/* <p>{age}</p>
-					<p>{weight}</p>
-					<p>{gender}</p>
-					<p>{goal}</p>
-					<p>{activityLevel}</p> */}
+					<CalendarComponent />
+
+					<div className="meals">
+						<div>
+							<h2>Breakfast</h2>
+							<button onClick={searchBreakfast}>add breakfast</button>
+						</div>
+
+						<div>
+							<h2>Lunch</h2>
+							<button onClick={searchLunch}>add lunch</button>
+						</div>
+
+						<div>
+							<h2>Dinner</h2>
+							<button onClick={searchDinner}>add dinner</button>
+						</div>
+					</div>
 				</>
 			)}
 		</div>

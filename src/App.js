@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, UNSAFE_RouteContext } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { NavbarContext } from "./context/navbar.context";
 
@@ -9,6 +9,8 @@ import SignupPage from "./pages/Signup/SignupPage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import SettingsPage from "./pages/Settings/SettingsPage";
 import UserHomePage from "./pages/UserHome/UserHomePage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import FoodDetailsPage from "./pages/FoodDetails/FoodDetailsPage";
 
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -62,16 +64,32 @@ function App() {
 					}
 				/>
 
-				{
-					<Route
-						path="/home"
-						element={
-							<IsPrivate>
-								<UserHomePage />
-							</IsPrivate>
-						}
-					/>
-				}
+				<Route
+					path="/home"
+					element={
+						<IsPrivate>
+							<UserHomePage />
+						</IsPrivate>
+					}
+				/>
+
+				<Route
+					path="/search"
+					element={
+						<IsPrivate>
+							<SearchPage />
+						</IsPrivate>
+					}
+				/>
+
+				<Route
+					path="/food-details"
+					element={
+						<IsPrivate>
+							<FoodDetailsPage />
+						</IsPrivate>
+					}
+				/>
 			</Routes>
 		</div>
 	);
