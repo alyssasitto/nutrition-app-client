@@ -73,16 +73,6 @@ function SettingsPage() {
 		setDimensionsForm(true);
 	};
 
-	// const editGoal = () => {
-	// 	setOverlay("overlay");
-	// 	setGoalForm(true);
-	// };
-
-	// const editActivityLevel = () => {
-	// 	setOverlay("overlay");
-	// 	setActivityLevelForm(true);
-	// };
-
 	const exit = () => {
 		setOverlay("");
 		setNameForm(false);
@@ -168,22 +158,6 @@ function SettingsPage() {
 					setActivityLevel={setActivityLevel}
 				/>
 			)}
-
-			{/* {goalForm && (
-				<EditGoal
-					setOverlay={setOverlay}
-					setGoal={setGoal}
-					setGoalForm={setGoalForm}
-				/>
-			)}
-
-			{activityLevelForm && (
-				<EditActivityLevel
-					setOverlay={setOverlay}
-					setActivityLevel={setActivityLevel}
-					setActivityLevelForm={setActivityLevelForm}
-				/>
-			)} */}
 
 			{loading && (
 				<>
@@ -288,22 +262,6 @@ function SettingsPage() {
 
 						<button onClick={editDimensions}>Edit</button>
 					</div>
-
-					{/* <div>
-						<h2>Goal</h2>
-						<select disabled>
-							<option>{goal}</option>
-						</select>
-						<button onClick={editGoal}>Edit</button>
-					</div>
-
-					<div>
-						<h2>Activity level</h2>
-						<select disabled>
-							<option>{activityLevel}</option>
-						</select>
-						<button onClick={editActivityLevel}>Change</button>
-					</div> */}
 				</div>
 			)}
 		</div>

@@ -1,13 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { NavbarContext } from "../../context/navbar.context";
+import "./SearchPage.css";
+import FoodDetails from "../../components/FoodDetails/FoodDetailsCard";
 
 const API_URL = "http://localhost:5005";
 
 function SearchPage() {
+	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
+
 	const [searchedFood, setSearchedFood] = useState("");
 	const [foodList, setFoodList] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [overlay, setOverlay] = useState("");
+	const [foodDetailsCard, setFoodDetailsCard] = useState(false);
+
+	const [food, setFood] = useState(null);
 
 	const location = useLocation();
 
@@ -19,8 +28,40 @@ function SearchPage() {
 		setSearchedFood(e.target.value);
 	};
 
-	const viewDetails = () => {
-		navigate("/food-details", { state: { food: searchedFood } });
+	const viewDetails = (index) => {
+		setOverlay("overlay");
+		setFoodDetailsCard(true);
+		setFood(index);
+	};
+
+	const exit = () => {
+		setOverlay("");
+		setFoodDetailsCard(false);
+	};
+
+	const addFood = (name, calories, fat, protein, carbs) => {
+		const body = {
+			date: location.state.date,
+			foodType: location.state.foodType,
+			food: {
+				name: name,
+				calories: calories,
+				fat: fat,
+				protein: protein,
+				carbs: carbs,
+			},
+		};
+
+		axios
+			.post(`${API_URL}/add-food`, body, {
+				headers: { Authorization: `Bearer ${storedToken}` },
+			})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
 	const handleSubmit = (e) => {
@@ -41,8 +82,23 @@ function SearchPage() {
 			});
 	};
 
+	useEffect(() => {
+		setShow("");
+		setBg("");
+		setClicked(false);
+	}, []);
+
+	console.log(location.state.foodType);
+	console.log(location.state.date);
+
 	return (
-		<div>
+		<div className={bg}>
+			<div onClick={exit} className={overlay}></div>
+
+			{foodDetailsCard && (
+				<FoodDetails index={food} searchedFood={searchedFood} />
+			)}
+
 			<form onSubmit={handleSubmit}>
 				<input type="text" placeholder="search" onChange={handleSearch} />
 				<button type="submit">Search</button>
@@ -56,8 +112,14 @@ function SearchPage() {
 						<div key={index}>
 							<p>{element.food.label}</p>
 							<p>{Number(element.food.nutrients.ENERC_KCAL).toFixed()}</p>
-							<button>Add food</button>
-							<button onClick={() => viewDetails()}>Details</button>
+							<button onClick={addFood}>Add food</button>
+							<button
+								onClick={() => {
+									viewDetails(index);
+								}}
+							>
+								Details
+							</button>
 						</div>
 					);
 				})}

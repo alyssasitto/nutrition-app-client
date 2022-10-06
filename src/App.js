@@ -10,7 +10,6 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import SettingsPage from "./pages/Settings/SettingsPage";
 import UserHomePage from "./pages/UserHome/UserHomePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
-import FoodDetailsPage from "./pages/FoodDetails/FoodDetailsPage";
 
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -78,15 +77,6 @@ function App() {
 					element={
 						<IsPrivate>
 							<SearchPage />
-						</IsPrivate>
-					}
-				/>
-
-				<Route
-					path="/food-details"
-					element={
-						<IsPrivate>
-							<FoodDetailsPage />
 						</IsPrivate>
 					}
 				/>

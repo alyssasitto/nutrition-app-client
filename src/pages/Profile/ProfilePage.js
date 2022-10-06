@@ -3,10 +3,13 @@ import axios from "axios";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 import { DimensionsContext } from "../../context/dimensions.context";
-import CalendarComponent from "../../components/Calendar/Calendar";
+
 import SearchPage from "../SearchPage/SearchPage";
+import Calendar from "react-calendar";
 
 import { useNavigate, useNavigation } from "react-router-dom";
+
+import "react-calendar/dist/Calendar.css";
 
 import "./profile.css";
 
@@ -20,7 +23,26 @@ function ProfilePage() {
 	const [dropdown, setDropdown] = useState("hide");
 	const [showDropdown, setShowDropdown] = useState(false);
 
+	const [date, setDate] = useState(new Date());
+	const [calender, setCalender] = useState("hide");
+
+	const onChange = (date) => {
+		setDate(date);
+	};
+
+	const handleCalender = () => {
+		if (calender === "hide") {
+			setCalender("show");
+		}
+
+		if (calender === "show") {
+			setCalender("hide");
+		}
+	};
+
 	const storedToken = localStorage.getItem("authToken");
+
+	const dateString = date.toDateString();
 
 	const handleClick = (e) => {
 		console.log(e.target.value);
@@ -31,15 +53,15 @@ function ProfilePage() {
 	const navigate = useNavigate();
 
 	const searchBreakfast = () => {
-		navigate("/search", { state: { foodType: "Breakfast" } });
+		navigate("/search", { state: { foodType: "Breakfast", date: dateString } });
 	};
 
 	const searchLunch = () => {
-		navigate("/search", { state: { foodType: "Lunch" } });
+		navigate("/search", { state: { foodType: "Lunch", date: dateString } });
 	};
 
 	const searchDinner = () => {
-		navigate("/search", { state: { foodType: "Dinner" } });
+		navigate("/search", { state: { foodType: "Dinner", date: dateString } });
 	};
 
 	useEffect(() => {
@@ -66,7 +88,14 @@ function ProfilePage() {
 
 			{!loading && (
 				<>
-					<CalendarComponent />
+					<div>
+						<img
+							src="images/calendar.svg"
+							onClick={handleCalender}
+							className="icon"
+						></img>
+						<Calendar onChange={onChange} value={date} className={calender} />
+					</div>
 
 					<div className="meals">
 						<div>
