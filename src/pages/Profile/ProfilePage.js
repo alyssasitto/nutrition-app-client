@@ -53,15 +53,15 @@ function ProfilePage() {
 	const navigate = useNavigate();
 
 	const searchBreakfast = () => {
-		navigate("/search", { state: { foodType: "Breakfast", date: dateString } });
+		navigate("/search", { state: { foodType: "breakfast", date: dateString } });
 	};
 
 	const searchLunch = () => {
-		navigate("/search", { state: { foodType: "Lunch", date: dateString } });
+		navigate("/search", { state: { foodType: "lunch", date: dateString } });
 	};
 
 	const searchDinner = () => {
-		navigate("/search", { state: { foodType: "Dinner", date: dateString } });
+		navigate("/search", { state: { foodType: "dinner", date: dateString } });
 	};
 
 	useEffect(() => {
