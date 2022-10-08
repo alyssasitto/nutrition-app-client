@@ -16,29 +16,29 @@ function FoodDetails(props) {
 		// const searchedFood = props.searchedFood;
 
 		console.log(props);
-
-		// const body = {
-		// 	index,
-		// 	searchedFood,
-		// };
-
-		// axios
-		// 	.post(`${API_URL}/food/details`, body, {
-		// 		headers: { Authorization: `Bearer ${storedToken} ` },
-		// 	})
-		// 	.then((response) => {
-		// 		setFood(response.data.foodItem.food);
-		// 		setLoading(false);
-		// 		console.log(response);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.log(err);
-		// 	});
 	}, []);
+
+	console.log(props.food);
 
 	return (
 		<div className="box">
 			<p>{props.food.name}</p>
+			<button
+				onClick={() => {
+					props.addFood(
+						props.food.name,
+						props.food.calories,
+						props.food.fat,
+						props.food.protein,
+						props.food.carbs
+					);
+
+					props.setOverlay("");
+					props.setFoodDetailsCard(false);
+				}}
+			>
+				Add food
+			</button>
 		</div>
 	);
 }

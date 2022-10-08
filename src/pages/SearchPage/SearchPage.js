@@ -108,7 +108,13 @@ function SearchPage() {
 			<div onClick={exit} className={overlay}></div>
 
 			{foodDetailsCard && (
-				<FoodDetails food={food} searchedFood={searchedFood} />
+				<FoodDetails
+					food={food}
+					searchedFood={searchedFood}
+					addFood={addFood}
+					setOverlay={setOverlay}
+					setFoodDetailsCard={setFoodDetailsCard}
+				/>
 			)}
 
 			<form onSubmit={handleSubmit}>

@@ -28,3 +28,7 @@
 .show {
 	display: block;
 }
+
+.food-container {
+	display: flex;
+}
