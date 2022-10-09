@@ -72,7 +72,33 @@ function ProfilePage() {
 		);
 	}
 
-	const deleteFood = () => {};
+	console.log("these are the foods", loggedFoods);
+
+	const deleteFood = (food, foodType, index) => {
+		const body = {
+			id: user.id,
+			food: food,
+			foodType: foodType,
+			date: dateString,
+			index: index,
+		};
+
+		axios
+			.post(`${API_URL}/delete-food`, body, {
+				headers: { Authorization: `Bearer ${storedToken}` },
+			})
+			.then((response) => {
+				console.log(response);
+
+				// const loggedFoodsCopy = [...loggedFoods];
+
+				// const updatedFoods = loggedFoodsCopy.splice(index, 1);
+				setLoggedFoods(response.data.logDay);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
 
 	useEffect(() => {
 		const body = {
@@ -135,11 +161,17 @@ function ProfilePage() {
 							{loggedFoods && loggedFoods.breakfast !== [] && (
 								<>
 									{loggedFoods.breakfast.map((el, index) => {
-										console.log(el.name);
+										console.log(el, index);
 										return (
 											<div className="food-container">
 												<p>{el.name}</p>
-												<button>delete</button>
+												<button
+													onClick={() =>
+														deleteFood(el.name, "breakfast", index)
+													}
+												>
+													delete
+												</button>
 											</div>
 										);
 									})}
@@ -158,7 +190,11 @@ function ProfilePage() {
 										return (
 											<div className="food-container">
 												<p>{el.name}</p>
-												<button>delete</button>
+												<button
+													onClick={() => deleteFood(el.name, "lunch", index)}
+												>
+													delete
+												</button>
 											</div>
 										);
 									})}
@@ -177,7 +213,11 @@ function ProfilePage() {
 										return (
 											<div className="food-container">
 												<p>{el.name}</p>
-												<button>delete</button>
+												<button
+													onClick={() => deleteFood(el.name, "dinner", index)}
+												>
+													delete
+												</button>
 											</div>
 										);
 									})}

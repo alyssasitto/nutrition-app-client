@@ -106,7 +106,6 @@ function SearchPage() {
 	return (
 		<div className={bg}>
 			<div onClick={exit} className={overlay}></div>
-
 			{foodDetailsCard && (
 				<FoodDetails
 					food={food}
