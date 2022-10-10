@@ -31,6 +31,7 @@ function ProfilePage() {
 	const [overlay, setOverLay] = useState("");
 	const [customFoodForm, setCustomFoodForm] = useState(false);
 	const [meal, setMeal] = useState("");
+	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
 
 	const [date, setDate] = useState(new Date(Date.now()));
 
@@ -134,7 +135,7 @@ function ProfilePage() {
 		setShow("");
 		setBg("");
 		setClicked(false);
-	}, [date]);
+	}, [date, loggedFoodsCopy]);
 
 	console.log(loggedFoods);
 	console.log("this is the date", date);
@@ -149,7 +150,7 @@ function ProfilePage() {
 					setOverLay={setOverLay}
 					meal={meal}
 					date={dateString}
-					setLoggedFoods={setLoggedFoods}
+					setLoggedFoodsCopy={setLoggedFoodsCopy}
 				/>
 			)}
 

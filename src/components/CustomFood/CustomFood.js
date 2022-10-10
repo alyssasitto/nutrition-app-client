@@ -59,9 +59,10 @@ function CustomFood(props) {
 			})
 			.then((response) => {
 				console.log(response.data);
-				props.setLoggedFoods(response.data.logDay);
+
 				props.setOverLay("");
 				props.setCustomFoodForm(false);
+				props.setLoggedFoodsCopy(response.data.logDay);
 			})
 			.catch((err) => {
 				console.log(err);
