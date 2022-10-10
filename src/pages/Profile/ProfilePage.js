@@ -6,6 +6,7 @@ import { DimensionsContext } from "../../context/dimensions.context";
 
 import SearchPage from "../SearchPage/SearchPage";
 import Calendar from "react-calendar";
+import CustomFood from "../../components/CustomFood/CustomFood";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { useNavigate, useNavigation } from "react-router-dom";
@@ -27,6 +28,9 @@ function ProfilePage() {
 	const [loggedFoods, setLoggedFoods] = useState(null);
 
 	const [calender, setCalender] = useState("hide");
+	const [overlay, setOverLay] = useState("");
+	const [customFoodForm, setCustomFoodForm] = useState(false);
+	const [meal, setMeal] = useState("");
 
 	const [date, setDate] = useState(new Date(Date.now()));
 
@@ -42,6 +46,11 @@ function ProfilePage() {
 		if (calender === "show") {
 			setCalender("hide");
 		}
+	};
+
+	const exit = () => {
+		setOverLay("");
+		setCustomFoodForm(false);
 	};
 
 	const storedToken = localStorage.getItem("authToken");
@@ -72,7 +81,12 @@ function ProfilePage() {
 		);
 	}
 
-	console.log("these are the foods", loggedFoods);
+	const addCustomFood = (e) => {
+		setCustomFoodForm(true);
+		setOverLay("overlay");
+
+		setMeal(e.target.value);
+	};
 
 	const deleteFood = (food, foodType, index) => {
 		const body = {
@@ -90,9 +104,6 @@ function ProfilePage() {
 			.then((response) => {
 				console.log(response);
 
-				// const loggedFoodsCopy = [...loggedFoods];
-
-				// const updatedFoods = loggedFoodsCopy.splice(index, 1);
 				setLoggedFoods(response.data.logDay);
 			})
 			.catch((err) => {
@@ -130,6 +141,18 @@ function ProfilePage() {
 
 	return (
 		<div className={bg}>
+			<div onClick={exit} className={overlay}></div>
+
+			{customFoodForm && (
+				<CustomFood
+					setCustomFoodForm={setCustomFoodForm}
+					setOverLay={setOverLay}
+					meal={meal}
+					date={dateString}
+					setLoggedFoods={setLoggedFoods}
+				/>
+			)}
+
 			<h2>{dateString}</h2>
 
 			{loading && <p>Loading...</p>}
@@ -157,6 +180,9 @@ function ProfilePage() {
 						<div>
 							<h2>Breakfast</h2>
 							<button onClick={searchBreakfast}>add breakfast</button>
+							<button onClick={addCustomFood} value="breakfast">
+								Custom
+							</button>
 
 							{loggedFoods && loggedFoods.breakfast !== [] && (
 								<>
@@ -182,6 +208,9 @@ function ProfilePage() {
 						<div>
 							<h2>Lunch</h2>
 							<button onClick={searchLunch}>add lunch</button>
+							<button onClick={addCustomFood} value="lunch">
+								Custom
+							</button>
 
 							{loggedFoods && loggedFoods.lunch !== [] && (
 								<>
@@ -206,6 +235,9 @@ function ProfilePage() {
 							<h2>Dinner</h2>
 
 							<button onClick={searchDinner}>add dinner</button>
+							<button onClick={addCustomFood} value="dinner">
+								Custom
+							</button>
 							{loggedFoods && loggedFoods.dinner !== [] && (
 								<>
 									{loggedFoods.dinner.map((el, index) => {
