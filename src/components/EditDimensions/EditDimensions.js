@@ -210,12 +210,10 @@ function EditDimensions(props) {
 
 					<div>
 						<select onChange={handleActivityLevel}>
-							<option value={activityLevel} disabled>
+							<option value={activityLevel} disabled selected>
 								Activity level
 							</option>
-							<option value="sedentary" defaultChecked>
-								Sedentary
-							</option>
+							<option value="sedentary">Sedentary</option>
 							<option value="lightly active">Lightly active</option>
 							<option value="active">Active</option>
 							<option value="very active">Very Active</option>

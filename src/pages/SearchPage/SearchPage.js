@@ -8,7 +8,7 @@ import FoodDetails from "../../components/FoodDetails/FoodDetailsCard";
 
 const API_URL = "http://localhost:5005";
 
-function SearchPage() {
+function SearchPage(props) {
 	const { user } = useContext(AuthContext);
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 

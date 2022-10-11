@@ -31,7 +31,14 @@ function ProfilePage() {
 	const [overlay, setOverLay] = useState("");
 	const [customFoodForm, setCustomFoodForm] = useState(false);
 	const [meal, setMeal] = useState("");
+	const [calories, setCalories] = useState(null);
+	const [totalCalories, setTotalCalories] = useState(0);
+	const [remainingCalories, setRemainingCalories] = useState(0);
 	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
+
+	// const [breakfastCals, setBreakfastCals] = useState(0);
+	// const [lunchCals, setLunchCals] = useState(0);
+	// const [dinnerCals, setDinnerCals] = useState(0);
 
 	const [date, setDate] = useState(new Date(Date.now()));
 
@@ -105,6 +112,8 @@ function ProfilePage() {
 			.then((response) => {
 				console.log(response);
 
+				setLoggedFoodsCopy(response.data.logDay);
+
 				setLoggedFoods(response.data.logDay);
 			})
 			.catch((err) => {
@@ -123,10 +132,55 @@ function ProfilePage() {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
+				console.log("THIS IS THE RESPONSE", response);
+
+				let breakfastCals = 0;
+				let lunchCals = 0;
+				let dinnerCals = 0;
+
+				if (response.data.logDay !== null) {
+					let breakfast = response.data.logDay.breakfast;
+					let lunch = response.data.logDay.lunch;
+					let dinner = response.data.logDay.dinner;
+
+					if (breakfast.length !== 0) {
+						breakfast.map((el, index) => {
+							breakfastCals += el.calories;
+						});
+					}
+
+					if (lunch.length !== 0) {
+						lunch.map((el, index) => {
+							lunchCals += el.calories;
+						});
+					}
+
+					if (dinner.length !== 0) {
+						dinner.map((el, index) => {
+							dinnerCals += el.calories;
+						});
+					}
+				}
+
+				setTotalCalories(breakfastCals + lunchCals + dinnerCals);
+
+				console.log(breakfastCals);
 
 				setLoggedFoods(response.data.logDay);
+
 				setLoading(false);
+
+				return axios.get(`${API_URL}/macros`, {
+					headers: { Authorization: `Bearer ${storedToken}` },
+				});
+			})
+			.then((response) => {
+				if (response.data.macros.calories === null) {
+					setCalories(0);
+				} else {
+					setCalories(response.data.macros.calories);
+					setRemainingCalories(response.data.macros.calories);
+				}
 			})
 			.catch((err) => {
 				console.log(err);
@@ -136,6 +190,8 @@ function ProfilePage() {
 		setBg("");
 		setClicked(false);
 	}, [date, loggedFoodsCopy]);
+
+	console.log("REMAINING CALS", remainingCalories);
 
 	console.log(loggedFoods);
 	console.log("this is the date", date);
@@ -155,6 +211,13 @@ function ProfilePage() {
 			)}
 
 			<h2>{dateString}</h2>
+
+			<h3>these are the alotted calories {calories}</h3>
+			<h3>these are the calories eaten {totalCalories}</h3>
+
+			<h2>
+				{calories} - {totalCalories} = {remainingCalories}
+			</h2>
 
 			{loading && <p>Loading...</p>}
 
@@ -188,7 +251,6 @@ function ProfilePage() {
 							{loggedFoods && loggedFoods.breakfast !== [] && (
 								<>
 									{loggedFoods.breakfast.map((el, index) => {
-										console.log(el, index);
 										return (
 											<div className="food-container">
 												<p>{el.name}</p>
