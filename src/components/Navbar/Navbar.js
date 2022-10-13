@@ -37,58 +37,65 @@ function Navbar() {
 					)}
 
 					{clicked && (
-						<img src="images/close.png" alt="Close icon" className="icon"></img>
+						<img
+							src="images/close.png"
+							alt="Close icon"
+							className="close-icon icon"
+						></img>
 					)}
 				</div>
-				<ul className={"nav " + show}>
-					{isLoggedIn && (
-						<>
-							<li>
-								<Link to="/home" className="list-item">
-									Home
-								</Link>
-							</li>
 
-							<li>
-								<Link to="/profile" className="list-item">
-									Profile
-								</Link>
-							</li>
+				<div className={"nav " + show}>
+					<ul>
+						{isLoggedIn && (
+							<>
+								<li>
+									<Link to="/home" className="list-item">
+										Home
+									</Link>
+								</li>
 
-							<li>
-								<Link to="/settings" className="list-item">
-									Settings
-								</Link>
-							</li>
+								<li>
+									<Link to="/profile" className="list-item">
+										Profile
+									</Link>
+								</li>
 
-							<li>
-								<button onClick={logout} className="list-item logout-btn">
-									Logout
-								</button>
-							</li>
-						</>
-					)}
+								<li>
+									<Link to="/settings" className="list-item">
+										Settings
+									</Link>
+								</li>
 
-					{!isLoggedIn && (
-						<>
-							<li>
-								<Link to="/" className="list-item">
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link to="/login" className="list-item">
-									Login
-								</Link>
-							</li>
-							<li>
-								<Link to="/signup" className="list-item">
-									Signup
-								</Link>
-							</li>
-						</>
-					)}
-				</ul>
+								<li>
+									<button onClick={logout} className="list-item logout-btn">
+										Logout
+									</button>
+								</li>
+							</>
+						)}
+
+						{!isLoggedIn && (
+							<>
+								<li>
+									<Link to="/" className="list-item">
+										Home
+									</Link>
+								</li>
+								<li>
+									<Link to="/login" className="list-item">
+										Login
+									</Link>
+								</li>
+								<li>
+									<Link to="/signup" className="list-item">
+										Signup
+									</Link>
+								</li>
+							</>
+						)}
+					</ul>
+				</div>
 			</nav>
 		</div>
 	);

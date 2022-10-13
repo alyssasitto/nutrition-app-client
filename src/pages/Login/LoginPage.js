@@ -4,6 +4,8 @@ import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 
+require("../Form.css");
+
 const API_URL = "http://localhost:5005";
 
 function LoginPage() {
@@ -72,33 +74,52 @@ function LoginPage() {
 	}, []);
 
 	return (
-		<div className={bg}>
-			<p>login page</p>
-			<form onSubmit={handleSubmit}>
+		<div className={bg + " form-page"}>
+			<img src="images/login.jpeg" className="hero"></img>
+			<h1>Login</h1>
+			<form onSubmit={handleSubmit} className="form">
 				<div>
-					<label htmlFor="email">Email</label>
-					<input
-						type="text"
-						name="email"
-						onChange={handleEmail}
-						value={email}
-					/>
+					<label htmlFor="email" className="form-label">
+						Email
+					</label>
+
+					<div className="input-container">
+						<img src="images/email.png" className="input-icon"></img>
+						<input
+							type="text"
+							name="email"
+							onChange={handleEmail}
+							value={email}
+						/>
+					</div>
 				</div>
 
 				<div>
-					<label htmlFor="password">Password</label>
-					<input
-						type="password"
-						name="password"
-						onChange={handlePassword}
-						value={password}
-					/>
+					<label htmlFor="password" className="form-label">
+						Password
+					</label>
+
+					<div className="input-container">
+						<img src="images/lock.png" className="input-icon"></img>
+						<input
+							type="password"
+							name="password"
+							onChange={handlePassword}
+							value={password}
+						/>
+					</div>
 				</div>
 
-				<button type="submit">Login</button>
+				<button type="submit" className="submit-btn">
+					Login
+				</button>
 			</form>
 
 			{errMessage && <p>{errMessage}</p>}
+
+			<p>
+				Don't have an account yet? <a href="/signup">Signup</a>
+			</p>
 		</div>
 	);
 }

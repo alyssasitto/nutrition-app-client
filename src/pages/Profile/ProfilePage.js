@@ -31,14 +31,9 @@ function ProfilePage() {
 	const [overlay, setOverLay] = useState("");
 	const [customFoodForm, setCustomFoodForm] = useState(false);
 	const [meal, setMeal] = useState("");
-	const [calories, setCalories] = useState(null);
+	const [calories, setCalories] = useState(0);
 	const [totalCalories, setTotalCalories] = useState(0);
-	const [remainingCalories, setRemainingCalories] = useState(0);
 	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
-
-	// const [breakfastCals, setBreakfastCals] = useState(0);
-	// const [lunchCals, setLunchCals] = useState(0);
-	// const [dinnerCals, setDinnerCals] = useState(0);
 
 	const [date, setDate] = useState(new Date(Date.now()));
 
@@ -110,8 +105,6 @@ function ProfilePage() {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
-
 				setLoggedFoodsCopy(response.data.logDay);
 
 				setLoggedFoods(response.data.logDay);
@@ -132,11 +125,11 @@ function ProfilePage() {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log("THIS IS THE RESPONSE", response);
-
 				let breakfastCals = 0;
 				let lunchCals = 0;
 				let dinnerCals = 0;
+
+				// console.log("these are the remaing calories", remainingCalories);
 
 				if (response.data.logDay !== null) {
 					let breakfast = response.data.logDay.breakfast;
@@ -164,8 +157,6 @@ function ProfilePage() {
 
 				setTotalCalories(breakfastCals + lunchCals + dinnerCals);
 
-				console.log(breakfastCals);
-
 				setLoggedFoods(response.data.logDay);
 
 				setLoading(false);
@@ -179,7 +170,6 @@ function ProfilePage() {
 					setCalories(0);
 				} else {
 					setCalories(response.data.macros.calories);
-					setRemainingCalories(response.data.macros.calories);
 				}
 			})
 			.catch((err) => {
@@ -190,11 +180,6 @@ function ProfilePage() {
 		setBg("");
 		setClicked(false);
 	}, [date, loggedFoodsCopy]);
-
-	console.log("REMAINING CALS", remainingCalories);
-
-	console.log(loggedFoods);
-	console.log("this is the date", date);
 
 	return (
 		<div className={bg}>
@@ -212,11 +197,8 @@ function ProfilePage() {
 
 			<h2>{dateString}</h2>
 
-			<h3>these are the alotted calories {calories}</h3>
-			<h3>these are the calories eaten {totalCalories}</h3>
-
 			<h2>
-				{calories} - {totalCalories} = {remainingCalories}
+				{calories} - {totalCalories} = {calories - totalCalories}
 			</h2>
 
 			{loading && <p>Loading...</p>}

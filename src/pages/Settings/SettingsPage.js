@@ -123,7 +123,7 @@ function SettingsPage() {
 	}, [gender]);
 
 	return (
-		<div className={bg}>
+		<div className={bg + " settings"}>
 			<div onClick={exit} className={overlay}></div>
 			{nameForm && (
 				<EditName
@@ -166,7 +166,7 @@ function SettingsPage() {
 			)}
 
 			{!loading && (
-				<div>
+				<div className="settings-page">
 					<div className="account-info">
 						<h2>Account Information</h2>
 						<div className="container">
@@ -175,7 +175,9 @@ function SettingsPage() {
 								<input type="text" name="name" value={name} disabled />
 							</div>
 
-							<button onClick={editName}>Edit</button>
+							<button onClick={editName} className="edit-btn">
+								Change
+							</button>
 						</div>
 
 						<div className="container">
@@ -184,7 +186,9 @@ function SettingsPage() {
 								<input type="email" name="email" value={email} disabled />
 							</div>
 
-							<button onClick={editEmail}>Edit</button>
+							<button onClick={editEmail} className="edit-btn">
+								Change
+							</button>
 						</div>
 
 						<div className="container">
@@ -193,74 +197,115 @@ function SettingsPage() {
 								<input type="password" name="password" disabled />
 							</div>
 
-							<button onClick={editPassword}>Edit</button>
+							<button onClick={editPassword} className="edit-btn">
+								Change
+							</button>
 						</div>
 					</div>
 
-					<div>
+					<div className="dimensions">
 						<h2>Dimensions</h2>
+						<div className="dimensions-container">
+							<div>
+								<div>
+									<div>
+										<label htmlFor="feet">Feet</label>
+										<input
+											type="number"
+											name="feet"
+											value={feet}
+											className="input"
+											disabled
+										/>
+									</div>
 
-						<div>
-							<label htmlFor="feet">Feet</label>
-							<input type="number" name="feet" value={feet} disabled />
+									<div>
+										<label htmlFor="inches">Inches </label>
+										<input
+											type="number"
+											name="inches"
+											value={inches}
+											className="input"
+											disabled
+										/>
+									</div>
+
+									<div>
+										<label htmlFor="age">Age</label>
+										<input
+											type="number"
+											name="age"
+											value={age}
+											className="input"
+											disabled
+										/>
+									</div>
+
+									<div>
+										<label htmlFor="weight">Weight</label>
+										<input
+											type="number"
+											value={weight}
+											className="input"
+											disabled
+										/>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div className="gender-contain">
+									<label>Gender</label>
+									<label className="gender">
+										<input
+											type="radio"
+											name="male"
+											value={male}
+											className="radio-btn"
+											checked={maleChecked}
+											disabled
+										/>
+										Male
+									</label>
+
+									<label className="gender">
+										<input
+											type="radio"
+											name="female"
+											className="radio-btn"
+											value={female}
+											checked={femaleChecked}
+											disabled
+										/>
+										Female
+									</label>
+								</div>
+
+								<div className="goal">
+									<label htmlFor="goal">Goal</label>
+									<select disabled>
+										<option disabled selected value="goal">
+											{goal}
+										</option>
+									</select>
+								</div>
+
+								<div className="activity-level">
+									<label htmlFor="activity-level">Activity level</label>
+									<select disabled>
+										<option disabled selected value="activity-level">
+											{activityLevel}
+										</option>
+									</select>
+								</div>
+							</div>
 						</div>
-
-						<div>
-							<label htmlFor="inches">Inches </label>
-							<input type="number" name="inches" value={inches} disabled />
-						</div>
-
-						<div>
-							<label htmlFor="age">Age</label>
-							<input type="number" name="age" value={age} disabled />
-						</div>
-
-						<div>
-							<label htmlFor="weight">Weight</label>
-							<input type="number" value={weight} disabled />
-						</div>
-
-						<label>
-							Male
-							<input
-								type="radio"
-								name="male"
-								value={male}
-								checked={maleChecked}
-								disabled
-							/>
-						</label>
-
-						<label>
-							Female
-							<input
-								type="radio"
-								name="female"
-								value={female}
-								checked={femaleChecked}
-								disabled
-							/>
-						</label>
-
-						<div>
-							<h2>Goal</h2>
-							<select disabled>
-								<option disabled selected>
-									{goal}
-								</option>
-							</select>
-						</div>
-
-						<div>
-							<h2>Activity Level</h2>
-							<select disabled>
-								<option disabled selected>
-									{activityLevel}
-								</option>
-							</select>
-						</div>
-
-						<button onClick={editDimensions}>Edit</button>
+						<button
+							onClick={editDimensions}
+							className="edit-btn edit-dimensions"
+						>
+							Change
+						</button>
 					</div>
 				</div>
 			)}

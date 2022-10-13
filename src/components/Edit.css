@@ -2,15 +2,32 @@
 	position: relative;
 }
 
+.edit-page label {
+	font-size: 2rem;
+}
+
 .box {
 	position: absolute;
 	display: inline-block;
-	background-color: red;
-	padding: 4rem;
+	background-color: #61beba;
+	padding: 3rem;
 	z-index: 7;
-	top: 0;
+	left: 50%;
+	transform: translate(-50%, 40%);
+	border-radius: 10px;
 }
 
 select {
 	text-transform: capitalize;
+}
+
+.genders {
+	display: flex;
+	gap: 2rem;
+}
+
+.gender-container {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 }

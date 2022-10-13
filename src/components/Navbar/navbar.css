@@ -3,29 +3,50 @@ nav {
 	justify-content: space-between;
 	padding: 0.3rem 0.5rem;
 	align-items: center;
-	background-color: #cacfe2;
+	background-color: #88cecb;
 	margin-bottom: 2rem;
+}
+
+ul {
+	margin-top: 40px;
+	margin-left: 30px;
+	display: none;
+}
+
+.nav {
+	position: absolute;
+	right: 0;
+	background-color: #88cecb;
+	top: 0;
+	height: 100%;
+	width: 0px;
+	z-index: 3;
+	transition: all 0.5s ease-in;
 }
 
 .icon {
 	height: 30px;
 }
 
-.show {
+div.nav.show {
+	width: 200px;
+}
+
+div.nav.show ul {
 	display: block;
 }
 
-.buttons {
+.close-icon {
 	position: relative;
 	z-index: 4;
 }
 
 .list-item {
 	display: inline-block;
-	font-size: 2rem;
+	font-size: 2.3rem;
 	color: #363e35;
 	font-weight: bold;
-	margin-bottom: 2rem;
+	margin-bottom: 2.3rem;
 }
 
 .logout-btn {

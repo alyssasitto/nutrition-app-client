@@ -172,25 +172,30 @@ function EditDimensions(props) {
 					</div>
 
 					<div>
-						<label htmlFor="gender">Male</label>
-						<input
-							type="radio"
-							name="gender"
-							value={male}
-							defaultChecked={maleChecked}
-							onChange={handleGender}
-						/>
-					</div>
+						<label>Gender</label>
+						<div className="genders">
+							<div className="gender-container">
+								<input
+									type="radio"
+									name="gender"
+									value={male}
+									defaultChecked={maleChecked}
+									onChange={handleGender}
+								/>
+								<label htmlFor="gender">Male</label>
+							</div>
 
-					<div>
-						<label htmlFor="gender">Female</label>
-						<input
-							type="radio"
-							name="gender"
-							value={female}
-							defaultChecked={femaleChecked}
-							onChange={handleGender}
-						/>
+							<div className="gender-container">
+								<input
+									type="radio"
+									name="gender"
+									value={female}
+									defaultChecked={femaleChecked}
+									onChange={handleGender}
+								/>
+								<label htmlFor="gender">Female</label>
+							</div>
+						</div>
 					</div>
 
 					<div>

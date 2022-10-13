@@ -1,29 +1,93 @@
 .container {
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: 1.2rem;
 }
 
-/* .settings::after {
-	content: "";
-	height: 100%;
-	background-color: rgba(0, 0, 255, 0.505);
-	position: absolute;
-	z-index: 6;
-	top: 0;
-	left: 0;
-	right: 0;
-} */
+.settings-page h2 {
+	font-size: 2rem;
+	margin-bottom: 1.3rem;
+	color: #1d5755;
+}
+
+.settings-page {
+	padding: 1rem;
+}
+
+.settings-page label {
+	font-size: 1.7rem;
+	margin-bottom: 0.5rem;
+	color: #287a76;
+	font-weight: bold;
+}
+
+.settings-page input {
+	padding: 0.2rem;
+}
+
+.gender {
+	font-weight: normal !important;
+}
+
+.account-info {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+}
+
+.settings-page .edit-btn {
+	align-self: flex-end;
+}
+
+.settings-page select {
+	padding: 0.2rem;
+	font-size: 1.5rem;
+}
+
+.edit-dimensions {
+	margin-top: 1rem;
+}
+
+.dimensions-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.dimensions input {
+	margin-bottom: 1rem;
+}
+
+.input {
+	width: 5rem;
+}
+
+.radio-btn {
+	margin-right: 1rem;
+}
+
+.edit-btn {
+	font-size: 1.5rem;
+	background-color: #c4e7e5;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 3px;
+}
 
 .overlay {
-	background-color: rgba(0, 0, 255, 0.571);
+	background-color: transparent;
 	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 4;
+	backdrop-filter: blur(6px);
 }
 
 .goal {
-	text-transform: capitalize;
+	margin-bottom: 2rem;
+}
+
+.radio-btn {
+	position: relative;
 }
