@@ -300,10 +300,7 @@ function SettingsPage() {
 								</div>
 							</div>
 						</div>
-						<button
-							onClick={editDimensions}
-							className="edit-btn edit-dimensions"
-						>
+						<button onClick={editDimensions} className="edit-btn">
 							Change
 						</button>
 					</div>

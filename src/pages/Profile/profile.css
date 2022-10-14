@@ -1,3 +1,39 @@
+.profile-page {
+	margin-top: 4rem;
+}
+
+.profile-page h2 {
+	text-align: center;
+}
+
+.profile-page h3 {
+	color: #1d5755;
+}
+
+.date {
+	font-size: 1.6rem;
+	margin-bottom: 2rem;
+	color: #39aea9;
+}
+
+.calories {
+	font-size: 2rem;
+	color: #1d5755;
+}
+
+.calendar-icon {
+	height: 3.5rem;
+}
+
+.profile-page h3 {
+	font-size: 1.5rem;
+}
+
+.profile-page button {
+	background-color: transparent;
+	border: none;
+}
+
 .heading-container {
 	display: flex;
 	align-items: center;
@@ -31,6 +67,49 @@
 
 .food-container {
 	display: flex;
+}
+
+.calender-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem 0;
+}
+
+.meal-btn-container {
+	display: flex;
+	align-items: center;
+	padding: 1rem 2rem;
+	width: 90vw;
+	justify-content: space-between;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border-radius: 8px;
+	margin-bottom: 1.2rem;
+}
+
+.meal-btn-container button {
+	background-color: transparent;
+	border: none;
+}
+
+.add-icon {
+	height: 3rem;
+}
+
+.custom-btn {
+	padding-left: 2rem;
+	color: #226865;
+}
+
+.meal-container {
+	display: flex;
+	align-items: center;
+	gap: 1.3rem;
+}
+
+.food-img {
+	width: 5rem;
 }
 
 .overlay {

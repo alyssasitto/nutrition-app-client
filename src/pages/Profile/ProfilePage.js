@@ -182,7 +182,7 @@ function ProfilePage() {
 	}, [date, loggedFoodsCopy]);
 
 	return (
-		<div className={bg}>
+		<div className={bg + " profile-page"}>
 			<div onClick={exit} className={overlay}></div>
 
 			{customFoodForm && (
@@ -195,9 +195,9 @@ function ProfilePage() {
 				/>
 			)}
 
-			<h2>{dateString}</h2>
+			<h2 className="date">{dateString}</h2>
 
-			<h2>
+			<h2 className="calories">
 				{calories} - {totalCalories} = {calories - totalCalories}
 			</h2>
 
@@ -205,11 +205,11 @@ function ProfilePage() {
 
 			{!loading && (
 				<>
-					<div>
+					<div className="calender-container">
 						<img
 							src="images/calendar.svg"
 							onClick={handleCalender}
-							className="icon"
+							className="calendar-icon"
 						></img>
 
 						<ErrorBoundary
@@ -224,9 +224,24 @@ function ProfilePage() {
 
 					<div className="meals">
 						<div>
-							<h2>Breakfast</h2>
-							<button onClick={searchBreakfast}>add breakfast</button>
-							<button onClick={addCustomFood} value="breakfast">
+							<div className="meal-btn-container">
+								<div className="meal-container">
+									<img
+										src="images/breakfast.jpeg"
+										className="food-img"
+										alt="Illustration of avocado and eggs on toast."
+									></img>
+									<h3>Add Breakfast</h3>
+								</div>
+								<button onClick={searchBreakfast}>
+									<img src="images/add.png" className="add-icon"></img>
+								</button>
+							</div>
+							<button
+								onClick={addCustomFood}
+								value="breakfast"
+								className="custom-btn"
+							>
 								Custom
 							</button>
 
@@ -251,9 +266,24 @@ function ProfilePage() {
 						</div>
 
 						<div>
-							<h2>Lunch</h2>
-							<button onClick={searchLunch}>add lunch</button>
-							<button onClick={addCustomFood} value="lunch">
+							<div className="meal-btn-container">
+								<div className="meal-container">
+									<img
+										src="images/lunch.jpeg"
+										className="food-img"
+										alt="Illustration of a salad."
+									></img>
+									<h3>Add Lunch</h3>
+								</div>
+								<button onClick={searchLunch}>
+									<img src="images/add.png" className="add-icon"></img>
+								</button>
+							</div>
+							<button
+								onClick={addCustomFood}
+								value="lunch"
+								className="custom-btn"
+							>
 								Custom
 							</button>
 
@@ -277,10 +307,25 @@ function ProfilePage() {
 						</div>
 
 						<div>
-							<h2>Dinner</h2>
+							<div className="meal-btn-container">
+								<div className="meal-container">
+									<img
+										src="images/dinner.jpeg"
+										className="food-img"
+										alt="Illustration of meat on skewers."
+									></img>
+									<h3>Add Dinner</h3>
+								</div>
 
-							<button onClick={searchDinner}>add dinner</button>
-							<button onClick={addCustomFood} value="dinner">
+								<button onClick={searchDinner} className="add-btn">
+									<img src="images/add.png" className="add-icon"></img>
+								</button>
+							</div>
+							<button
+								onClick={addCustomFood}
+								value="dinner"
+								className="custom-btn"
+							>
 								Custom
 							</button>
 							{loggedFoods && loggedFoods.dinner !== [] && (

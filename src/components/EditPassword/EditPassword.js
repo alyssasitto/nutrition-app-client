@@ -44,7 +44,7 @@ function EditPassword(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box">
+			<form onSubmit={handleSubmit} className="box edit-password">
 				<label htmlFor="new-password">New password</label>
 				<input
 					type="password"

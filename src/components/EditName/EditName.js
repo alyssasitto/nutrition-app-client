@@ -41,7 +41,7 @@ function EditName(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box">
+			<form onSubmit={handleSubmit} className="box edit-name">
 				<label htmlFor="name">Name</label>
 				<input type="text" name="name" value={name} onChange={handleName} />
 				{errMessage && <p>{errMessage}</p>}

@@ -42,7 +42,7 @@ function EditEmail(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box">
+			<form onSubmit={handleSubmit} className="box edit-email">
 				<label htmlFor="email">Email</label>
 				<input type="email" name="email" value={email} onChange={handleEmail} />
 				{errMessage && <p>{errMessage}</p>}

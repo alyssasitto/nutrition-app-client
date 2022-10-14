@@ -1,29 +1,57 @@
-.edit-page {
-	position: relative;
+.edit-dimensions {
+	transform: translate(-50%, 30%);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.edit-password {
+	transform: translate(-50%, 80%);
+}
+
+.edit-name {
+	transform: translate(-50%, 150%);
+}
+
+.edit-email {
+	transform: translate(-50%, 150%);
 }
 
 .edit-page label {
 	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	color: #113433;
+}
+
+.edit-page input {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	padding: 0.1rem;
+	border-radius: 5px;
+	border: 2px solid #113433;
 }
 
 .box {
+	width: 80vw;
+	border-radius: 4px;
 	position: absolute;
-	display: inline-block;
-	background-color: #61beba;
-	padding: 3rem;
-	z-index: 7;
 	left: 50%;
-	transform: translate(-50%, 40%);
-	border-radius: 10px;
+	padding: 1rem;
+	z-index: 4;
+	background-color: #fff;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.activity-level {
+	align-items: flex-end;
 }
 
 select {
 	text-transform: capitalize;
 }
 
-.genders {
-	display: flex;
-	gap: 2rem;
+.gender {
+	font-weight: normal !important;
 }
 
 .gender-container {

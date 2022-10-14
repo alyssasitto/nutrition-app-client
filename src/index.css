@@ -6,7 +6,6 @@
 
 html {
 	font-size: 62.5%;
-	/* background-color: #2c374f */
 }
 
 body {
@@ -28,8 +27,7 @@ a {
 }
 
 h1,
-h2,
-h3 {
+h2 {
 	color: #174644;
 	margin-bottom: 1rem;
 }
