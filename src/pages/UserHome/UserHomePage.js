@@ -35,7 +35,7 @@ function UserHomePage() {
 		<div className={bg}>
 			{loading && (
 				<>
-					<p>loading....</p>
+					<p>loading..</p>
 				</>
 			)}
 

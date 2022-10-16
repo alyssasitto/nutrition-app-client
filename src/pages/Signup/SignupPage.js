@@ -56,7 +56,7 @@ function SignupPage() {
 			<img src="images/signup.jpeg" className="hero"></img>
 			<h1>Signup</h1>
 			<form onSubmit={handleSubmit} className="form">
-				<div>
+				<div className="mb-helper">
 					<label htmlFor="name">Name</label>
 
 					<div className="input-container">
@@ -65,7 +65,7 @@ function SignupPage() {
 					</div>
 				</div>
 
-				<div>
+				<div className="mb-helper">
 					<label htmlFor="email">Email</label>
 
 					<div className="input-container">
@@ -100,7 +100,7 @@ function SignupPage() {
 			</form>
 
 			<p>
-				Have an account already? <a href="/login">Login</a>
+				Have an account already? <a href="/login">Login </a>
 			</p>
 		</div>
 	);

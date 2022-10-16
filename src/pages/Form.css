@@ -12,7 +12,6 @@
 
 .form-page input {
 	padding: 1rem 2rem;
-
 	border-radius: 3px;
 	border: 1px solid #174644;
 }
@@ -25,9 +24,6 @@
 
 .hero {
 	width: 24rem;
-	/* position: relative;
-	left: 50%;
-	transform: translateX(-50%); */
 }
 
 .input-icon {
@@ -48,8 +44,13 @@
 	padding: 0.5rem 2rem;
 	width: 100%;
 	margin-bottom: 1.5rem;
+	box-shadow: rgba(110, 110, 110, 0.619) 0px 4px 15px;
 }
 
 .input-container {
 	position: relative;
+}
+
+.mb-helper {
+	margin-bottom: 1.5rem;
 }

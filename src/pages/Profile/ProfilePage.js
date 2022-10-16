@@ -181,6 +181,8 @@ function ProfilePage() {
 		setClicked(false);
 	}, [date, loggedFoodsCopy]);
 
+	console.log(loggedFoods);
+
 	return (
 		<div className={bg + " profile-page"}>
 			<div onClick={exit} className={overlay}></div>
@@ -201,7 +203,13 @@ function ProfilePage() {
 				{calories} - {totalCalories} = {calories - totalCalories}
 			</h2>
 
-			{loading && <p>Loading...</p>}
+			{loading && (
+				<img
+					src="images/loading.gif"
+					className="loading-icon"
+					alt="loading icon"
+				></img>
+			)}
 
 			{!loading && (
 				<>
@@ -245,23 +253,24 @@ function ProfilePage() {
 								Custom
 							</button>
 
-							{loggedFoods && loggedFoods.breakfast !== [] && (
-								<>
+							{loggedFoods && loggedFoods.breakfast.length !== 0 && (
+								<div className="foods">
 									{loggedFoods.breakfast.map((el, index) => {
 										return (
 											<div className="food-container">
-												<p>{el.name}</p>
+												<p className="food-item">{el.name}</p>
 												<button
 													onClick={() =>
 														deleteFood(el.name, "breakfast", index)
 													}
+													className="delete-btn"
 												>
 													delete
 												</button>
 											</div>
 										);
 									})}
-								</>
+								</div>
 							)}
 						</div>
 
@@ -287,8 +296,8 @@ function ProfilePage() {
 								Custom
 							</button>
 
-							{loggedFoods && loggedFoods.lunch !== [] && (
-								<>
+							{loggedFoods && loggedFoods.lunch.length !== 0 && (
+								<div className="foods">
 									{loggedFoods.lunch.map((el, index) => {
 										console.log(el.name);
 										return (
@@ -296,13 +305,14 @@ function ProfilePage() {
 												<p>{el.name}</p>
 												<button
 													onClick={() => deleteFood(el.name, "lunch", index)}
+													className="delete-btn"
 												>
 													delete
 												</button>
 											</div>
 										);
 									})}
-								</>
+								</div>
 							)}
 						</div>
 
@@ -328,8 +338,8 @@ function ProfilePage() {
 							>
 								Custom
 							</button>
-							{loggedFoods && loggedFoods.dinner !== [] && (
-								<>
+							{loggedFoods && loggedFoods.dinner.length !== 0 && (
+								<div className="foods">
 									{loggedFoods.dinner.map((el, index) => {
 										console.log(el.name);
 										return (
@@ -337,13 +347,14 @@ function ProfilePage() {
 												<p>{el.name}</p>
 												<button
 													onClick={() => deleteFood(el.name, "dinner", index)}
+													className="delete-btn"
 												>
 													delete
 												</button>
 											</div>
 										);
 									})}
-								</>
+								</div>
 							)}
 						</div>
 					</div>

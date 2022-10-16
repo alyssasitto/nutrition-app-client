@@ -71,10 +71,11 @@
 	border: none;
 	padding: 0.5rem 1rem;
 	border-radius: 3px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 6px 10px 0px;
 }
 
 .overlay {
-	background-color: #39aea89b;
+	background-color: #39aea899;
 	position: absolute;
 	top: 0;
 	left: 0;

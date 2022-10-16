@@ -18,11 +18,14 @@ function FoodDetails(props) {
 		console.log(props);
 	}, []);
 
-	console.log(props.food);
+	console.log(props.food.fat.toFixed());
 
 	return (
-		<div className="box">
+		<div className="box food-details-card">
 			<p>{props.food.name}</p>
+			<p>{props.food.calories}</p>
+			<p>{props.food.fat.toFixed()}</p>
+			<p>{props.food.protein.toFixed()}</p>
 			<button
 				onClick={() => {
 					props.addFood(

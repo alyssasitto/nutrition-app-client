@@ -72,7 +72,7 @@ function CustomFood(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box">
+			<form onSubmit={handleSubmit} className="box custom-food">
 				<div>
 					<label>Name</label>
 					<input type="text" name="name" onChange={handleName} />

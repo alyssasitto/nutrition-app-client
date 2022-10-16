@@ -6,6 +6,8 @@ import { NavbarContext } from "../../context/navbar.context";
 import "./SearchPage.css";
 import FoodDetails from "../../components/FoodDetails/FoodDetailsCard";
 
+require("./SearchPage.css");
+
 const API_URL = "http://localhost:5005";
 
 function SearchPage(props) {
@@ -17,6 +19,9 @@ function SearchPage(props) {
 	const [loading, setLoading] = useState(false);
 	const [overlay, setOverlay] = useState("");
 	const [foodDetailsCard, setFoodDetailsCard] = useState(false);
+	const [foodContainer, setFoodContainer] = useState("");
+	const [image, setImage] = useState(true);
+	const [errMessage, setErrMessage] = useState(null);
 
 	const [food, setFood] = useState(null);
 
@@ -79,19 +84,28 @@ function SearchPage(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		setLoading(true);
+		if (searchedFood === "") {
+			setErrMessage("please enter a valid search");
+		} else {
+			setErrMessage(null);
+			setLoading(true);
+			setImage(false);
 
-		axios
-			.get(`${API_URL}/food/${searchedFood}`, {
-				headers: { Authorization: `Bearer ${storedToken}` },
-			})
-			.then((response) => {
-				setFoodList(response.data.foodArray);
-				setLoading(false);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+			axios
+				.get(`${API_URL}/search/${searchedFood}`, {
+					headers: { Authorization: `Bearer ${storedToken}` },
+				})
+				.then((response) => {
+					console.log("THIS IS THE RESONSE", response);
+					setFoodContainer("show-container");
+					setFoodList(response.data.foodArray);
+					setLoading(false);
+				})
+				.catch((err) => {
+					console.log("THIS IS THE ERROR", err);
+					setErrMessage(err.response.data.message);
+				});
+		}
 	};
 
 	useEffect(() => {
@@ -99,9 +113,6 @@ function SearchPage(props) {
 		setBg("");
 		setClicked(false);
 	}, []);
-
-	console.log(location.state.foodType);
-	console.log(location.state.date);
 
 	return (
 		<div className={bg}>
@@ -116,48 +127,83 @@ function SearchPage(props) {
 				/>
 			)}
 
-			<form onSubmit={handleSubmit}>
-				<input type="text" placeholder="search" onChange={handleSearch} />
-				<button type="submit">Search</button>
-			</form>
+			<div className="search-container">
+				<form onSubmit={handleSubmit}>
+					<div className="input-container">
+						<input
+							type="text"
+							placeholder="Search"
+							onChange={handleSearch}
+							value={searchedFood}
+						/>
+						<img src="images/search.png" className="search"></img>
+					</div>
+					<button type="submit">Search</button>
+				</form>
 
-			{loading && <p>loading...</p>}
+				{errMessage && <p>{errMessage}</p>}
+			</div>
 
-			{foodList !== [] &&
-				foodList.map((element, index) => {
-					return (
-						<div key={index}>
-							<p>{element.food.label}</p>
-							<p>{Number(element.food.nutrients.ENERC_KCAL).toFixed()}</p>
-							<button
-								onClick={() =>
-									addFood(
-										element.food.label,
-										element.food.nutrients.ENERC_KCAL,
-										element.food.nutrients.FAT,
-										element.food.nutrients.PROCNT,
-										element.food.nutrients.CHOCDF
-									)
-								}
-							>
-								Add food
-							</button>
-							<button
-								onClick={() => {
-									viewDetails(
-										element.food.label,
-										element.food.nutrients.ENERC_KCAL,
-										element.food.nutrients.FAT,
-										element.food.nutrients.PROCNT,
-										element.food.nutrients.CHOCDF
-									);
-								}}
-							>
-								Details
-							</button>
-						</div>
-					);
-				})}
+			{image && (
+				<img
+					src="images/search-hero.jpg"
+					className="search-hero"
+					alt="Illustration of 3 people putting fruit into a bowl."
+				></img>
+			)}
+
+			{loading && (
+				<img
+					src="images/loading.gif"
+					className="loading-icon"
+					alt="loading icon"
+				></img>
+			)}
+
+			{foodList !== [] && (
+				<div className={"sp-food-container " + foodContainer}>
+					{foodList.map((element, index) => {
+						return (
+							<div key={index} className="food-row">
+								<div className="food-row-title">
+									<p className="food-name">{element.food.label}</p>
+									<p>
+										{Number(element.food.nutrients.ENERC_KCAL).toFixed()} KCAL
+									</p>
+								</div>
+								<div className="food-row-btns">
+									<button
+										onClick={() =>
+											addFood(
+												element.food.label,
+												element.food.nutrients.ENERC_KCAL,
+												element.food.nutrients.FAT,
+												element.food.nutrients.PROCNT,
+												element.food.nutrients.CHOCDF
+											)
+										}
+									>
+										Add food
+									</button>
+									<button
+										onClick={() => {
+											viewDetails(
+												element.food.label,
+												element.food.nutrients.ENERC_KCAL,
+												element.food.nutrients.FAT,
+												element.food.nutrients.PROCNT,
+												element.food.nutrients.CHOCDF
+											);
+										}}
+									>
+										Details
+									</button>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+			)}
 		</div>
 	);
 }

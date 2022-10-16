@@ -78,7 +78,7 @@ function LoginPage() {
 			<img src="images/login.jpeg" className="hero"></img>
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit} className="form">
-				<div>
+				<div className="mb-helper">
 					<label htmlFor="email" className="form-label">
 						Email
 					</label>

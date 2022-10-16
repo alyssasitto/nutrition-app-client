@@ -1,5 +1,7 @@
 .profile-page {
 	margin-top: 4rem;
+	/* padding: 0 1rem 2rem; */
+	padding-bottom: 2rem;
 }
 
 .profile-page h2 {
@@ -110,6 +112,37 @@
 
 .food-img {
 	width: 5rem;
+}
+
+.loading-icon {
+	width: 6rem;
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%, 0);
+}
+
+.foods {
+	height: 10rem;
+	overflow: scroll;
+	margin-top: 1rem;
+}
+
+.food-container {
+	/* padding: 0.5rem; */
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	width: 90vw;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 2rem;
+	border-bottom: 1px solid lightgray;
+}
+
+.delete-btn {
+	color: red;
+	text-align: right;
 }
 
 .overlay {

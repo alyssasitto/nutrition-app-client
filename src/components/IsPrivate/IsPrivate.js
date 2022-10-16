@@ -5,7 +5,8 @@ import { Navigate } from "react-router-dom";
 function IsPrivate({ children }) {
 	const { isLoggedIn, isLoading } = useContext(AuthContext);
 
-	if (isLoading) return <p>Loading ...</p>;
+	if (isLoading)
+		return <img src="images/loading.gif" className="loading-icon"></img>;
 
 	if (!isLoggedIn) {
 		return <Navigate to="/login" />;
