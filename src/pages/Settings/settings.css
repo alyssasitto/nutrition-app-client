@@ -7,7 +7,7 @@
 .settings-page h2 {
 	font-size: 2rem;
 	margin-bottom: 1.3rem;
-	color: #1d5755;
+	color: #5c488b;
 }
 
 .settings-page {
@@ -67,15 +67,17 @@
 
 .edit-btn {
 	font-size: 1.5rem;
-	background-color: #c4e7e5;
+	background-color: #cdc2e9;
 	border: none;
 	padding: 0.5rem 1rem;
 	border-radius: 3px;
-	box-shadow: rgba(100, 100, 111, 0.2) 0px 6px 10px 0px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .overlay {
-	background-color: #39aea899;
+	background-color: #757aaea9;
 	position: absolute;
 	top: 0;
 	left: 0;

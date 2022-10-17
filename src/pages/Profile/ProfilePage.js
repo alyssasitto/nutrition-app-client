@@ -200,7 +200,8 @@ function ProfilePage() {
 			<h2 className="date">{dateString}</h2>
 
 			<h2 className="calories">
-				{calories} - {totalCalories} = {calories - totalCalories}
+				{calories} - {totalCalories.toFixed()} ={" "}
+				{(calories - totalCalories).toFixed()}
 			</h2>
 
 			{loading && (

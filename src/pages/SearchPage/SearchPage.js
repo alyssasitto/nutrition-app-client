@@ -84,6 +84,8 @@ function SearchPage(props) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		setFoodContainer("");
+
 		if (searchedFood === "") {
 			setErrMessage("please enter a valid search");
 		} else {
@@ -176,6 +178,7 @@ function SearchPage(props) {
 										onClick={() =>
 											addFood(
 												element.food.label,
+
 												element.food.nutrients.ENERC_KCAL,
 												element.food.nutrients.FAT,
 												element.food.nutrients.PROCNT,
@@ -189,6 +192,7 @@ function SearchPage(props) {
 										onClick={() => {
 											viewDetails(
 												element.food.label,
+
 												element.food.nutrients.ENERC_KCAL,
 												element.food.nutrients.FAT,
 												element.food.nutrients.PROCNT,

@@ -55,8 +55,8 @@
 }
 
 .arrow-icon {
-	height: 10px;
-	width: 10px;
+	height: 1rem;
+	width: 1rem;
 }
 
 .hide {
@@ -115,7 +115,7 @@
 }
 
 .loading-icon {
-	width: 6rem;
+	width: 8rem;
 	position: absolute;
 	left: 50%;
 	top: 45%;
@@ -123,7 +123,7 @@
 }
 
 .foods {
-	height: 10rem;
+	max-height: 10rem;
 	overflow: scroll;
 	margin-top: 1rem;
 }

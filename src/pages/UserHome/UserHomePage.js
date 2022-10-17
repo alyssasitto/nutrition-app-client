@@ -35,7 +35,11 @@ function UserHomePage() {
 		<div className={bg}>
 			{loading && (
 				<>
-					<p>loading..</p>
+					<img
+						src="images/loading.gif"
+						className="loading-icon"
+						alt="loading icon"
+					></img>
 				</>
 			)}
 

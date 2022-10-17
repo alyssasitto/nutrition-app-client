@@ -28,7 +28,11 @@ function SettingsPage() {
 	const [nameForm, setNameForm] = useState(false);
 	const [emailForm, setEmailForm] = useState(false);
 	const [passwordForm, setPasswordForm] = useState(false);
+
 	const [dimensionsForm, setDimensionsForm] = useState(false);
+	const [dimensions, setDimensions] = useState(false);
+	const [errMessage, setErrMesage] = useState(null);
+
 	// const [goalForm, setGoalForm] = useState(false);
 	// const [activityLevelForm, setActivityLevelForm] = useState(false);
 
@@ -89,6 +93,7 @@ function SettingsPage() {
 				headers: { Authorization: `Bearer ${storedToken} ` },
 			})
 			.then((response) => {
+				setDimensions(true);
 				setFeet(response.data.dimensions.feet);
 				setInches(response.data.dimensions.inches);
 				setAge(response.data.dimensions.age);
@@ -111,9 +116,12 @@ function SettingsPage() {
 
 				console.log(inches, feet, age, weight, gender, goal, activityLevel);
 
+				setErrMesage(null);
 				setLoading(false);
 			})
 			.catch((err) => {
+				setErrMesage("please go fill out dimensions form");
+				setLoading(false);
 				console.log(err);
 			});
 
@@ -125,6 +133,9 @@ function SettingsPage() {
 	return (
 		<div className={bg + " settings"}>
 			<div onClick={exit} className={overlay}></div>
+
+			{errMessage && <p>{errMessage}</p>}
+
 			{nameForm && (
 				<EditName
 					setOverlay={setOverlay}
@@ -161,11 +172,15 @@ function SettingsPage() {
 
 			{loading && (
 				<>
-					<p>loading....</p>
+					<img
+						src="images/loading.gif"
+						className="loading-icon"
+						alt="loading icon"
+					></img>
 				</>
 			)}
 
-			{!loading && (
+			{!loading && dimensions && (
 				<div className="settings-page">
 					<div className="account-info">
 						<h2>Account Information</h2>
@@ -306,6 +321,192 @@ function SettingsPage() {
 					</div>
 				</div>
 			)}
+
+			{/* {nameForm && (
+				<EditName
+					setOverlay={setOverlay}
+					setNameForm={setNameForm}
+					setName={setName}
+				/>
+			)}
+			{emailForm && (
+				<EditEmail
+					setOverlay={setOverlay}
+					setEmailForm={setEmailForm}
+					setEmail={setEmail}
+				/>
+			)}
+			{passwordForm && (
+				<EditPassword
+					setOverlay={setOverlay}
+					setPasswordForm={setPasswordForm}
+				/>
+			)}
+			{dimensionsForm && (
+				<EditDimensions
+					setOverlay={setOverlay}
+					setDimensionsForm={setDimensionsForm}
+					setFeet={setFeet}
+					setInches={setInches}
+					setAge={setAge}
+					setWeight={setWeight}
+					setGender={setGender}
+					setGoal={setGoal}
+					setActivityLevel={setActivityLevel}
+				/>
+			)}
+
+			{loading && (
+				<>
+					<img
+						src="images/loading.gif"
+						className="loading-icon"
+						alt="loading icon"
+					></img>
+				</>
+			)} */}
+
+			{/* {!loading && (
+				<div className="settings-page">
+					<div className="account-info">
+						<h2>Account Information</h2>
+						<div className="container">
+							<div>
+								<label htmlFor="name">Name</label>
+								<input type="text" name="name" value={name} disabled />
+							</div>
+
+							<button onClick={editName} className="edit-btn">
+								Change
+							</button>
+						</div>
+
+						<div className="container">
+							<div>
+								<label htmlFor="email">Email</label>
+								<input type="email" name="email" value={email} disabled />
+							</div>
+
+							<button onClick={editEmail} className="edit-btn">
+								Change
+							</button>
+						</div>
+
+						<div className="container">
+							<div>
+								<label htmlFor="password">Password</label>
+								<input type="password" name="password" disabled />
+							</div>
+
+							<button onClick={editPassword} className="edit-btn">
+								Change
+							</button>
+						</div>
+					</div>
+
+					<div className="dimensions">
+						<h2>Dimensions</h2>
+						<div className="dimensions-container">
+							<div>
+								<div>
+									<div>
+										<label htmlFor="feet">Feet</label>
+										<input
+											type="number"
+											name="feet"
+											value={feet}
+											className="input"
+											disabled
+										/>
+									</div>
+
+									<div>
+										<label htmlFor="inches">Inches </label>
+										<input
+											type="number"
+											name="inches"
+											value={inches}
+											className="input"
+											disabled
+										/>
+									</div>
+
+									<div>
+										<label htmlFor="age">Age</label>
+										<input
+											type="number"
+											name="age"
+											value={age}
+											className="input"
+											disabled
+										/>
+									</div>
+
+									<div>
+										<label htmlFor="weight">Weight</label>
+										<input
+											type="number"
+											value={weight}
+											className="input"
+											disabled
+										/>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div className="gender-contain">
+									<label>Gender</label>
+									<label className="gender">
+										<input
+											type="radio"
+											name="male"
+											value={male}
+											className="radio-btn"
+											checked={maleChecked}
+											disabled
+										/>
+										Male
+									</label>
+
+									<label className="gender">
+										<input
+											type="radio"
+											name="female"
+											className="radio-btn"
+											value={female}
+											checked={femaleChecked}
+											disabled
+										/>
+										Female
+									</label>
+								</div>
+
+								<div className="goal">
+									<label htmlFor="goal">Goal</label>
+									<select disabled>
+										<option disabled selected value="goal">
+											{goal}
+										</option>
+									</select>
+								</div>
+
+								<div className="activity-level">
+									<label htmlFor="activity-level">Activity level</label>
+									<select disabled>
+										<option disabled selected value="activity-level">
+											{activityLevel}
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<button onClick={editDimensions} className="edit-btn">
+							Change
+						</button>
+					</div>
+				</div>
+			)} */}
 		</div>
 	);
 }

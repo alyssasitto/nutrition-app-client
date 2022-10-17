@@ -3,14 +3,47 @@
 }
 
 .custom-food {
-	transform: translate(-50%, 20%);
+	transform: translate(-50%, 35%);
+	padding: 2rem;
+	background-color: #cde8eb;
 }
 
-/* .box {
-	position: absolute;
-	display: inline-block;
-	background-color: red;
-	padding: 4rem;
-	z-index: 7;
-	top: 0;
-} */
+.custom-food button {
+	font-size: 2rem;
+	background-color: #a9accd !important;
+	padding: 1rem;
+	border-radius: 5px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.name-container {
+	margin-bottom: 1rem;
+}
+
+.custom-food label {
+	margin-bottom: 0.5rem;
+}
+
+.custom-food input {
+	border: 2px solid #989bc2;
+}
+
+.edit-page-container {
+	padding: 4rem 0;
+}
+
+.fb-helper {
+	display: flex;
+	flex-direction: column;
+}
+
+.input-container {
+	display: flex;
+	gap: 6rem;
+	margin-bottom: 1rem;
+}
+
+.mr-helper {
+}

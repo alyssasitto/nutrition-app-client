@@ -73,30 +73,60 @@ function CustomFood(props) {
 	return (
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box custom-food">
-				<div>
-					<label>Name</label>
-					<input type="text" name="name" onChange={handleName} />
-				</div>
-				<div>
-					<label>Calories</label>
-					<input type="number" name="calories" onChange={handleCalories} />
-				</div>
-				<div>
-					<label>Fat</label>
-					<input type="number" name="fat" onChange={handleFat} />
-				</div>
-				<div>
-					<label>Protein</label>
-					<input type="number" name="protein" onChange={handleProtein} />
-				</div>
-				<div>
-					<label>Carbs</label>
-					<input type="number" name="carbs" onChange={handleCarbs} />
-				</div>
+				<div className="mr-helper">
+					<div className="name-container">
+						<label>Name</label>
+						<input type="text" name="name" onChange={handleName} />
+					</div>
 
-				<button type="submit">Add food</button>
+					<div className="input-container">
+						<div>
+							<div>
+								<label>Calories</label>
+								<input
+									type="number"
+									name="calories"
+									onChange={handleCalories}
+									className="input"
+								/>
+							</div>
+							<div>
+								<label>Fat</label>
+								<input
+									type="number"
+									name="fat"
+									onChange={handleFat}
+									className="input"
+								/>
+							</div>
+						</div>
 
-				{errMessage && <p>{errMessage}</p>}
+						<div>
+							<div>
+								<label>Protein</label>
+								<input
+									type="number"
+									name="protein"
+									onChange={handleProtein}
+									className="input"
+								/>
+							</div>
+							<div>
+								<label>Carbs</label>
+								<input
+									type="number"
+									name="carbs"
+									onChange={handleCarbs}
+									className="input"
+								/>
+							</div>
+						</div>
+					</div>
+
+					{errMessage && <p>{errMessage}</p>}
+
+					<button type="submit">Add food</button>
+				</div>
 			</form>
 		</div>
 	);

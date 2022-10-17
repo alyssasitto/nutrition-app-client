@@ -6,7 +6,13 @@ function IsAnon({ children }) {
 	const { isLoggedIn, isLoading } = useContext(AuthContext);
 
 	if (isLoading)
-		return <img src="images/loading.gif" className="loading-icon"></img>;
+		return (
+			<img
+				src="images/loading.gif"
+				className="loading-icon"
+				alt="loading icon"
+			></img>
+		);
 
 	if (isLoggedIn) {
 		return <Navigate to="/home" />;
