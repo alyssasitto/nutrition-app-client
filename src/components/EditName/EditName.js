@@ -41,11 +41,22 @@ function EditName(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box edit-name">
+			<form onSubmit={handleSubmit} className="box edit-name edit-form">
+				<button className="close-btn">
+					<img src="images/close.png"></img>
+				</button>
 				<label htmlFor="name">Name</label>
-				<input type="text" name="name" value={name} onChange={handleName} />
+				<input
+					type="text"
+					name="name"
+					value={name}
+					onChange={handleName}
+					className="padding-helper"
+				/>
 				{errMessage && <p>{errMessage}</p>}
-				<button type="submit">Submit</button>
+				<button type="submit" className="edit-btn">
+					Submit
+				</button>
 			</form>
 		</div>
 	);

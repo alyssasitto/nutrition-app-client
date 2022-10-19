@@ -138,6 +138,7 @@ function EditDimensions(props) {
 			{!loading && (
 				<div>
 					<h2>Dimensions</h2>
+
 					<form
 						onSubmit={handleSubmit}
 						className="box edit-dimensions dimensions-form"
@@ -146,18 +147,22 @@ function EditDimensions(props) {
 							<label>Height</label>
 							<div className="input-containers">
 								<div className="height-container">
-									<label htmlFor="feet">Feet</label>
+									<label htmlFor="feet" className="label-helper">
+										Feet
+									</label>
 									<input
 										type="number"
 										name="feet"
 										value={feet}
 										onChange={handleFeet}
-										className="small-input"
+										className="small-input mb-helper"
 									/>
 								</div>
 
 								<div className="height-container">
-									<label htmlFor="inches">Inches</label>
+									<label htmlFor="inches" className="label-helper">
+										Inches
+									</label>
 									<input
 										type="number"
 										name="inches"
@@ -200,7 +205,7 @@ function EditDimensions(props) {
 										defaultChecked={maleChecked}
 										onChange={handleGender}
 									/>
-									<label htmlFor="gender" className="gender-label">
+									<label htmlFor="gender" className="gender-label label-helper">
 										Male
 									</label>
 								</div>
@@ -213,7 +218,7 @@ function EditDimensions(props) {
 										defaultChecked={femaleChecked}
 										onChange={handleGender}
 									/>
-									<label htmlFor="gender" className="gender-label">
+									<label htmlFor="gender" className="gender-label label-helper">
 										Female
 									</label>
 								</div>
@@ -251,7 +256,9 @@ function EditDimensions(props) {
 
 						{errMessage && <p>{errMessage}</p>}
 
-						<button type="submit">Submit</button>
+						<button type="submit" className="edit-btn">
+							Submit
+						</button>
 					</form>
 				</div>
 			)}

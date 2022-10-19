@@ -7,7 +7,7 @@
 .settings-page h2 {
 	font-size: 2rem;
 	margin-bottom: 1.3rem;
-	color: #5c488b;
+	color: #003539;
 }
 
 .settings-page {
@@ -22,7 +22,7 @@
 }
 
 .settings-page input {
-	padding: 0.2rem;
+	padding: 0.5rem;
 }
 
 .gender {
@@ -42,6 +42,7 @@
 .settings-page select {
 	padding: 0.2rem;
 	font-size: 1.5rem;
+	text-transform: capitalize;
 }
 
 .edit-dimensions {
@@ -63,7 +64,7 @@
 
 .edit-btn {
 	font-size: 1.5rem;
-	background-color: #ff73005a;
+	background-color: #ffb2a4;
 	border: none;
 	padding: 0.5rem 1rem;
 	border-radius: 3px;
@@ -83,10 +84,23 @@
 	backdrop-filter: blur(6px);
 }
 
-.goal {
-	margin-bottom: 2rem;
-}
-
 .radio-btn {
 	position: relative;
+}
+
+.profile-err {
+	text-align: center;
+	margin-top: 10rem;
+	padding: 0 1rem;
+	font-size: 2rem;
+}
+
+.profile-err p {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.profile-err a {
+	font-weight: bold;
+	border-bottom: 2px solid #ff7e67;
 }

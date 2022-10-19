@@ -44,7 +44,11 @@ function EditPassword(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box edit-password">
+			<form onSubmit={handleSubmit} className="box edit-password edit-form">
+				<button className="close-btn">
+					<img src="images/close.png"></img>
+				</button>
+
 				<label htmlFor="new-password">New password</label>
 				<input
 					type="password"
@@ -65,7 +69,9 @@ function EditPassword(props) {
 						return <p className="message">{item}</p>;
 					})}
 				{successMessage && <p>{successMessage}</p>}
-				<button type="submit">Submit</button>
+				<button type="submit" className="edit-btn">
+					Submit
+				</button>
 			</form>
 		</div>
 	);

@@ -110,7 +110,9 @@ function LoginPage() {
 					</div>
 				</div>
 
-				{errMessage && <p className="message">{errMessage}</p>}
+				<div className="message-container">
+					{errMessage && <p className="err-message">{errMessage}</p>}
+				</div>
 
 				<button type="submit" className="submit-btn">
 					Login

@@ -42,11 +42,22 @@ function EditEmail(props) {
 
 	return (
 		<div className="edit-page">
-			<form onSubmit={handleSubmit} className="box edit-email">
+			<form onSubmit={handleSubmit} className="box edit-email edit-form">
+				<button className="close-btn">
+					<img src="images/close.png"></img>
+				</button>
 				<label htmlFor="email">Email</label>
-				<input type="email" name="email" value={email} onChange={handleEmail} />
+				<input
+					type="email"
+					name="email"
+					value={email}
+					onChange={handleEmail}
+					className="padding-helper"
+				/>
 				{errMessage && <p>{errMessage}</p>}
-				<button type="submit">Submit</button>
+				<button type="submit" className="edit-btn">
+					Submit
+				</button>
 			</form>
 		</div>
 	);

@@ -188,7 +188,13 @@ function SettingsPage() {
 						<div className="container">
 							<div>
 								<label htmlFor="name">Name</label>
-								<input type="text" name="name" value={name} disabled />
+								<input
+									type="text"
+									name="name"
+									value={name}
+									className="padding-helper"
+									disabled
+								/>
 							</div>
 
 							<button onClick={editName} className="edit-btn">
@@ -220,7 +226,7 @@ function SettingsPage() {
 					</div>
 
 					{errMessage && (
-						<div>
+						<div className="profile-err">
 							<p>
 								Please go to the home page and finish filling out the rest of
 								your profile
@@ -235,7 +241,7 @@ function SettingsPage() {
 							<div className="dimensions-container">
 								<div>
 									<div>
-										<div>
+										<div className="mb-helper">
 											<label htmlFor="feet">Feet</label>
 											<input
 												type="number"
@@ -246,7 +252,7 @@ function SettingsPage() {
 											/>
 										</div>
 
-										<div>
+										<div className="mb-helper">
 											<label htmlFor="inches">Inches </label>
 											<input
 												type="number"
@@ -257,7 +263,7 @@ function SettingsPage() {
 											/>
 										</div>
 
-										<div>
+										<div className="mb-helper">
 											<label htmlFor="age">Age</label>
 											<input
 												type="number"
@@ -268,7 +274,7 @@ function SettingsPage() {
 											/>
 										</div>
 
-										<div>
+										<div className="mb-helper">
 											<label htmlFor="weight">Weight</label>
 											<input
 												type="number"
@@ -281,7 +287,7 @@ function SettingsPage() {
 								</div>
 
 								<div>
-									<div c>
+									<div className="mb-helper">
 										<label>Gender</label>
 										<div>
 											<label className="gender">
@@ -310,7 +316,7 @@ function SettingsPage() {
 										</div>
 									</div>
 
-									<div className="goal">
+									<div className="mb-helper">
 										<label htmlFor="goal">Goal</label>
 										<select disabled>
 											<option disabled selected value="goal">

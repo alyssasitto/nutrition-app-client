@@ -5,7 +5,7 @@
 .signup-dimensions-form button {
 	padding: 1rem;
 	font-size: 2rem;
-	background-color: #ffd7b6;
+	background-color: #ffb2a4;
 	border-radius: 4px;
 	border: none;
 	font-weight: bold;
@@ -64,7 +64,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	font-size: 1.6rem;
-	color: #815897;
+	color: #004044;
 }
 
 .genders {
@@ -86,7 +86,7 @@
 }
 
 .label {
-	color: #5a9b98;
+	color: #003539;
 	font-size: 1.9rem;
 	font-weight: bold;
 }
@@ -94,7 +94,7 @@
 .sub-label {
 	margin-right: 1rem;
 	font-size: 1.6rem;
-	color: #815897;
+	color: #004044;
 }
 
 input,

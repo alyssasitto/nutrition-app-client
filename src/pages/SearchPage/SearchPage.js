@@ -117,7 +117,7 @@ function SearchPage(props) {
 	}, []);
 
 	return (
-		<div className={bg}>
+		<div className={bg + " search-page"}>
 			<div onClick={exit} className={overlay}></div>
 			{foodDetailsCard && (
 				<FoodDetails

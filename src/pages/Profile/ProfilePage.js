@@ -232,7 +232,7 @@ function ProfilePage() {
 					</div>
 
 					{calories === 0 && (
-						<div>
+						<div className="profile-err">
 							<p>
 								Please go to the home page and finish filling out the rest of
 								your profile

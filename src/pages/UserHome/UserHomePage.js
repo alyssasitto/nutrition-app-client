@@ -53,7 +53,7 @@ function UserHomePage() {
 								<div className="carousel-items">
 									<h1>Welcome</h1>
 									<img
-										src="images/home-hero.jpg"
+										src="images/home-hero.jpeg"
 										className="user-home-hero"
 										alt="Illustration of three people putting fruit into a bowl."
 									></img>

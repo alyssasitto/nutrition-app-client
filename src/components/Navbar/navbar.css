@@ -3,7 +3,7 @@ nav {
 	justify-content: space-between;
 	padding: 0.3rem 0.5rem;
 	align-items: center;
-	background-color: #88cecb;
+	background-color: #33888d;
 	margin-bottom: 2rem;
 }
 
@@ -16,7 +16,7 @@ ul {
 .nav {
 	position: absolute;
 	right: 0;
-	background-color: #88cecb;
+	background-color: #33888d;
 	top: 0;
 	height: 100%;
 	width: 0px;
@@ -44,7 +44,7 @@ div.nav.show ul {
 .list-item {
 	display: inline-block;
 	font-size: 2.3rem;
-	color: #363e35;
+	color: #001517;
 	font-weight: bold;
 	margin-bottom: 2.3rem;
 }

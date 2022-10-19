@@ -100,18 +100,20 @@ function SignupPage() {
 					</div>
 				</div>
 
-				{successMessage && (
-					<p className="success-message">
-						Account created please <a href="/login">login</a>
-					</p>
-				)}
-				{errMessage && (
-					<div className="message-container">
-						{errMessage.map((item) => {
-							return <p className="err-message">{item}</p>;
-						})}
-					</div>
-				)}
+				<div className="message-container">
+					{successMessage && (
+						<p className="success-message">
+							Account created please <a href="/login">login</a>
+						</p>
+					)}
+					{errMessage && (
+						<div className="err-message">
+							{errMessage.map((item) => {
+								return <p>{item}</p>;
+							})}
+						</div>
+					)}
+				</div>
 
 				<button type="submit" className="submit-btn">
 					Signup
