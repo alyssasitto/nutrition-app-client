@@ -53,10 +53,6 @@
 	grid-template-columns: 1fr 1fr;
 }
 
-.dimensions input {
-	margin-bottom: 1rem;
-}
-
 .input {
 	width: 5rem;
 }
@@ -67,7 +63,7 @@
 
 .edit-btn {
 	font-size: 1.5rem;
-	background-color: #cdc2e9;
+	background-color: #ff73005a;
 	border: none;
 	padding: 0.5rem 1rem;
 	border-radius: 3px;

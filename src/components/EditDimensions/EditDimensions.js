@@ -4,6 +4,7 @@ import { DimensionsContext } from "../../context/dimensions.context";
 import { AuthContext } from "../../context/auth.context";
 
 require("../Edit.css");
+require("../DimensionsForm/dimensions.css");
 
 const API_URL = "http://localhost:5005";
 
@@ -137,113 +138,115 @@ function EditDimensions(props) {
 			{!loading && (
 				<div>
 					<h2>Dimensions</h2>
-					<form onSubmit={handleSubmit} className="box edit-dimensions">
-						<div>
-							<div>
-								<label htmlFor="feet">Feet</label>
-								<input
-									type="number"
-									name="feet"
-									value={feet}
-									className="input"
-									onChange={handleFeet}
-								/>
-							</div>
+					<form
+						onSubmit={handleSubmit}
+						className="box edit-dimensions dimensions-form"
+					>
+						<div className="height">
+							<label>Height</label>
+							<div className="input-containers">
+								<div className="height-container">
+									<label htmlFor="feet">Feet</label>
+									<input
+										type="number"
+										name="feet"
+										value={feet}
+										onChange={handleFeet}
+										className="small-input"
+									/>
+								</div>
 
-							<div>
-								<label htmlFor="inches">Inches</label>
-								<input
-									type="number"
-									name="inches"
-									value={inches}
-									className="input"
-									onChange={handleInches}
-								/>
-							</div>
-
-							<div>
-								<label htmlFor="age">Age</label>
-								<input
-									type="number"
-									name="age"
-									value={age}
-									className="input"
-									onChange={handleAge}
-								/>
-							</div>
-
-							<div>
-								<label htmlFor="weight">Weight</label>
-								<input
-									type="number"
-									name="weight"
-									value={weight}
-									className="input"
-									onChange={handleWeight}
-								/>
+								<div className="height-container">
+									<label htmlFor="inches">Inches</label>
+									<input
+										type="number"
+										name="inches"
+										value={inches}
+										onChange={handleInches}
+										className="small-input"
+									/>
+								</div>
 							</div>
 						</div>
 
-						<div>
-							<div>
-								<label>Gender</label>
-								<div className="genders">
-									<div className="gender-container">
-										<input
-											type="radio"
-											name="gender"
-											value={male}
-											defaultChecked={maleChecked}
-											onChange={handleGender}
-										/>
-										<label htmlFor="gender" className="gender">
-											Male
-										</label>
-									</div>
+						<div className="fb-helper">
+							<label htmlFor="age">Age</label>
+							<input
+								type="number"
+								name="age"
+								value={age}
+								onChange={handleAge}
+							/>
+						</div>
 
-									<div className="gender-container">
-										<input
-											type="radio"
-											name="gender"
-											value={female}
-											defaultChecked={femaleChecked}
-											onChange={handleGender}
-										/>
-										<label htmlFor="gender" className="gender">
-											Female
-										</label>
-									</div>
+						<div className="fb-helper">
+							<label htmlFor="weight">Weight</label>
+							<input
+								type="number"
+								name="weight"
+								value={weight}
+								onChange={handleWeight}
+							/>
+						</div>
+
+						<div className="gender-contain">
+							<label>Gender</label>
+							<div className="genders">
+								<div className="gender">
+									<input
+										type="radio"
+										name="gender"
+										value={male}
+										defaultChecked={maleChecked}
+										onChange={handleGender}
+									/>
+									<label htmlFor="gender" className="gender-label">
+										Male
+									</label>
+								</div>
+
+								<div className="gender">
+									<input
+										type="radio"
+										name="gender"
+										value={female}
+										defaultChecked={femaleChecked}
+										onChange={handleGender}
+									/>
+									<label htmlFor="gender" className="gender-label">
+										Female
+									</label>
 								</div>
 							</div>
+						</div>
 
-							<div className="goal">
-								<label>Goal</label>
-								<select onChange={handleGoal}>
-									<option value={goal} disabled selected>
-										Goal
-									</option>
-									<option value="lose 0.5lb">Lose 0.5lb</option>
-									<option value="lose 1lb">Lose 1lb</option>
-									<option value="lose 2lb">Lose 2lb</option>
-									<option value="maintain">Maintain</option>
-									<option value="gain 0.5lb">Gain 0.5lb</option>
-									<option value="gain 1lb">Gain 1lb</option>
-									<option value="gain 2lb">Gain 2lb</option>
-								</select>
-							</div>
+						<div className="select-container">
+							<label>Goal</label>
+							<select onChange={handleGoal}>
+								<option value={goal} disabled selected>
+									Goal
+								</option>
+								<option value="lose 0.5lb">Lose 0.5lb</option>
+								<option value="lose 1lb">Lose 1lb</option>
+								<option value="lose 2lb">Lose 2lb</option>
+								<option value="maintain">Maintain</option>
+								<option value="gain 0.5lb">Gain 0.5lb</option>
+								<option value="gain 1lb">Gain 1lb</option>
+								<option value="gain 2lb">Gain 2lb</option>
+							</select>
+						</div>
 
-							<div className="activity-level">
-								<label>Activity level</label>
-								<select onChange={handleActivityLevel}>
-									<option value={activityLevel} disabled selected>
-										Activity level
-									</option>
-									<option value="sedentary">Sedentary</option>
-									<option value="lightly active">Lightly active</option>
-									<option value="active">Active</option>
-									<option value="very active">Very Active</option>
-								</select>
-							</div>
+						<div className="select-container">
+							<label>Activity level</label>
+							<select onChange={handleActivityLevel}>
+								<option value={activityLevel} disabled selected>
+									Activity level
+								</option>
+								<option value="sedentary">Sedentary</option>
+								<option value="lightly active">Lightly active</option>
+								<option value="active">Active</option>
+								<option value="very active">Very Active</option>
+							</select>
 						</div>
 
 						{errMessage && <p>{errMessage}</p>}

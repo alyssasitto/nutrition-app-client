@@ -1,0 +1,18 @@
+.carousel-items {
+	display: flex;
+	flex-direction: column;
+}
+
+.carousel-items h1 {
+	text-align: center;
+}
+
+.carousel-items img {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.user-home-hero {
+	width: 30rem;
+}

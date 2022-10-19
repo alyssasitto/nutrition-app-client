@@ -1,7 +1,5 @@
 .edit-dimensions {
 	transform: translate(-50%, 10%);
-	display: grid;
-	grid-template-columns: 1fr 1fr;
 }
 
 .edit-password {
@@ -23,13 +21,13 @@
 	color: #4f3e77;
 }
 
-.edit-page input {
+/* .edit-page input {
 	margin-bottom: 1rem;
 	font-size: 1.5rem;
 	padding: 0.5rem;
 	border-radius: 5px;
 	border: 2px solid #989bc2;
-}
+} */
 
 .edit-page button {
 	font-size: 2rem;
@@ -57,11 +55,12 @@
 	align-items: flex-end;
 }
 
-select {
+.edit-page select {
 	text-transform: capitalize;
 	font-size: 1.5rem;
 	padding: 0.5rem;
 	border-radius: 5px;
+	border: 2px solid #989bc2;
 }
 
 .gender {
@@ -69,7 +68,7 @@ select {
 }
 
 .gender-container {
-	display: flex;
+	/* display: flex;
 	align-items: center;
-	gap: 1rem;
+	gap: 1rem; */
 }

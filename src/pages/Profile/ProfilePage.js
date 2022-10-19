@@ -231,134 +231,146 @@ function ProfilePage() {
 						</ErrorBoundary>
 					</div>
 
-					<div className="meals">
+					{calories === 0 && (
 						<div>
-							<div className="meal-btn-container">
-								<div className="meal-container">
-									<img
-										src="images/breakfast.jpeg"
-										className="food-img"
-										alt="Illustration of avocado and eggs on toast."
-									></img>
-									<h3>Add Breakfast</h3>
-								</div>
-								<button onClick={searchBreakfast}>
-									<img src="images/add.png" className="add-icon"></img>
-								</button>
-							</div>
-							<button
-								onClick={addCustomFood}
-								value="breakfast"
-								className="custom-btn"
-							>
-								Custom
-							</button>
-
-							{loggedFoods && loggedFoods.breakfast.length !== 0 && (
-								<div className="foods">
-									{loggedFoods.breakfast.map((el, index) => {
-										return (
-											<div className="food-container">
-												<p className="food-item">{el.name}</p>
-												<button
-													onClick={() =>
-														deleteFood(el.name, "breakfast", index)
-													}
-													className="delete-btn"
-												>
-													delete
-												</button>
-											</div>
-										);
-									})}
-								</div>
-							)}
+							<p>
+								Please go to the home page and finish filling out the rest of
+								your profile
+							</p>
+							<a href="/home">Home</a>
 						</div>
+					)}
 
-						<div>
-							<div className="meal-btn-container">
-								<div className="meal-container">
-									<img
-										src="images/lunch.jpeg"
-										className="food-img"
-										alt="Illustration of a salad."
-									></img>
-									<h3>Add Lunch</h3>
+					{calories > 0 && (
+						<div className="meals">
+							<div>
+								<div className="meal-btn-container">
+									<div className="meal-container">
+										<img
+											src="images/breakfast.jpeg"
+											className="food-img"
+											alt="Illustration of avocado and eggs on toast."
+										></img>
+										<h3>Add Breakfast</h3>
+									</div>
+									<button onClick={searchBreakfast}>
+										<img src="images/add.png" className="add-icon"></img>
+									</button>
 								</div>
-								<button onClick={searchLunch}>
-									<img src="images/add.png" className="add-icon"></img>
+								<button
+									onClick={addCustomFood}
+									value="breakfast"
+									className="custom-btn"
+								>
+									Custom
 								</button>
+
+								{loggedFoods && loggedFoods.breakfast.length !== 0 && (
+									<div className="foods">
+										{loggedFoods.breakfast.map((el, index) => {
+											return (
+												<div className="food-container">
+													<p className="food-item">{el.name}</p>
+													<button
+														onClick={() =>
+															deleteFood(el.name, "breakfast", index)
+														}
+														className="delete-btn"
+													>
+														delete
+													</button>
+												</div>
+											);
+										})}
+									</div>
+								)}
 							</div>
-							<button
-								onClick={addCustomFood}
-								value="lunch"
-								className="custom-btn"
-							>
-								Custom
-							</button>
 
-							{loggedFoods && loggedFoods.lunch.length !== 0 && (
-								<div className="foods">
-									{loggedFoods.lunch.map((el, index) => {
-										console.log(el.name);
-										return (
-											<div className="food-container">
-												<p>{el.name}</p>
-												<button
-													onClick={() => deleteFood(el.name, "lunch", index)}
-													className="delete-btn"
-												>
-													delete
-												</button>
-											</div>
-										);
-									})}
+							<div>
+								<div className="meal-btn-container">
+									<div className="meal-container">
+										<img
+											src="images/lunch.jpeg"
+											className="food-img"
+											alt="Illustration of a salad."
+										></img>
+										<h3>Add Lunch</h3>
+									</div>
+									<button onClick={searchLunch}>
+										<img src="images/add.png" className="add-icon"></img>
+									</button>
 								</div>
-							)}
-						</div>
-
-						<div>
-							<div className="meal-btn-container">
-								<div className="meal-container">
-									<img
-										src="images/dinner.jpeg"
-										className="food-img"
-										alt="Illustration of meat on skewers."
-									></img>
-									<h3>Add Dinner</h3>
-								</div>
-
-								<button onClick={searchDinner} className="add-btn">
-									<img src="images/add.png" className="add-icon"></img>
+								<button
+									onClick={addCustomFood}
+									value="lunch"
+									className="custom-btn"
+								>
+									Custom
 								</button>
+
+								{loggedFoods && loggedFoods.lunch.length !== 0 && (
+									<div className="foods">
+										{loggedFoods.lunch.map((el, index) => {
+											console.log(el.name);
+											return (
+												<div className="food-container">
+													<p>{el.name}</p>
+													<button
+														onClick={() => deleteFood(el.name, "lunch", index)}
+														className="delete-btn"
+													>
+														delete
+													</button>
+												</div>
+											);
+										})}
+									</div>
+								)}
 							</div>
-							<button
-								onClick={addCustomFood}
-								value="dinner"
-								className="custom-btn"
-							>
-								Custom
-							</button>
-							{loggedFoods && loggedFoods.dinner.length !== 0 && (
-								<div className="foods">
-									{loggedFoods.dinner.map((el, index) => {
-										console.log(el.name);
-										return (
-											<div className="food-container">
-												<p>{el.name}</p>
-												<button
-													onClick={() => deleteFood(el.name, "dinner", index)}
-													className="delete-btn"
-												>
-													delete
-												</button>
-											</div>
-										);
-									})}
+
+							<div>
+								<div className="meal-btn-container">
+									<div className="meal-container">
+										<img
+											src="images/dinner.jpeg"
+											className="food-img"
+											alt="Illustration of meat on skewers."
+										></img>
+										<h3>Add Dinner</h3>
+									</div>
+
+									<button onClick={searchDinner} className="add-btn">
+										<img src="images/add.png" className="add-icon"></img>
+									</button>
 								</div>
-							)}
+								<button
+									onClick={addCustomFood}
+									value="dinner"
+									className="custom-btn"
+								>
+									Custom
+								</button>
+								{loggedFoods && loggedFoods.dinner.length !== 0 && (
+									<div className="foods">
+										{loggedFoods.dinner.map((el, index) => {
+											console.log(el.name);
+											return (
+												<div className="food-container">
+													<p>{el.name}</p>
+													<button
+														onClick={() => deleteFood(el.name, "dinner", index)}
+														className="delete-btn"
+													>
+														delete
+													</button>
+												</div>
+											);
+										})}
+									</div>
+								)}
+							</div>
 						</div>
-					</div>
+					)}
 				</>
 			)}
 		</div>

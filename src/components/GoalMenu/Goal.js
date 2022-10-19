@@ -1,5 +1,6 @@
 require("./Goal.css");
 require("../Edit.css");
+require("../DimensionsForm/dimensions.css");
 
 function Goal(props) {
 	const value = (e) => {
@@ -7,7 +8,8 @@ function Goal(props) {
 	};
 
 	return (
-		<div className="menu-container">
+		<div className="select-container">
+			<label className="label">Goal:</label>
 			<select onChange={value} className="custom-menu">
 				<option disabled selected>
 					Goal

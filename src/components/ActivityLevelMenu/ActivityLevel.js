@@ -1,10 +1,13 @@
+require("../DimensionsForm/dimensions.css");
+
 function ActivityLevel(props) {
 	const value = (e) => {
 		props.setActivityLevel(e.target.value);
 	};
 
 	return (
-		<div>
+		<div className="select-container">
+			<label className="label">Activity Level:</label>
 			<select onChange={value} className="custom-menu">
 				<option disabled selected>
 					Activity level

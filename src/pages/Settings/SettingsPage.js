@@ -93,35 +93,38 @@ function SettingsPage() {
 				headers: { Authorization: `Bearer ${storedToken} ` },
 			})
 			.then((response) => {
-				setDimensions(true);
-				setFeet(response.data.dimensions.feet);
-				setInches(response.data.dimensions.inches);
-				setAge(response.data.dimensions.age);
-				setWeight(response.data.dimensions.weight);
-				setGender(response.data.dimensions.gender);
-				setGoal(response.data.dimensions.goal);
-				setActivityLevel(response.data.dimensions.activityLevel);
+				console.log("this is the response,", response);
 
-				if (response.data.dimensions.gender === "male") {
-					setMaleChecked("checked");
-					setCheckedFemale("");
+				if (response.data.dimensions === null) {
+					setLoading(false);
+					setDimensions(false);
+					setErrMesage(true);
+				} else {
+					setDimensions(true);
+					setFeet(response.data.dimensions.feet);
+					setInches(response.data.dimensions.inches);
+					setAge(response.data.dimensions.age);
+					setWeight(response.data.dimensions.weight);
+					setGender(response.data.dimensions.gender);
+					setGoal(response.data.dimensions.goal);
+					setActivityLevel(response.data.dimensions.activityLevel);
+
+					if (response.data.dimensions.gender === "male") {
+						setMaleChecked("checked");
+						setCheckedFemale("");
+					}
+
+					if (response.data.dimensions.gender === "female") {
+						setCheckedFemale("checked");
+						setMaleChecked("");
+					}
+
+					setDimensions(true);
+					setErrMesage(null);
+					setLoading(false);
 				}
-
-				if (response.data.dimensions.gender === "female") {
-					setCheckedFemale("checked");
-					setMaleChecked("");
-				}
-
-				// getDimensions();
-
-				console.log(inches, feet, age, weight, gender, goal, activityLevel);
-
-				setErrMesage(null);
-				setLoading(false);
 			})
 			.catch((err) => {
-				setErrMesage("please go fill out dimensions form");
-				setLoading(false);
 				console.log(err);
 			});
 
@@ -133,8 +136,6 @@ function SettingsPage() {
 	return (
 		<div className={bg + " settings"}>
 			<div onClick={exit} className={overlay}></div>
-
-			{errMessage && <p>{errMessage}</p>}
 
 			{nameForm && (
 				<EditName
@@ -180,7 +181,7 @@ function SettingsPage() {
 				</>
 			)}
 
-			{!loading && dimensions && (
+			{!loading && (
 				<div className="settings-page">
 					<div className="account-info">
 						<h2>Account Information</h2>
@@ -218,295 +219,123 @@ function SettingsPage() {
 						</div>
 					</div>
 
-					<div className="dimensions">
-						<h2>Dimensions</h2>
-						<div className="dimensions-container">
-							<div>
+					{errMessage && (
+						<div>
+							<p>
+								Please go to the home page and finish filling out the rest of
+								your profile
+							</p>
+							<a href="/home">Home</a>
+						</div>
+					)}
+
+					{dimensions && (
+						<div className="dimensions">
+							<h2>Dimensions</h2>
+							<div className="dimensions-container">
 								<div>
 									<div>
-										<label htmlFor="feet">Feet</label>
-										<input
-											type="number"
-											name="feet"
-											value={feet}
-											className="input"
-											disabled
-										/>
-									</div>
+										<div>
+											<label htmlFor="feet">Feet</label>
+											<input
+												type="number"
+												name="feet"
+												value={feet}
+												className="input"
+												disabled
+											/>
+										</div>
 
-									<div>
-										<label htmlFor="inches">Inches </label>
-										<input
-											type="number"
-											name="inches"
-											value={inches}
-											className="input"
-											disabled
-										/>
-									</div>
+										<div>
+											<label htmlFor="inches">Inches </label>
+											<input
+												type="number"
+												name="inches"
+												value={inches}
+												className="input"
+												disabled
+											/>
+										</div>
 
-									<div>
-										<label htmlFor="age">Age</label>
-										<input
-											type="number"
-											name="age"
-											value={age}
-											className="input"
-											disabled
-										/>
-									</div>
+										<div>
+											<label htmlFor="age">Age</label>
+											<input
+												type="number"
+												name="age"
+												value={age}
+												className="input"
+												disabled
+											/>
+										</div>
 
-									<div>
-										<label htmlFor="weight">Weight</label>
-										<input
-											type="number"
-											value={weight}
-											className="input"
-											disabled
-										/>
+										<div>
+											<label htmlFor="weight">Weight</label>
+											<input
+												type="number"
+												value={weight}
+												className="input"
+												disabled
+											/>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div>
-								<div className="gender-contain">
-									<label>Gender</label>
-									<label className="gender">
-										<input
-											type="radio"
-											name="male"
-											value={male}
-											className="radio-btn"
-											checked={maleChecked}
-											disabled
-										/>
-										Male
-									</label>
-
-									<label className="gender">
-										<input
-											type="radio"
-											name="female"
-											className="radio-btn"
-											value={female}
-											checked={femaleChecked}
-											disabled
-										/>
-										Female
-									</label>
-								</div>
-
-								<div className="goal">
-									<label htmlFor="goal">Goal</label>
-									<select disabled>
-										<option disabled selected value="goal">
-											{goal}
-										</option>
-									</select>
-								</div>
-
-								<div className="activity-level">
-									<label htmlFor="activity-level">Activity level</label>
-									<select disabled>
-										<option disabled selected value="activity-level">
-											{activityLevel}
-										</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<button onClick={editDimensions} className="edit-btn">
-							Change
-						</button>
-					</div>
-				</div>
-			)}
-
-			{/* {nameForm && (
-				<EditName
-					setOverlay={setOverlay}
-					setNameForm={setNameForm}
-					setName={setName}
-				/>
-			)}
-			{emailForm && (
-				<EditEmail
-					setOverlay={setOverlay}
-					setEmailForm={setEmailForm}
-					setEmail={setEmail}
-				/>
-			)}
-			{passwordForm && (
-				<EditPassword
-					setOverlay={setOverlay}
-					setPasswordForm={setPasswordForm}
-				/>
-			)}
-			{dimensionsForm && (
-				<EditDimensions
-					setOverlay={setOverlay}
-					setDimensionsForm={setDimensionsForm}
-					setFeet={setFeet}
-					setInches={setInches}
-					setAge={setAge}
-					setWeight={setWeight}
-					setGender={setGender}
-					setGoal={setGoal}
-					setActivityLevel={setActivityLevel}
-				/>
-			)}
-
-			{loading && (
-				<>
-					<img
-						src="images/loading.gif"
-						className="loading-icon"
-						alt="loading icon"
-					></img>
-				</>
-			)} */}
-
-			{/* {!loading && (
-				<div className="settings-page">
-					<div className="account-info">
-						<h2>Account Information</h2>
-						<div className="container">
-							<div>
-								<label htmlFor="name">Name</label>
-								<input type="text" name="name" value={name} disabled />
-							</div>
-
-							<button onClick={editName} className="edit-btn">
-								Change
-							</button>
-						</div>
-
-						<div className="container">
-							<div>
-								<label htmlFor="email">Email</label>
-								<input type="email" name="email" value={email} disabled />
-							</div>
-
-							<button onClick={editEmail} className="edit-btn">
-								Change
-							</button>
-						</div>
-
-						<div className="container">
-							<div>
-								<label htmlFor="password">Password</label>
-								<input type="password" name="password" disabled />
-							</div>
-
-							<button onClick={editPassword} className="edit-btn">
-								Change
-							</button>
-						</div>
-					</div>
-
-					<div className="dimensions">
-						<h2>Dimensions</h2>
-						<div className="dimensions-container">
-							<div>
 								<div>
-									<div>
-										<label htmlFor="feet">Feet</label>
-										<input
-											type="number"
-											name="feet"
-											value={feet}
-											className="input"
-											disabled
-										/>
+									<div c>
+										<label>Gender</label>
+										<div>
+											<label className="gender">
+												<input
+													type="radio"
+													name="male"
+													value={male}
+													className="radio-btn"
+													checked={maleChecked}
+													disabled
+												/>
+												Male
+											</label>
+
+											<label className="gender">
+												<input
+													type="radio"
+													name="female"
+													className="radio-btn"
+													value={female}
+													checked={femaleChecked}
+													disabled
+												/>
+												Female
+											</label>
+										</div>
 									</div>
 
-									<div>
-										<label htmlFor="inches">Inches </label>
-										<input
-											type="number"
-											name="inches"
-											value={inches}
-											className="input"
-											disabled
-										/>
+									<div className="goal">
+										<label htmlFor="goal">Goal</label>
+										<select disabled>
+											<option disabled selected value="goal">
+												{goal}
+											</option>
+										</select>
 									</div>
 
-									<div>
-										<label htmlFor="age">Age</label>
-										<input
-											type="number"
-											name="age"
-											value={age}
-											className="input"
-											disabled
-										/>
-									</div>
-
-									<div>
-										<label htmlFor="weight">Weight</label>
-										<input
-											type="number"
-											value={weight}
-											className="input"
-											disabled
-										/>
+									<div className="activity-level">
+										<label htmlFor="activity-level">Activity level</label>
+										<select disabled>
+											<option disabled selected value="activity-level">
+												{activityLevel}
+											</option>
+										</select>
 									</div>
 								</div>
 							</div>
-
-							<div>
-								<div className="gender-contain">
-									<label>Gender</label>
-									<label className="gender">
-										<input
-											type="radio"
-											name="male"
-											value={male}
-											className="radio-btn"
-											checked={maleChecked}
-											disabled
-										/>
-										Male
-									</label>
-
-									<label className="gender">
-										<input
-											type="radio"
-											name="female"
-											className="radio-btn"
-											value={female}
-											checked={femaleChecked}
-											disabled
-										/>
-										Female
-									</label>
-								</div>
-
-								<div className="goal">
-									<label htmlFor="goal">Goal</label>
-									<select disabled>
-										<option disabled selected value="goal">
-											{goal}
-										</option>
-									</select>
-								</div>
-
-								<div className="activity-level">
-									<label htmlFor="activity-level">Activity level</label>
-									<select disabled>
-										<option disabled selected value="activity-level">
-											{activityLevel}
-										</option>
-									</select>
-								</div>
-							</div>
+							<button onClick={editDimensions} className="edit-btn">
+								Change
+							</button>
 						</div>
-						<button onClick={editDimensions} className="edit-btn">
-							Change
-						</button>
-					</div>
+					)}
 				</div>
-			)} */}
+			)}
 		</div>
 	);
 }

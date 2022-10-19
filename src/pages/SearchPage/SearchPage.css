@@ -39,7 +39,10 @@
 }
 
 .search-hero {
-	margin-top: 10rem;
+	width: 25rem;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 20%);
 }
 
 .sp-food-container {

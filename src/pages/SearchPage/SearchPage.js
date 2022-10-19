@@ -148,9 +148,9 @@ function SearchPage(props) {
 
 			{image && (
 				<img
-					src="images/search-hero.jpg"
+					src="images/nutrition.png"
 					className="search-hero"
-					alt="Illustration of 3 people putting fruit into a bowl."
+					alt="Illustration of man looking at nutrition label."
 				></img>
 			)}
 

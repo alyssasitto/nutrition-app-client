@@ -4,6 +4,8 @@ import Dimensions from "../../components/DimensionsForm/Dimensions";
 import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
 
+require("./UserHome.css");
+
 const API_URL = "http://localhost:5005";
 
 function UserHomePage() {
@@ -44,14 +46,21 @@ function UserHomePage() {
 			)}
 
 			{!loading && (
-				<>
+				<div>
 					{!dimensions && (
-						<>
-							<Carousel>
-								<p>welcome</p>
+						<div>
+							<Carousel className="carousel">
+								<div className="carousel-items">
+									<h1>Welcome</h1>
+									<img
+										src="images/home-hero.jpg"
+										className="user-home-hero"
+										alt="Illustration of three people putting fruit into a bowl."
+									></img>
+								</div>
 								<Dimensions setDimensions={setDimensions} />
 							</Carousel>
-						</>
+						</div>
 					)}
 
 					{dimensions && (
@@ -59,7 +68,7 @@ function UserHomePage() {
 							<p>yaya</p>
 						</>
 					)}
-				</>
+				</div>
 			)}
 		</div>
 	);

@@ -79,45 +79,80 @@ function Dimensions(props) {
 	console.log(activityLevel, goal);
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<div>
-				<label htmlFor="feet">Feet</label>
-				<input type="number" name="feet" onChange={handleFeet} />
+		<form
+			onSubmit={handleSubmit}
+			className="dimensions-form signup-dimensions-form"
+		>
+			<div className="height">
+				<label className="label">Height:</label>
+				<div className="input-containers">
+					<div className="height-container feet-container">
+						<label htmlFor="feet" className="sub-label">
+							Feet
+						</label>
+						<input
+							type="number"
+							name="feet"
+							onChange={handleFeet}
+							className="small-input"
+						/>
+					</div>
+
+					<div className="height-container">
+						<label htmlFor="inches" className="sub-label">
+							Inches
+						</label>
+						<input
+							type="number"
+							name="inches"
+							onChange={handleInches}
+							className="small-input"
+						/>
+					</div>
+				</div>
 			</div>
 
-			<div>
-				<label htmlFor="inches">Inches</label>
-				<input type="number" name="inches" onChange={handleInches} />
-			</div>
-
-			<div>
-				<label>Age</label>
+			<div className="fb-helper">
+				<label className="label">Age:</label>
 				<input type="number" name="age" onChange={handleAge} />
 			</div>
 
-			<div>
-				<label htmlFor="weight">Weight</label>
+			<div className="fb-helper">
+				<label htmlFor="weight" className="label">
+					Weight:
+				</label>
 				<input type="number" name="weight" onChange={handleWeight} />
 			</div>
 
-			<div>
-				<label>Male</label>
-				<input
-					type="radio"
-					name="gender"
-					value="male"
-					onChange={handleGender}
-				/>
-			</div>
+			<div className="gender-contain">
+				<label htmlFor="gender" className="label">
+					Gender:
+				</label>
+				<div className="genders">
+					<div className="gender">
+						<input
+							type="radio"
+							name="gender"
+							value="male"
+							onChange={handleGender}
+						/>
+						<label htmlFor="gender" className="gender-label">
+							Male
+						</label>
+					</div>
 
-			<div>
-				<label>Female</label>
-				<input
-					type="radio"
-					name="gender"
-					value="female"
-					onChange={handleGender}
-				/>
+					<div className="gender">
+						<input
+							type="radio"
+							name="gender"
+							value="female"
+							onChange={handleGender}
+						/>
+						<label htmlFor="gender" className="gender-label">
+							Female
+						</label>
+					</div>
+				</div>
 			</div>
 
 			<div className="menus">
@@ -126,7 +161,7 @@ function Dimensions(props) {
 				<ActivityLevel setActivityLevel={setActivityLevel} />
 			</div>
 
-			{errMessage && <p>{errMessage}</p>}
+			{errMessage && <p className="err-message dimensions-err">{errMessage}</p>}
 
 			<button type="submit">Submit</button>
 		</form>

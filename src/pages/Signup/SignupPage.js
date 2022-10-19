@@ -12,6 +12,7 @@ function SignupPage() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [successMessage, setSuccessMessage] = useState(false);
 	const [errMessage, setErrMessage] = useState(null);
 
 	const handleName = (e) => {
@@ -38,9 +39,16 @@ function SignupPage() {
 		axios
 			.post(`${API_URL}/signup`, body)
 			.then((response) => {
+				setSuccessMessage(true);
+				setErrMessage(null);
+				setName("");
+				setEmail("");
+				setPassword("");
 				console.log(response.data);
 			})
 			.catch((err) => {
+				console.log(err);
+				setSuccessMessage(false);
 				setErrMessage(err.response.data.message);
 			});
 	};
@@ -92,7 +100,18 @@ function SignupPage() {
 					</div>
 				</div>
 
-				{errMessage && <p>{errMessage}</p>}
+				{successMessage && (
+					<p className="success-message">
+						Account created please <a href="/login">login</a>
+					</p>
+				)}
+				{errMessage && (
+					<div className="message-container">
+						{errMessage.map((item) => {
+							return <p className="err-message">{item}</p>;
+						})}
+					</div>
+				)}
 
 				<button type="submit" className="submit-btn">
 					Signup

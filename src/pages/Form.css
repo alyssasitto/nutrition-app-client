@@ -1,19 +1,24 @@
+.form-page {
+	padding-bottom: 1.5rem;
+}
+
 .form-page label {
 	font-size: 2rem;
 	margin-bottom: 1rem;
 }
 
-.form {
+/* .form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 10px;
-}
+} */
 
 .form-page input {
-	padding: 1rem 2rem;
+	padding: 1rem;
 	border-radius: 3px;
 	border: 1px solid #174644;
+	width: 60vw;
 }
 
 .form-page {
@@ -35,14 +40,14 @@
 }
 
 .submit-btn {
-	margin-top: 3rem;
+	margin-top: 1rem;
 	font-size: 2.5rem;
 	background-color: transparent;
 	border: none;
 	background-color: #ffcea7;
 	border-radius: 4px;
-	padding: 0.5rem 2rem;
-	width: 100%;
+	padding: 0.5rem;
+	width: 60vw;
 	margin-bottom: 1.5rem;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -53,6 +58,19 @@
 	position: relative;
 }
 
+.message-container {
+	padding: 1rem;
+}
+
+.success-message {
+	text-align: center;
+}
+
+.err-message {
+	color: red;
+	text-align: center;
+}
+
 .mb-helper {
-	margin-bottom: 1.5rem;
+	margin-bottom: 1rem;
 }

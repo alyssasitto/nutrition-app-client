@@ -62,7 +62,7 @@ function EditPassword(props) {
 
 				{errMessage &&
 					errMessage.map((item) => {
-						return <p>{item}</p>;
+						return <p className="message">{item}</p>;
 					})}
 				{successMessage && <p>{successMessage}</p>}
 				<button type="submit">Submit</button>

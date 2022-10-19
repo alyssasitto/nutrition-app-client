@@ -1,9 +1,109 @@
-form {
+.signup-dimensions-form {
+	padding: 0 5rem;
+}
+
+.signup-dimensions-form button {
+	padding: 1rem;
+	font-size: 2rem;
+	background-color: #ffd7b6;
+	border-radius: 4px;
+	border: none;
+	font-weight: bold;
+	color: #02383f;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.dimensions-form input[type="number"] {
+	width: 10rem;
+}
+
+.height {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.input-containers {
 	display: flex;
 	flex-direction: column;
 }
 
-.menus {
+.small-input {
+	/* width: 5rem !important; */
+}
+
+.height-container {
 	display: flex;
+	justify-content: space-between;
+	/* width: 5rem; */
+}
+
+.feet-container {
+	margin-bottom: 1rem;
+}
+
+.fb-helper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.gender-contain {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.gender {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1.6rem;
+	color: #815897;
+}
+
+.genders {
+	width: 10rem;
+}
+
+.select-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
+
+.select-container select {
+	width: 10rem;
+}
+
+.gender-label {
+	margin-bottom: 0 !important;
+}
+
+.label {
+	color: #5a9b98;
+	font-size: 1.9rem;
+	font-weight: bold;
+}
+
+.sub-label {
+	margin-right: 1rem;
+	font-size: 1.6rem;
+	color: #815897;
+}
+
+input,
+select {
+	border: 1px solid #5a9b98;
+	padding: 0.3rem;
+	border-radius: 3px;
+}
+
+.dimensions-err {
+	margin-bottom: 1rem;
 }
