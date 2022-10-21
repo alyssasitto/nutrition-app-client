@@ -79,92 +79,98 @@ function Dimensions(props) {
 	console.log(activityLevel, goal);
 
 	return (
-		<form
-			onSubmit={handleSubmit}
-			className="dimensions-form signup-dimensions-form"
-		>
-			<div className="height">
-				<label className="label">Height:</label>
-				<div className="input-containers">
-					<div className="height-container feet-container">
-						<label htmlFor="feet" className="sub-label">
-							Feet
-						</label>
-						<input
-							type="number"
-							name="feet"
-							onChange={handleFeet}
-							className="small-input"
-						/>
-					</div>
+		<div className="edit-page">
+			<form
+				onSubmit={handleSubmit}
+				className="dimensions-form signup-dimensions-form"
+			>
+				<div className="height">
+					<label className="label">Height:</label>
+					<div className="input-containers">
+						<div className="height-container feet-container">
+							<label htmlFor="feet" className="sub-label">
+								Feet
+							</label>
+							<input
+								type="number"
+								name="feet"
+								onChange={handleFeet}
+								className="small-input"
+							/>
+						</div>
 
-					<div className="height-container">
-						<label htmlFor="inches" className="sub-label">
-							Inches
-						</label>
-						<input
-							type="number"
-							name="inches"
-							onChange={handleInches}
-							className="small-input"
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div className="fb-helper">
-				<label className="label">Age:</label>
-				<input type="number" name="age" onChange={handleAge} />
-			</div>
-
-			<div className="fb-helper">
-				<label htmlFor="weight" className="label">
-					Weight:
-				</label>
-				<input type="number" name="weight" onChange={handleWeight} />
-			</div>
-
-			<div className="gender-contain">
-				<label htmlFor="gender" className="label">
-					Gender:
-				</label>
-				<div className="genders">
-					<div className="gender">
-						<input
-							type="radio"
-							name="gender"
-							value="male"
-							onChange={handleGender}
-						/>
-						<label htmlFor="gender" className="gender-label">
-							Male
-						</label>
-					</div>
-
-					<div className="gender">
-						<input
-							type="radio"
-							name="gender"
-							value="female"
-							onChange={handleGender}
-						/>
-						<label htmlFor="gender" className="gender-label">
-							Female
-						</label>
+						<div className="height-container">
+							<label htmlFor="inches" className="sub-label">
+								Inches
+							</label>
+							<input
+								type="number"
+								name="inches"
+								onChange={handleInches}
+								className="small-input"
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div className="menus">
-				<Goal setGoal={setGoal} />
+				<div className="fb-helper">
+					<label className="label">Age:</label>
+					<input type="number" name="age" onChange={handleAge} />
+				</div>
 
-				<ActivityLevel setActivityLevel={setActivityLevel} />
-			</div>
+				<div className="fb-helper">
+					<label htmlFor="weight" className="label">
+						Weight:
+					</label>
+					<input type="number" name="weight" onChange={handleWeight} />
+				</div>
 
-			{errMessage && <p className="err-message dimensions-err">{errMessage}</p>}
+				<div className="gender-contain">
+					<label htmlFor="gender" className="label">
+						Gender:
+					</label>
+					<div className="genders">
+						<div className="gender">
+							<input
+								type="radio"
+								name="gender"
+								value="male"
+								onChange={handleGender}
+							/>
+							<label htmlFor="gender" className="gender-label">
+								Male
+							</label>
+						</div>
 
-			<button type="submit">Submit</button>
-		</form>
+						<div className="gender">
+							<input
+								type="radio"
+								name="gender"
+								value="female"
+								onChange={handleGender}
+							/>
+							<label htmlFor="gender" className="gender-label">
+								Female
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<div className="menus">
+					<Goal setGoal={setGoal} />
+
+					<ActivityLevel setActivityLevel={setActivityLevel} />
+				</div>
+
+				{errMessage && (
+					<p className="err-message dimensions-err">{errMessage}</p>
+				)}
+
+				<button type="submit" className="edit-btn">
+					Submit
+				</button>
+			</form>
+		</div>
 	);
 }
 

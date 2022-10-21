@@ -51,10 +51,12 @@ function EditName(props) {
 					name="name"
 					value={name}
 					onChange={handleName}
-					className="padding-helper"
+					className="padding-helper mb-input"
 				/>
-				{errMessage && <p>{errMessage}</p>}
-				<button type="submit" className="edit-btn">
+
+				{errMessage && <p className="edit-err-message">{errMessage}</p>}
+
+				<button type="submit" className="edit-btn padding-helper submit-edit">
 					Submit
 				</button>
 			</form>

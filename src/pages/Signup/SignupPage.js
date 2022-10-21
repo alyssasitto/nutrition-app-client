@@ -14,6 +14,7 @@ function SignupPage() {
 	const [password, setPassword] = useState("");
 	const [successMessage, setSuccessMessage] = useState(false);
 	const [errMessage, setErrMessage] = useState(null);
+	const [requirements, setRequirements] = useState("");
 
 	const handleName = (e) => {
 		setName(e.target.value);
@@ -53,6 +54,20 @@ function SignupPage() {
 			});
 	};
 
+	const showRequirements = () => {
+		if (requirements === "") {
+			setRequirements("show-requirements");
+		} else {
+			setRequirements("");
+		}
+	};
+
+	const clear = () => {
+		if (requirements === "show-requirements") {
+			setRequirements("");
+		}
+	};
+
 	useEffect(() => {
 		setShow("");
 		setBg("");
@@ -60,7 +75,7 @@ function SignupPage() {
 	}, []);
 
 	return (
-		<div className={bg + " form-page"}>
+		<div className={bg + " form-page"} onClick={clear}>
 			<img src="images/signup.jpeg" className="hero"></img>
 			<h1>Signup</h1>
 			<form onSubmit={handleSubmit} className="form">
@@ -88,7 +103,16 @@ function SignupPage() {
 				</div>
 
 				<div>
-					<label htmlFor="password">Password</label>
+					<label htmlFor="password" className="password-container">
+						Password{" "}
+						<div className={"password-requirements-container " + requirements}>
+							<img
+								src="images/info-icon.png"
+								onClick={showRequirements}
+								className="info-icon"
+							></img>
+						</div>
+					</label>
 					<div className="input-container">
 						<img src="images/lock.png" className="input-icon"></img>
 						<input
@@ -100,19 +124,13 @@ function SignupPage() {
 					</div>
 				</div>
 
-				<div className="message-container">
+				<div className="messages-container">
 					{successMessage && (
 						<p className="success-message">
 							Account created please <a href="/login">login</a>
 						</p>
 					)}
-					{errMessage && (
-						<div className="err-message">
-							{errMessage.map((item) => {
-								return <p>{item}</p>;
-							})}
-						</div>
-					)}
+					{errMessage && <p className="err-message">{errMessage}</p>}
 				</div>
 
 				<button type="submit" className="submit-btn">

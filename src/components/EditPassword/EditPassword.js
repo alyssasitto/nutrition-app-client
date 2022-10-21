@@ -13,6 +13,7 @@ function EditPassword(props) {
 	const [confirmNewPassword, setConfirmNewPassword] = useState("");
 	const [errMessage, setErrMessage] = useState(null);
 	const [successMessage, setSuccessMessage] = useState(null);
+	const [requirements, setRequirements] = useState("");
 
 	const storedToken = localStorage.getItem("authToken");
 
@@ -42,6 +43,14 @@ function EditPassword(props) {
 			});
 	};
 
+	const showRequirements = () => {
+		if (requirements === "") {
+			setRequirements("show-requirements");
+		} else {
+			setRequirements("");
+		}
+	};
+
 	return (
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box edit-password edit-form">
@@ -49,7 +58,16 @@ function EditPassword(props) {
 					<img src="images/close.png"></img>
 				</button>
 
-				<label htmlFor="new-password">New password</label>
+				<label htmlFor="new-password" className="password-container">
+					New password
+					<div className={"password-requirements-container " + requirements}>
+						<img
+							src="images/info-icon.png"
+							onClick={showRequirements}
+							className="info-icon"
+						></img>
+					</div>
+				</label>
 				<input
 					type="password"
 					name="new-password"
@@ -62,14 +80,13 @@ function EditPassword(props) {
 					name="confirm-password"
 					value={confirmNewPassword}
 					onChange={handleConfirmNewPassword}
+					className="mb-input"
 				/>
 
-				{errMessage &&
-					errMessage.map((item) => {
-						return <p className="message">{item}</p>;
-					})}
+				{errMessage && <p className="edit-err-message">{errMessage}</p>}
 				{successMessage && <p>{successMessage}</p>}
-				<button type="submit" className="edit-btn">
+
+				<button type="submit" className="edit-btn submit-edit">
 					Submit
 				</button>
 			</form>

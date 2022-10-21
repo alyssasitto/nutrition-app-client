@@ -141,7 +141,7 @@ function EditDimensions(props) {
 
 					<form
 						onSubmit={handleSubmit}
-						className="box edit-dimensions dimensions-form"
+						className="box edit-form edit-dimensions dimensions-form"
 					>
 						<div className="height">
 							<label>Height</label>

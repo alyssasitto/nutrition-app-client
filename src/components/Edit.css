@@ -3,45 +3,37 @@
 	flex-direction: column;
 }
 
-.edit-form input {
+/* .edit-form input {
 	margin-bottom: 1rem;
+} */
+
+.edit-name {
+	top: 35%;
 }
 
 .edit-dimensions {
-	transform: translate(-50%, 10%);
+	top: 15%;
 }
 
 .edit-password {
-	transform: translate(-50%, 70%);
-}
-
-.edit-name {
-	transform: translate(-50%, 100%);
+	top: 30%;
 }
 
 .edit-email {
-	transform: translate(-50%, 100%);
+	top: 35%;
 }
 
-.edit-page label {
+.edit-form label {
 	font-size: 2rem;
 	font-weight: bold;
 	margin-bottom: 1rem;
 	color: #00555a;
 }
 
-/* .edit-page input {
-	margin-bottom: 1rem;
-	font-size: 1.5rem;
-	padding: 0.5rem;
-	border-radius: 5px;
-	border: 2px solid #989bc2;
-} */
-
 .edit-page button.edit-btn {
 	font-size: 2rem;
 	background-color: #ffb2a4 !important;
-	padding: 0.5rem;
+	/* padding: 0.5rem; */
 	border: none;
 	border-radius: 5px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -54,8 +46,9 @@
 	border-radius: 8px;
 	position: absolute;
 	left: 50%;
-	padding: 4rem 2rem;
-	z-index: 4;
+	transform: translate(-50%);
+	padding: 3rem 2rem;
+	z-index: 5;
 	background-color: #e6f0f1;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -102,4 +95,26 @@
 	right: 15px;
 	border: none;
 	background-color: transparent;
+}
+
+.edit-err-message {
+	color: red;
+	margin-bottom: 1rem;
+	align-self: center;
+	width: 100%;
+	text-align: center;
+}
+
+div label.password-container {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.mb-input {
+	margin-bottom: 1.5rem !important;
+}
+
+.submit-edit {
+	padding: 0.8rem !important;
 }

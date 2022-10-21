@@ -52,10 +52,11 @@ function EditEmail(props) {
 					name="email"
 					value={email}
 					onChange={handleEmail}
-					className="padding-helper"
+					className="padding-helper mb-input"
 				/>
-				{errMessage && <p>{errMessage}</p>}
-				<button type="submit" className="edit-btn">
+				{errMessage && <p className="edit-err-message">{errMessage}</p>}
+
+				<button type="submit" className="edit-btn submit-edit">
 					Submit
 				</button>
 			</form>
