@@ -35,10 +35,11 @@ function ProfilePage() {
 	const [totalCalories, setTotalCalories] = useState(0);
 	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
 
-	const [date, setDate] = useState(new Date(Date.now()));
+	const [date, setDate] = useState(new Date(localStorage.date));
 
 	const onChange = (date) => {
 		setDate(date);
+		localStorage.setItem("date", date);
 	};
 
 	const handleCalender = () => {
@@ -129,8 +130,6 @@ function ProfilePage() {
 				let lunchCals = 0;
 				let dinnerCals = 0;
 
-				// console.log("these are the remaing calories", remainingCalories);
-
 				if (response.data.logDay !== null) {
 					let breakfast = response.data.logDay.breakfast;
 					let lunch = response.data.logDay.lunch;
@@ -180,8 +179,6 @@ function ProfilePage() {
 		setBg("");
 		setClicked(false);
 	}, [date, loggedFoodsCopy]);
-
-	console.log(loggedFoods);
 
 	return (
 		<div className={bg + " profile-page"}>

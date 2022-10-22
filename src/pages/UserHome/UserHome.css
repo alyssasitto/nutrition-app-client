@@ -13,6 +13,41 @@
 	transform: translate(-50%);
 }
 
+.progress-bars {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+/* .progress-bar {
+	height: 20rem;
+	width: 20rem;
+	border: 20px solid burlywood;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+} */
+
+/* .progress-bar {
+	height: 2rem;
+	width: 30rem;
+	border-radius: 50%;
+	position: relative;
+	background-color: brown;
+} */
+
+progress:-webkit-progress-bar {
+	background-color: red;
+	height: 10rem;
+	width: 10rem;
+	padding: 1rem;
+	border-radius: 50%;
+	position: relative;
+}
+
 .user-home-hero {
 	width: 30rem;
 }

@@ -14,6 +14,7 @@ function AuthProviderWrapper(props) {
 
 	const storeToken = (token) => {
 		localStorage.setItem("authToken", token);
+		localStorage.setItem("date", new Date(Date.now()));
 	};
 
 	const authenticateUser = () => {

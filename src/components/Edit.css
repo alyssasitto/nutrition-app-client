@@ -74,10 +74,14 @@
 	gap: 1rem; */
 }
 
-.edit-dimensions .label-helper {
-	font-weight: normal;
-	font-size: 1.7rem;
-	margin-right: 1rem;
+.label-helper {
+	font-weight: normal !important;
+	font-size: 1.7rem !important;
+	margin-right: 1.5rem;
+}
+
+.dimensions-form {
+	padding: 5rem 2rem 3rem 2rem;
 }
 
 .edit-dimensions button {
@@ -97,12 +101,17 @@
 	background-color: transparent;
 }
 
+.message {
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.success-message {
+	color: rgb(79, 157, 79);
+}
+
 .edit-err-message {
 	color: red;
-	margin-bottom: 1rem;
-	align-self: center;
-	width: 100%;
-	text-align: center;
 }
 
 div label.password-container {

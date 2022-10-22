@@ -19,6 +19,10 @@
 	width: 10rem;
 }
 
+.home-form button {
+	width: 100%;
+}
+
 .height {
 	display: flex;
 	justify-content: space-between;

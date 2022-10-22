@@ -12,6 +12,7 @@ function EditEmail(props) {
 
 	const [email, setEmail] = useState(user.email);
 	const [errMessage, setErrMessage] = useState(null);
+	const [successMessage, setSuccessMessage] = useState(null);
 
 	const storedToken = localStorage.getItem("authToken");
 
@@ -30,22 +31,27 @@ function EditEmail(props) {
 			})
 			.then((response) => {
 				console.log(response);
-				props.setOverlay("");
-				props.setEmailForm(false);
 				props.setEmail(response.data.email);
 				user.email = email;
+				setSuccessMessage(response.data.message);
+				setErrMessage(null);
 			})
 			.catch((err) => {
 				setErrMessage(err.response.data.message);
 			});
 	};
 
+	const exit = () => {
+		props.setOverlay("");
+		props.setEmailForm(false);
+	};
+
 	return (
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box edit-email edit-form">
-				<button className="close-btn">
+				<div onClick={exit} className="close-btn">
 					<img src="images/close.png"></img>
-				</button>
+				</div>
 				<label htmlFor="email">Email</label>
 				<input
 					type="email"
@@ -54,7 +60,10 @@ function EditEmail(props) {
 					onChange={handleEmail}
 					className="padding-helper mb-input"
 				/>
-				{errMessage && <p className="edit-err-message">{errMessage}</p>}
+				{errMessage && <p className="message edit-err-message">{errMessage}</p>}
+				{successMessage && (
+					<p className="message success-message">{successMessage}</p>
+				)}
 
 				<button type="submit" className="edit-btn submit-edit">
 					Submit

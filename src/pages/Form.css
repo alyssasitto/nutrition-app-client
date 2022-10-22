@@ -112,6 +112,7 @@
 .err-message {
 	color: red;
 	text-align: center;
+	line-height: 1.4;
 }
 
 .mb-helper {

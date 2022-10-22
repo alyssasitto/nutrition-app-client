@@ -36,6 +36,7 @@ function EditPassword(props) {
 			})
 			.then((response) => {
 				setSuccessMessage(response.data.message);
+				setErrMessage(null);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -51,12 +52,17 @@ function EditPassword(props) {
 		}
 	};
 
+	const exit = () => {
+		props.setOverlay("");
+		props.setPasswordForm(false);
+	};
+
 	return (
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box edit-password edit-form">
-				<button className="close-btn">
+				<div onClick={exit} className="close-btn">
 					<img src="images/close.png"></img>
-				</button>
+				</div>
 
 				<label htmlFor="new-password" className="password-container">
 					New password
@@ -73,6 +79,7 @@ function EditPassword(props) {
 					name="new-password"
 					value={newPassword}
 					onChange={handleNewPassword}
+					className="mb-helper"
 				/>
 				<label htmlFor="confirm-password">Confirm new password</label>
 				<input
@@ -83,8 +90,10 @@ function EditPassword(props) {
 					className="mb-input"
 				/>
 
-				{errMessage && <p className="edit-err-message">{errMessage}</p>}
-				{successMessage && <p>{successMessage}</p>}
+				{errMessage && <p className="message edit-err-message">{errMessage}</p>}
+				{successMessage && (
+					<p className="message success-message">{successMessage}</p>
+				)}
 
 				<button type="submit" className="edit-btn submit-edit">
 					Submit

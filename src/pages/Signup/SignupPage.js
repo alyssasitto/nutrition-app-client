@@ -14,7 +14,6 @@ function SignupPage() {
 	const [password, setPassword] = useState("");
 	const [successMessage, setSuccessMessage] = useState(false);
 	const [errMessage, setErrMessage] = useState(null);
-	const [requirements, setRequirements] = useState("");
 
 	const handleName = (e) => {
 		setName(e.target.value);
@@ -54,20 +53,6 @@ function SignupPage() {
 			});
 	};
 
-	const showRequirements = () => {
-		if (requirements === "") {
-			setRequirements("show-requirements");
-		} else {
-			setRequirements("");
-		}
-	};
-
-	const clear = () => {
-		if (requirements === "show-requirements") {
-			setRequirements("");
-		}
-	};
-
 	useEffect(() => {
 		setShow("");
 		setBg("");
@@ -75,7 +60,7 @@ function SignupPage() {
 	}, []);
 
 	return (
-		<div className={bg + " form-page"} onClick={clear}>
+		<div className={bg + " form-page"}>
 			<img src="images/signup.jpeg" className="hero"></img>
 			<h1>Signup</h1>
 			<form onSubmit={handleSubmit} className="form">
@@ -104,14 +89,7 @@ function SignupPage() {
 
 				<div>
 					<label htmlFor="password" className="password-container">
-						Password{" "}
-						<div className={"password-requirements-container " + requirements}>
-							<img
-								src="images/info-icon.png"
-								onClick={showRequirements}
-								className="info-icon"
-							></img>
-						</div>
+						Password
 					</label>
 					<div className="input-container">
 						<img src="images/lock.png" className="input-icon"></img>

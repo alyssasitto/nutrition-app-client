@@ -30,6 +30,7 @@ function EditDimensions(props) {
 	const [isSelected, setIsSelected] = useState("");
 
 	const [errMessage, setErrMessage] = useState(null);
+	const [successMessage, setSuccessMessage] = useState(null);
 
 	const handleFeet = (e) => {
 		setFeet(e.target.value);
@@ -73,8 +74,6 @@ function EditDimensions(props) {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				props.setOverlay("");
-				props.setDimensionsForm(false);
 				props.setFeet(feet);
 				props.setInches(inches);
 				props.setAge(age);
@@ -82,6 +81,8 @@ function EditDimensions(props) {
 				props.setGender(gender);
 				props.setGoal(goal);
 				props.setActivityLevel(activityLevel);
+
+				setErrMessage(null);
 
 				// getDimensions();
 
@@ -91,11 +92,20 @@ function EditDimensions(props) {
 			})
 			.then((response) => {
 				console.log(response);
+				setSuccessMessage(response.data.message);
+
+				setErrMessage(null);
 			})
 			.catch((err) => {
 				console.log(err);
-				// setErrMessage(err.response.data.message);
+				setErrMessage(err.response.data.message);
+				setSuccessMessage(null);
 			});
+	};
+
+	const exit = () => {
+		props.setOverlay("");
+		props.setDimensionsForm(false);
 	};
 
 	useEffect(() => {
@@ -141,12 +151,15 @@ function EditDimensions(props) {
 
 					<form
 						onSubmit={handleSubmit}
-						className="box edit-form edit-dimensions dimensions-form"
+						className="box edit-form dimensions-form"
 					>
+						<div onClick={exit} className="close-btn">
+							<img src="images/close.png"></img>
+						</div>
 						<div className="height">
 							<label>Height</label>
 							<div className="input-containers">
-								<div className="height-container">
+								<div className="height-container mb-helper">
 									<label htmlFor="feet" className="label-helper">
 										Feet
 									</label>
@@ -155,7 +168,6 @@ function EditDimensions(props) {
 										name="feet"
 										value={feet}
 										onChange={handleFeet}
-										className="small-input mb-helper"
 									/>
 								</div>
 
@@ -254,7 +266,12 @@ function EditDimensions(props) {
 							</select>
 						</div>
 
-						{errMessage && <p>{errMessage}</p>}
+						{errMessage && (
+							<p className="message edit-err-message">{errMessage}</p>
+						)}
+						{successMessage && (
+							<p className="message success-message">{successMessage}</p>
+						)}
 
 						<button type="submit" className="edit-btn">
 							Submit

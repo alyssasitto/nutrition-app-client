@@ -82,7 +82,7 @@ function Dimensions(props) {
 		<div className="edit-page">
 			<form
 				onSubmit={handleSubmit}
-				className="dimensions-form signup-dimensions-form"
+				className="dimensions-form signup-dimensions-form home-form"
 			>
 				<div className="height">
 					<label className="label">Height:</label>
