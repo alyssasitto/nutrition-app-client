@@ -1,7 +1,12 @@
 .custom-food {
-	transform: translate(-50%, 35%);
-	padding: 2rem;
+	top: 25%;
+	padding: 2rem 4rem;
 	background-color: #cde8eb;
+}
+
+.custom-food label {
+	font-size: 1.8rem;
+	font-weight: bold;
 }
 
 .custom-food button {
@@ -12,6 +17,8 @@
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+	width: 100%;
 }
 
 .name-container {
@@ -24,6 +31,7 @@
 
 .custom-food input {
 	border: 2px solid #989bc2;
+	width: 10rem;
 }
 
 .edit-page-container {
@@ -37,8 +45,14 @@
 
 .input-container {
 	display: flex;
-	gap: 6rem;
+	flex-direction: column;
+	gap: 2rem;
 	margin-bottom: 1rem;
+}
+
+.custom-input {
+	display: flex;
+	justify-content: space-between;
 }
 
 .mr-helper {

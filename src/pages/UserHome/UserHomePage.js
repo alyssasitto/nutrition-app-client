@@ -100,51 +100,69 @@ function UserHomePage() {
 					)}
 
 					{dimensions && (
-						<div>
+						<div className="progress-container">
 							{macros && (
 								<div className="progress-bars">
-									<div>
-										<p>calories</p>
-										<progress
-											max={macros.calories}
-											value={calories}
-											className="bar"
-										></progress>
+									<div className="progress-bar">
+										<h2>Calories</h2>
+
+										<div>
+											<progress
+												max={macros.calories}
+												value={calories}
+												className="bar"
+											></progress>
+										</div>
+
 										<p>
-											{macros.calories} / {calories && <span>{calories}</span>}
+											{macros.calories} /{" "}
+											{calories && (
+												<span className="total-logged">{calories}</span>
+											)}
 										</p>
 									</div>
-									<div>
-										<p>fat</p>
-										<progress
-											max={macros.fat}
-											value={fat}
-											className="bar"
-										></progress>
+									<div className="progress-bar">
+										<h2>Fat</h2>
+										<div>
+											<progress
+												max={macros.fat}
+												value={fat}
+												className="bar"
+											></progress>
+										</div>
 										<p>
-											{macros.fat} / {fat && <span>{fat}</span>}
+											{macros.fat}g /{" "}
+											{fat && <span className="total-logged">{fat}g</span>}
 										</p>
 									</div>
-									<div>
-										<p>protein</p>
-										<progress
-											max={macros.protein}
-											value={protein}
-											className="bar"
-										></progress>
+									<div className="progress-bar">
+										<h2>Protein</h2>
+										<div>
+											<progress
+												max={macros.protein}
+												value={protein}
+												className="bar"
+											></progress>
+										</div>
 										<p>
-											{macros.protein} / {protein && <span>{protein}</span>}
+											{macros.protein}g /{" "}
+											{protein && (
+												<span className="total-logged">{protein}g</span>
+											)}
 										</p>
 									</div>
-									<div>
-										<p>carbs</p>
-										<progress
-											max={macros.carbohydrates}
-											value={carbs}
-											className="bar"
-										></progress>
+									<div className="progress-bar">
+										<h2>Carbs</h2>
+										<div>
+											<progress
+												max={macros.carbohydrates}
+												value={carbs}
+												className="bar"
+											></progress>
+										</div>
 										<p>
-											{macros.carbohydrates} / {carbs && <span>{carbs}</span>}
+											{macros.carbohydrates}g /{" "}
+											{carbs && <span className="total-logged">{carbs}g</span>}
 										</p>
 									</div>
 								</div>

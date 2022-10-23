@@ -11,6 +11,11 @@ function FoodDetails(props) {
 
 	const [food, setFood] = useState(null);
 
+	const exit = () => {
+		props.setOverlay("");
+		props.setFoodDetailsCard(false);
+	};
+
 	useEffect(() => {
 		// const food = props.food;
 		// const searchedFood = props.searchedFood;
@@ -20,6 +25,9 @@ function FoodDetails(props) {
 
 	return (
 		<div className="box food-details-card">
+			<div onClick={exit} className="close-btn">
+				<img src="images/close.png"></img>
+			</div>
 			<h1>{props.food.name}</h1>
 
 			<p className="cals">{props.food.calories.toFixed()} KCAL</p>

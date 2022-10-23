@@ -74,56 +74,31 @@ function CustomFood(props) {
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box custom-food">
 				<div className="mr-helper">
-					<div className="name-container">
-						<label>Name</label>
-						<input type="text" name="name" onChange={handleName} />
-					</div>
-
 					<div className="input-container">
-						<div>
-							<div>
-								<label>Calories</label>
-								<input
-									type="number"
-									name="calories"
-									onChange={handleCalories}
-									className="input"
-								/>
-							</div>
-							<div>
-								<label>Fat</label>
-								<input
-									type="number"
-									name="fat"
-									onChange={handleFat}
-									className="input"
-								/>
-							</div>
+						<div className="custom-input">
+							<label>Name:</label>
+							<input type="text" name="name" onChange={handleName} />
+						</div>
+						<div className="custom-input">
+							<label>Calories:</label>
+							<input type="number" name="calories" onChange={handleCalories} />
+						</div>
+						<div className="custom-input">
+							<label>Fat:</label>
+							<input type="number" name="fat" onChange={handleFat} />
 						</div>
 
-						<div>
-							<div>
-								<label>Protein</label>
-								<input
-									type="number"
-									name="protein"
-									onChange={handleProtein}
-									className="input"
-								/>
-							</div>
-							<div>
-								<label>Carbs</label>
-								<input
-									type="number"
-									name="carbs"
-									onChange={handleCarbs}
-									className="input"
-								/>
-							</div>
+						<div className="custom-input">
+							<label>Protein:</label>
+							<input type="number" name="protein" onChange={handleProtein} />
+						</div>
+						<div className="custom-input mb-helper">
+							<label>Carbs:</label>
+							<input type="number" name="carbs" onChange={handleCarbs} />
 						</div>
 					</div>
 
-					{errMessage && <p>{errMessage}</p>}
+					{errMessage && <p className="message err-message">{errMessage}</p>}
 
 					<button type="submit">Add food</button>
 				</div>

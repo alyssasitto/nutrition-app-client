@@ -95,3 +95,15 @@
 	background-color: transparent;
 	border: none;
 }
+
+.search-message {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, -10px);
+	background-color: #cdc2e9;
+	font-weight: bold;
+	border-radius: 10px;
+	padding: 0.5rem;
+	font-size: 1.5rem;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+}

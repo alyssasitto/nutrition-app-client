@@ -22,6 +22,9 @@ function SearchPage(props) {
 	const [foodContainer, setFoodContainer] = useState("");
 	const [image, setImage] = useState(true);
 	const [errMessage, setErrMessage] = useState(null);
+	const [successMessage, setSuccessMessage] = useState(null);
+
+	const [showMessage, setShowMessage] = useState("hide");
 
 	const [food, setFood] = useState(null);
 
@@ -75,9 +78,15 @@ function SearchPage(props) {
 			})
 			.then((response) => {
 				console.log(response);
+				setSuccessMessage(response.data.message);
+				setShowMessage("show-message");
+				setTimeout(() => {
+					setShowMessage("hide");
+				}, 1000);
 			})
 			.catch((err) => {
 				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 	};
 
@@ -162,6 +171,12 @@ function SearchPage(props) {
 				></img>
 			)}
 
+			{successMessage && (
+				<p className={"message success-message search-message " + showMessage}>
+					{successMessage}
+				</p>
+			)}
+
 			{foodList !== [] && (
 				<div className={"sp-food-container " + foodContainer}>
 					{foodList.map((element, index) => {
@@ -178,7 +193,6 @@ function SearchPage(props) {
 										onClick={() =>
 											addFood(
 												element.food.label,
-
 												element.food.nutrients.ENERC_KCAL,
 												element.food.nutrients.FAT,
 												element.food.nutrients.PROCNT,
