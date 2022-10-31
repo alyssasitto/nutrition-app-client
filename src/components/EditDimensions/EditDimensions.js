@@ -149,7 +149,7 @@ function EditDimensions(props) {
 				<div>
 					<form
 						onSubmit={handleSubmit}
-						className="box edit-form dimensions-form"
+						className="box edit-form dimensions-form edit-dimensions-form"
 					>
 						<div onClick={exit} className="close-btn">
 							<img src="images/close.png"></img>

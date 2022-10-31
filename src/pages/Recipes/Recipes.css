@@ -37,6 +37,7 @@
 	right: -30px;
 	bottom: 45px;
 }
+
 .filter {
 	font-size: 1.6rem;
 }
@@ -98,4 +99,86 @@
 .recipe-options {
 	display: flex;
 	gap: 2rem;
+}
+
+.recipe-hero {
+	margin-top: 13rem;
+}
+
+@media screen and (min-width: 780px) {
+	.recipe-search-container {
+		margin-top: 5rem;
+	}
+
+	.recipe-search-container input {
+		padding: 0.5rem;
+		font-size: 4rem;
+	}
+
+	.filter-btn {
+		margin-bottom: 4rem;
+	}
+
+	.filter {
+		font-size: 3.5rem;
+	}
+
+	.plus-icon {
+		height: 4.5rem;
+	}
+
+	.inner-box {
+		font-size: 3rem;
+		height: fit-content;
+		width: 65vw;
+	}
+
+	.recipe-search-container button {
+		font-size: 3rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.recipe-search-container {
+		transform: scale(0.6);
+	}
+
+	.recipe-search-container input {
+		padding: 2rem;
+	}
+
+	.recipe-hero {
+		width: 55rem;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%);
+		margin-top: 5rem;
+		z-index: -1;
+	}
+
+	.filter {
+		font-size: 4rem;
+	}
+
+	.plus-icon {
+		height: 5rem;
+	}
+
+	.filter-btn {
+		margin-bottom: 7rem;
+	}
+
+	.inner-box {
+		padding: 3rem;
+		width: 40vw;
+		margin-top: -7rem;
+	}
+
+	.cuisine-box {
+		gap: 3rem;
+	}
+
+	.recipe-loading {
+		margin-top: 8rem;
+	}
 }

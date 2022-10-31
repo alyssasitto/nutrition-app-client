@@ -38,27 +38,30 @@ function SingleRecipePage() {
 					<div>
 						<div className="mb-helper ingredients">
 							<h2>Ingredients</h2>
-							{recipe.extendedIngredients.map((el, index) => {
-								return (
-									<p className="ingredient">
-										<span>
-											{el.measures.us.amount} {el.measures.us.unitLong}
-										</span>{" "}
-										{el.name}
-									</p>
-								);
-							})}
+							{recipe.extendedIngredients &&
+								recipe.extendedIngredients.map((el, index) => {
+									return (
+										<p className="ingredient">
+											<span>
+												{el.measures.us.amount} {el.measures.us.unitLong}
+											</span>{" "}
+											{el.name}
+										</p>
+									);
+								})}
 						</div>
 
 						<div className="directions">
 							<h2>Directions</h2>
-							{recipe.analyzedInstructions[0].steps.map((el, index) => {
-								return (
-									<p className="instruction">
-										{index + 1}. {el.step}
-									</p>
-								);
-							})}
+							{recipe.analyzedInstructions[0] &&
+								recipe.analyzedInstructions[0].steps.map((el, index) => {
+									return (
+										<p className="instruction">
+											<span className="instrution-num">{index + 1}.</span>{" "}
+											{el.step}
+										</p>
+									);
+								})}
 						</div>
 					</div>
 				</div>

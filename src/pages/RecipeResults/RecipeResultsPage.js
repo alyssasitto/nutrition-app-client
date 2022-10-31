@@ -15,10 +15,15 @@ function RecipeResultsPage() {
 		: [];
 	const [recipeList, setRecipeList] = useState(initialState);
 	const [errMessage, setErrMessage] = useState(null);
+	const [loading, setLoading] = useState(false);
+	const [showRecipes, setShowRecipes] = useState(true);
 
 	const navigate = useNavigate();
 
 	const viewRecipe = (id) => {
+		setShowRecipes(false);
+		setLoading(true);
+
 		axios
 			.get(`${API_URL}/details/${id}`)
 			.then((response) => {
@@ -26,6 +31,8 @@ function RecipeResultsPage() {
 					"single recipe",
 					JSON.stringify(response.data.recipeInfo)
 				);
+
+				setLoading(false);
 
 				navigate(`/details/${id}`);
 			})
@@ -53,18 +60,22 @@ function RecipeResultsPage() {
 				</div>
 			)}
 
-			<div className="recipes">
-				{recipeList &&
-					recipeList.map((el, index) => {
-						return (
-							<div className="recipe">
-								<h2>{el.title}</h2>
-								<img src={el.image}></img>
-								<button onClick={() => viewRecipe(el.id)}>View Recipe</button>
-							</div>
-						);
-					})}
-			</div>
+			{loading && <img src="images/loading.gif" className="loading-icon"></img>}
+
+			{showRecipes && (
+				<div className="recipes">
+					{recipeList &&
+						recipeList.map((el, index) => {
+							return (
+								<div className="recipe">
+									<h2>{el.title}</h2>
+									<img src={el.image}></img>
+									<button onClick={() => viewRecipe(el.id)}>View Recipe</button>
+								</div>
+							);
+						})}
+				</div>
+			)}
 		</div>
 	);
 }

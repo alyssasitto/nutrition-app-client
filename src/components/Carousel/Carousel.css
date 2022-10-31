@@ -67,3 +67,17 @@
 .right-arrow {
 	right: 10px;
 }
+
+@media screen and (min-width: 780px) {
+	.left-arrow,
+	.right-arrow {
+		width: 7rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.left-arrow,
+	.right-arrow {
+		width: 5.5rem;
+	}
+}

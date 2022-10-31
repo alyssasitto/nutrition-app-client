@@ -92,4 +92,8 @@ div.nav.show ul {
 	.list-item {
 		font-size: 2.5rem;
 	}
+
+	.navbar ul {
+		padding-right: 2rem;
+	}
 }

@@ -77,7 +77,7 @@ function Dimensions(props) {
 	console.log(activityLevel, goal);
 
 	return (
-		<div className="edit-page">
+		<div>
 			<form
 				onSubmit={handleSubmit}
 				className="dimensions-form signup-dimensions-form home-form"

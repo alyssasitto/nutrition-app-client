@@ -15,7 +15,6 @@ function RecipePage() {
 
 	const [errMessage, setErrMessage] = useState(null);
 
-	// const [recipeList, setRecipeList] = useState(initialState);
 	const [recipe, setRecipe] = useState("");
 	const [recipeInfo, setRecipeInfo] = useState({});
 	const [filterOptions, setFilterOptions] = useState("hide");
@@ -23,6 +22,8 @@ function RecipePage() {
 	const [cuisine, setCuisine] = useState([]);
 	const [diet, setDiet] = useState([]);
 	const [intolerance, setIntolerance] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [img, setImg] = useState(true);
 
 	const navigate = useNavigate();
 
@@ -80,6 +81,10 @@ function RecipePage() {
 			intolerance,
 		};
 
+		setLoading(true);
+
+		setImg(false);
+
 		axios
 			.post(`${API_URL}/recipe`, body)
 			.then((response) => {
@@ -89,6 +94,8 @@ function RecipePage() {
 					"recipe list",
 					JSON.stringify(response.data.recipeList)
 				);
+
+				setLoading(false);
 
 				// <redirect to={<RecipeResultsPage />} />;
 
@@ -415,15 +422,15 @@ function RecipePage() {
 					Search
 				</button>
 			</form>
-			{/* {recipeList && recipeList.length === 0 && (
-				<div className="no-results-container">
-					<img src="images/no-results.png" className="no-results"></img>
-					<p>
-						Could not find any recipes. Please try to search for something else
-						or adjust search filters.
-					</p>
-				</div>
-			)} */}
+
+			{loading && (
+				<img
+					src="images/loading.gif"
+					className="loading-icon recipe-loading"
+				></img>
+			)}
+			{img && <img src="images/hero2.jpeg" className="recipe-hero"></img>}
+			{/* <img src="images/hero2.jpeg" className="recipe-hero"></img> */}
 		</div>
 	);
 }

@@ -113,6 +113,18 @@ select {
 }
 
 @media screen and (min-width: 760px) {
+	.signup-dimensions-form {
+		padding: 0 10rem;
+	}
+
+	.label {
+		font-size: 4rem;
+	}
+
+	.sub-label {
+		font-size: 3.5rem;
+	}
+
 	.dimensions-form input[type="number"] {
 		width: 15rem;
 	}
@@ -123,9 +135,36 @@ select {
 
 	.gender {
 		gap: 2rem;
+		font-size: 3.5rem;
 	}
 
 	.gender-contain {
 		padding-right: 8rem;
+	}
+
+	.signup-dimensions-form button {
+		font-size: 3.5rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.label {
+		font-size: 2.8rem;
+	}
+
+	.sub-label,
+	.gender {
+		font-size: 2.5rem;
+	}
+
+	.home-form {
+		width: 40vw;
+		margin: auto;
+		margin-top: 5rem;
+		padding: 2rem;
+		border-radius: 10px;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 	}
 }
