@@ -25,7 +25,7 @@ function Navbar() {
 
 	return (
 		<div>
-			<nav>
+			<nav className="navbar">
 				<p>logo</p>
 				<div onClick={handleClick} className="buttons">
 					{!clicked && (
@@ -80,6 +80,11 @@ function Navbar() {
 								<li>
 									<Link to="/" className="list-item">
 										Home
+									</Link>
+								</li>
+								<li>
+									<Link to="/recipes" className="list-item">
+										Recipes
 									</Link>
 								</li>
 								<li>

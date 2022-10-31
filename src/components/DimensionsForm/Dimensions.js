@@ -68,9 +68,7 @@ function Dimensions(props) {
 					headers: { Authorization: `Bearer ${storedToken}` },
 				});
 			})
-			.then((macros) => {
-				console.log(macros);
-			})
+			.then((macros) => {})
 			.catch((err) => {
 				setErrMessage(err.response.data.message);
 			});

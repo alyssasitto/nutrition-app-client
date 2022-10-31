@@ -11,7 +11,6 @@ const API_URL = "http://localhost:5005";
 
 function UserHomePage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	const { user } = useContext(AuthContext);
 	const [dimensions, setDimensions] = useState(null);
 	const [macros, setMacros] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -19,6 +18,7 @@ function UserHomePage() {
 	const [carbs, setCarbs] = useState(null);
 	const [protein, setProtein] = useState(null);
 	const [calories, setCalories] = useState(null);
+	const [errMessage, setErrMessage] = useState(null);
 
 	const storedToken = localStorage.getItem("authToken");
 
@@ -30,7 +30,6 @@ function UserHomePage() {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
 				setLoading(false);
 				setDimensions(response.data.dimensions);
 
@@ -39,7 +38,6 @@ function UserHomePage() {
 				});
 			})
 			.then((response) => {
-				console.log("MACROS RESPONSE", response);
 				setMacros(response.data.macros);
 
 				return axios.get(`${API_URL}/logged-macros/${date}`, {
@@ -53,7 +51,6 @@ function UserHomePage() {
 					setProtein(0);
 					setCalories(0);
 				} else {
-					console.log("ewjfnijnfeowe", response);
 					setFat(response.data.macros.fatGrams.toFixed());
 					setCarbs(response.data.macros.carbGrams.toFixed());
 					setProtein(response.data.macros.proteinGrams.toFixed());
@@ -61,7 +58,7 @@ function UserHomePage() {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 
 		setShow("");
@@ -70,7 +67,9 @@ function UserHomePage() {
 	}, []);
 
 	return (
-		<div className={bg}>
+		<div className={bg + " user-home-page"}>
+			{errMessage && <p>{errMessage}</p>}
+
 			{loading && (
 				<>
 					<img
@@ -103,67 +102,73 @@ function UserHomePage() {
 						<div className="progress-container">
 							{macros && (
 								<div className="progress-bars">
-									<div className="progress-bar">
-										<h2>Calories</h2>
+									<div className="inner-container">
+										<div className="progress-bar">
+											<h2>Calories</h2>
 
-										<div>
-											<progress
-												max={macros.calories}
-												value={calories}
-												className="bar"
-											></progress>
-										</div>
+											<div>
+												<progress
+													max={macros.calories}
+													value={calories}
+													className="bar"
+												></progress>
+											</div>
 
-										<p>
-											{macros.calories} /{" "}
-											{calories && (
-												<span className="total-logged">{calories}</span>
-											)}
-										</p>
-									</div>
-									<div className="progress-bar">
-										<h2>Fat</h2>
-										<div>
-											<progress
-												max={macros.fat}
-												value={fat}
-												className="bar"
-											></progress>
+											<p>
+												{macros.calories} /{" "}
+												{calories && (
+													<span className="total-logged">{calories}</span>
+												)}
+											</p>
 										</div>
-										<p>
-											{macros.fat}g /{" "}
-											{fat && <span className="total-logged">{fat}g</span>}
-										</p>
-									</div>
-									<div className="progress-bar">
-										<h2>Protein</h2>
-										<div>
-											<progress
-												max={macros.protein}
-												value={protein}
-												className="bar"
-											></progress>
+										<div className="progress-bar">
+											<h2>Fat</h2>
+											<div>
+												<progress
+													max={macros.fat}
+													value={fat}
+													className="bar"
+												></progress>
+											</div>
+											<p>
+												{macros.fat}g /{" "}
+												{fat && <span className="total-logged">{fat}g</span>}
+											</p>
 										</div>
-										<p>
-											{macros.protein}g /{" "}
-											{protein && (
-												<span className="total-logged">{protein}g</span>
-											)}
-										</p>
 									</div>
-									<div className="progress-bar">
-										<h2>Carbs</h2>
-										<div>
-											<progress
-												max={macros.carbohydrates}
-												value={carbs}
-												className="bar"
-											></progress>
+									<div className="inner-container">
+										<div className="progress-bar">
+											<h2>Protein</h2>
+											<div>
+												<progress
+													max={macros.protein}
+													value={protein}
+													className="bar"
+												></progress>
+											</div>
+											<p>
+												{macros.protein}g /{" "}
+												{protein && (
+													<span className="total-logged">{protein}g</span>
+												)}
+											</p>
 										</div>
-										<p>
-											{macros.carbohydrates}g /{" "}
-											{carbs && <span className="total-logged">{carbs}g</span>}
-										</p>
+										<div className="progress-bar">
+											<h2>Carbs</h2>
+											<div>
+												<progress
+													max={macros.carbohydrates}
+													value={carbs}
+													className="bar"
+												></progress>
+											</div>
+											<p>
+												{macros.carbohydrates}g /{" "}
+												{carbs && (
+													<span className="total-logged">{carbs}g</span>
+												)}
+											</p>
+										</div>
 									</div>
 								</div>
 							)}

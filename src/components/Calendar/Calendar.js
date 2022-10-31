@@ -1,34 +1,29 @@
 import Calendar from "react-calendar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+// require("./Calendar.css");
 import "react-calendar/dist/Calendar.css";
-require("./Calendar.css");
 
 const API_URL = "http://localhost:5005";
 
 function CalendarComponent() {
 	const [date, setDate] = useState(new Date());
-	const [calender, setCalender] = useState("hide");
+	const [calendar, setCalender] = useState("hide");
 
 	const onChange = (date) => {
 		setDate(date);
 	};
 
 	const handleCalender = () => {
-		if (calender === "hide") {
+		if (calendar === "hide") {
 			setCalender("show");
 		}
 
-		if (calender === "show") {
+		if (calendar === "show") {
 			setCalender("hide");
 		}
 	};
 
-	const dateString = date.toDateString();
-
-	console.log(dateString);
-
-	console.log(date);
 	return (
 		<div>
 			<img
@@ -36,7 +31,11 @@ function CalendarComponent() {
 				onClick={handleCalender}
 				className="icon"
 			></img>
-			<Calendar onChange={onChange} value={date} className={calender} />
+			<Calendar
+				onChange={onChange}
+				value={date}
+				className={calendar + " calendar"}
+			/>
 		</div>
 	);
 }

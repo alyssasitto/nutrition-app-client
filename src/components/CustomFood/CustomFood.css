@@ -1,7 +1,7 @@
 .custom-food {
-	top: 25%;
-	padding: 2rem 4rem;
-	background-color: #cde8eb;
+	top: 20%;
+	padding: 4rem 4rem 2rem;
+	background-color: #e6f0f1;
 }
 
 .custom-food label {
@@ -11,7 +11,7 @@
 
 .custom-food button {
 	font-size: 2rem;
-	background-color: #a9accd !important;
+	background-color: #ffb2a4 !important;
 	padding: 1rem;
 	border-radius: 5px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -48,6 +48,7 @@
 	flex-direction: column;
 	gap: 2rem;
 	margin-bottom: 1rem;
+	margin-top: 2rem;
 }
 
 .custom-input {
@@ -55,5 +56,30 @@
 	justify-content: space-between;
 }
 
-.mr-helper {
+@media screen and (min-width: 760px) {
+	.custom-food {
+		padding: 8rem 10rem;
+	}
+
+	.custom-food label {
+		font-size: 4rem;
+	}
+
+	.custom-food button {
+		font-size: 4rem;
+
+		padding: 1rem;
+	}
+
+	.custom-food input {
+		width: 20rem;
+		font-size: 3rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.custom-food {
+		transform: translate(-50%, -10%) scale(0.8);
+		width: 50%;
+	}
 }

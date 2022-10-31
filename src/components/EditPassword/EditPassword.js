@@ -39,17 +39,8 @@ function EditPassword(props) {
 				setErrMessage(null);
 			})
 			.catch((err) => {
-				console.log(err);
 				setErrMessage(err.response.data.message);
 			});
-	};
-
-	const showRequirements = () => {
-		if (requirements === "") {
-			setRequirements("show-requirements");
-		} else {
-			setRequirements("");
-		}
 	};
 
 	const exit = () => {
@@ -66,20 +57,13 @@ function EditPassword(props) {
 
 				<label htmlFor="new-password" className="password-container">
 					New password
-					<div className={"password-requirements-container " + requirements}>
-						<img
-							src="images/info-icon.png"
-							onClick={showRequirements}
-							className="info-icon"
-						></img>
-					</div>
 				</label>
 				<input
 					type="password"
 					name="new-password"
 					value={newPassword}
 					onChange={handleNewPassword}
-					className="mb-helper"
+					className="mb-helper padding-helper"
 				/>
 				<label htmlFor="confirm-password">Confirm new password</label>
 				<input
@@ -87,7 +71,7 @@ function EditPassword(props) {
 					name="confirm-password"
 					value={confirmNewPassword}
 					onChange={handleConfirmNewPassword}
-					className="mb-input"
+					className="mb-input padding-helper"
 				/>
 
 				{errMessage && <p className="message edit-err-message">{errMessage}</p>}

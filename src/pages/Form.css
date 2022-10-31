@@ -1,5 +1,8 @@
 .form-page {
 	padding-bottom: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .form-page label {
@@ -8,28 +11,24 @@
 	color: #004044;
 }
 
-/* .form {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-} */
-
 .form-page input {
 	padding: 1rem;
 	border-radius: 3px;
 	border: 1px solid #004044;
 	width: 60vw;
+	border: 1px solid black;
 }
 
-.form-page {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.form-page a {
+	font-weight: bold;
 }
 
 .hero {
 	width: 24rem;
+}
+
+.input-container {
+	position: relative;
 }
 
 .input-icon {
@@ -57,10 +56,6 @@
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.input-container {
-	position: relative;
-}
-
 .password-container {
 	display: flex;
 	align-items: center;
@@ -74,25 +69,6 @@
 .password-requirements-container {
 	display: flex;
 	position: relative;
-}
-
-.password-requirements-container.show-requirements::before {
-	content: "Password must include: \A . One uppercase letter \A . One lowercase letter \A . More than 8 characters \A . At least one special character";
-	white-space: pre-wrap;
-	line-height: 1.2;
-	font-size: 1.6rem;
-	padding: 1rem;
-	height: 11rem;
-	width: 18rem;
-	color: rgb(231, 16, 16);
-	background-color: #ffbfb3;
-	position: absolute;
-	right: 0;
-	transform: translate(45%, -110%);
-	z-index: 5;
-	border-radius: 4px;
-	box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.3),
-		0 0.0625rem 0.125rem rgba(0, 0, 0, 0.2);
 }
 
 .message-container {
@@ -117,4 +93,129 @@
 
 .mb-helper {
 	margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 760px) {
+	.form-page {
+		margin-top: 10rem;
+	}
+
+	.form {
+		width: 50vw;
+	}
+
+	.hero {
+		width: 40rem;
+	}
+
+	.form-page h1 {
+		font-size: 5rem;
+	}
+
+	.form-page label {
+		font-size: 3.5rem;
+	}
+
+	.form-page input {
+		padding: 1.5rem;
+		font-size: 2.5rem;
+		width: 50vw;
+	}
+
+	.input-icon {
+		width: 3.5rem;
+	}
+
+	.submit-btn {
+		font-size: 4rem;
+		width: 50vw;
+	}
+
+	.question {
+		font-size: 2.5rem;
+	}
+
+	.success-message,
+	.err-message {
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.form-page {
+		margin-top: 4rem;
+		margin-bottom: 3rem;
+		width: 60vw;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%);
+		border-radius: 10px;
+		background-color: #d1eae9;
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+			rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+			rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	}
+
+	.form-page h1 {
+		font-size: 3.5rem;
+	}
+
+	.form-page label {
+		margin-bottom: 0;
+		font-size: 2.8rem;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	.form input {
+		width: 100%;
+		padding: 0.8rem;
+		width: 100%;
+		border: none;
+	}
+
+	form .submit-btn {
+		width: 60%;
+		font-size: 3rem;
+	}
+
+	.form-input {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 80%;
+	}
+
+	.hero {
+		width: 30rem;
+	}
+
+	.signup-page .hero {
+		padding: 1.5rem 0;
+	}
+
+	.input-icon {
+		width: 2.5rem;
+	}
+
+	.err-message,
+	.success-message {
+		font-size: 2rem;
+	}
+
+	.question {
+		font-size: 2rem;
+		color: #004044;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	.form-page {
+		width: 50vw;
+	}
 }

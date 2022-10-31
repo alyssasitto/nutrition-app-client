@@ -76,7 +76,7 @@
 
 .label-helper {
 	font-weight: normal !important;
-	font-size: 1.7rem !important;
+	font-size: 1.7rem;
 	margin-right: 1.5rem;
 }
 
@@ -126,4 +126,113 @@ div label.password-container {
 
 .submit-edit {
 	padding: 0.8rem !important;
+}
+
+@media screen and (min-width: 760px) {
+	.box {
+		/* height: 40vh; */
+	}
+
+	.close-btn {
+		width: 5rem;
+
+		top: 10px;
+		right: 20px;
+	}
+
+	.edit-form {
+		justify-content: center;
+	}
+
+	.edit-form label {
+		font-size: 4rem;
+	}
+
+	.edit-name,
+	.edit-email,
+	.edit-password {
+		padding: 10rem 2rem;
+	}
+
+	.padding-helper {
+		padding: 1.5rem;
+		font-size: 3.5rem;
+	}
+
+	.dimensions-form {
+		padding: 10rem 2rem;
+		top: 20%;
+	}
+
+	.dimensions-form input {
+		font-size: 3.5rem;
+	}
+
+	.dimensions-form {
+		font-size: 3rem;
+	}
+
+	.edit-page button.edit-btn {
+		font-size: 3.5rem;
+		width: 100%;
+	}
+
+	.success-message,
+	.edit-err-message {
+		font-size: 3rem;
+	}
+
+	.edit-label {
+	}
+
+	.dimensions-form .gender {
+		margin-right: 4rem;
+	}
+
+	input[type="radio"] {
+		transform: scale(1.8);
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.edit-name,
+	.edit-email,
+	.edit-password {
+		padding: 5rem 2rem;
+		top: 25%;
+		width: 35%;
+		transform: translate(-50%) scale(0.8);
+	}
+
+	.edit-form label {
+		font-size: 3rem;
+	}
+
+	.dimensions-form {
+		padding: 10rem 7rem;
+	}
+
+	.dimensions-form input {
+		font-size: 3rem;
+	}
+
+	.padding-helper {
+		padding: 1rem;
+		font-size: 2.5rem;
+	}
+
+	.edit-page button.edit-btn {
+		font-size: 3rem;
+	}
+
+	.dimensions-form {
+		top: 5%;
+		width: 50%;
+
+		transform: translate(-50%) scale(0.8);
+	}
+
+	input[type="radio"] {
+		transform: scale(1.5) !important;
+	}
 }

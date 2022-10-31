@@ -1,0 +1,39 @@
+.single-recipe {
+	padding: 1rem 1rem 2rem;
+}
+
+.single-recipe img {
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+.single-recipe h1 {
+	text-align: center;
+}
+
+.single-recipe h2 {
+	font-size: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+.ingredient,
+.instruction {
+	font-size: 1.6rem;
+	color: #0e5b56;
+}
+
+.directions,
+.ingredients {
+	background-color: #fff;
+	padding: 1.5rem;
+	border-radius: 4px;
+	box-shadow: rgba(0, 0, 0, 0.189) 0px 7px 29px 0px;
+}
+
+.err-image {
+	width: 30rem;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}

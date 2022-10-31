@@ -10,7 +10,7 @@ require("./SearchPage.css");
 
 const API_URL = "http://localhost:5005";
 
-function SearchPage(props) {
+function SearchPage() {
 	const { user } = useContext(AuthContext);
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 
@@ -29,8 +29,6 @@ function SearchPage(props) {
 	const [food, setFood] = useState(null);
 
 	const location = useLocation();
-
-	const navigate = useNavigate();
 
 	const storedToken = localStorage.getItem("authToken");
 
@@ -77,7 +75,6 @@ function SearchPage(props) {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
 				setSuccessMessage(response.data.message);
 				setShowMessage("show-message");
 				setTimeout(() => {
@@ -85,7 +82,6 @@ function SearchPage(props) {
 				}, 1000);
 			})
 			.catch((err) => {
-				console.log(err);
 				setErrMessage(err.response.data.message);
 			});
 	};
@@ -107,13 +103,11 @@ function SearchPage(props) {
 					headers: { Authorization: `Bearer ${storedToken}` },
 				})
 				.then((response) => {
-					console.log("THIS IS THE RESONSE", response);
 					setFoodContainer("show-container");
 					setFoodList(response.data.foodArray);
 					setLoading(false);
 				})
 				.catch((err) => {
-					console.log("THIS IS THE ERROR", err);
 					setErrMessage(err.response.data.message);
 				});
 		}

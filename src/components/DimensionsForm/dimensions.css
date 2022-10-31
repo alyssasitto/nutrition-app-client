@@ -111,3 +111,21 @@ select {
 .dimensions-err {
 	margin-bottom: 1rem;
 }
+
+@media screen and (min-width: 760px) {
+	.dimensions-form input[type="number"] {
+		width: 15rem;
+	}
+
+	.select-container select {
+		width: 25rem;
+	}
+
+	.gender {
+		gap: 2rem;
+	}
+
+	.gender-contain {
+		padding-right: 8rem;
+	}
+}

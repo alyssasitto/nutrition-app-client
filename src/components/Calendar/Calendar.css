@@ -6,13 +6,68 @@
 	display: block;
 }
 
-/* .react-calendar__tile .react-calendar__tile--now .react-calendar__month-view__days__day */
-/* 
-.react-calendar__tile--now {
-	background-color: pink !important;
+abbr[title] {
+	text-decoration: none;
 }
 
-.react-calendar__tile--active,
-.react-calendar__tile--active:enabled:hover {
-	background-color: rebeccapurple !important;
-} */
+@media screen and (min-width: 760px) {
+	.react-calendar {
+		height: 60rem;
+		width: 70rem;
+		padding-top: 1rem;
+	}
+
+	abbr {
+		font-size: 2.5rem;
+	}
+
+	.react-calendar__tile {
+		max-width: 100%;
+
+		background: none;
+		text-align: center;
+		line-height: 1.8;
+		font-size: 3.5rem;
+	}
+
+	.react-calendar__navigation button {
+		font-size: 3rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.react-calendar {
+		transform: scale(0.9);
+	}
+
+	.calender-container .hide {
+		display: block;
+	}
+
+	.calendar-icon {
+		display: none;
+	}
+
+	.react-calendar {
+		height: fit-content;
+		width: fit-content;
+		padding: 4rem 0;
+	}
+
+	abbr {
+		font-size: 1.6rem;
+	}
+
+	.react-calendar__navigation__label__labelText,
+	.react-calendar__navigation__label__labelText--from {
+		font-size: 2rem;
+	}
+
+	.react-calendar__tile {
+		max-width: 100%;
+		background: none;
+		text-align: center;
+		line-height: 1.8;
+		font-size: 1.6rem;
+	}
+}

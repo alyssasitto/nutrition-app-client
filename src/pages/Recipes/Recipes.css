@@ -1,0 +1,101 @@
+.recipe-page {
+	padding: 3rem 0;
+}
+
+.recipe-page h2 {
+	color: #004044;
+}
+
+.recipe-search-container {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 70vw;
+	margin: auto;
+}
+
+.recipe-search-container input {
+	width: 100%;
+	padding: 0.5rem;
+	font-size: 1.7rem;
+}
+
+.recipe-search-container button {
+	position: absolute;
+	right: 0;
+	height: 100%;
+	padding: 0 1.5rem;
+	background-color: #bae0dd;
+	border: none;
+	font-weight: bold;
+}
+
+.filter-box {
+	position: absolute;
+	/* height: 40px;
+	width: 40px; */
+	right: -30px;
+	bottom: 45px;
+}
+.filter {
+	font-size: 1.6rem;
+}
+
+.filter-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.plus-icon {
+	height: 2rem;
+	transition: all 0.2s;
+}
+
+.plus-icon.rotate {
+	transform: rotate(-45deg);
+}
+
+.inner-box {
+	background-color: #cceaea;
+	position: absolute;
+	padding: 1rem;
+	font-size: 1.6rem;
+	right: 0;
+	height: 55rem;
+	width: 70vw;
+	border-radius: 10px;
+	z-index: 2;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.cuisine-box {
+	display: flex;
+	gap: 1rem;
+}
+
+.intolerance-box {
+	display: flex;
+	gap: 2rem;
+}
+
+.recipe-input {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.recipe-input input {
+	width: 2rem;
+}
+
+.show {
+	display: block;
+}
+
+.recipe-options {
+	display: flex;
+	gap: 2rem;
+}

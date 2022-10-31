@@ -13,8 +13,18 @@
 	transform: translate(-50%);
 }
 
+.inner-container {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+}
+
 .progress-container {
 	padding: 2rem 0 3rem;
+}
+
+.progress-container h2 {
+	color: #438686;
 }
 
 .progress-bars {
@@ -27,8 +37,6 @@
 }
 
 .progress-bar {
-	width: 100%;
-
 	width: 70vw;
 	padding: 2rem 1rem;
 	display: flex;
@@ -48,16 +56,12 @@
 	font-size: 1.7rem;
 }
 
-progress[value] {
-}
-
 .pb-container {
 	position: relative;
 	border-radius: 50%;
 }
 
 progress {
-	accent-color: blue;
 	width: 100%;
 	background-color: transparent;
 }
@@ -69,7 +73,7 @@ progress::-webkit-progress-bar {
 	padding: 1.5rem;
 }
 progress::-webkit-progress-value {
-	background-color: #39aea8;
+	background-color: #fe8b7c;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -84,4 +88,47 @@ progress::-webkit-progress-value {
 
 .user-home-hero {
 	width: 30rem;
+}
+
+@media screen and (min-width: 760px) {
+	.progress-bar h2 {
+		font-size: 3.5rem;
+	}
+
+	progress::-webkit-progress-bar {
+		padding: 2.5rem;
+	}
+
+	.progress-bar p {
+		font-size: 3rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.progress-bar h2 {
+		font-size: 3rem;
+	}
+
+	.progress-bars {
+		align-items: center;
+		justify-content: center;
+		margin-top: 10rem;
+	}
+
+	.progress-bar {
+		width: 45vw;
+		padding: 1rem;
+	}
+
+	progress::-webkit-progress-bar {
+		padding: 2rem;
+	}
+
+	.inner-container {
+		flex-direction: row;
+	}
+
+	.progress-bar p {
+		font-size: 2.5rem;
+	}
 }

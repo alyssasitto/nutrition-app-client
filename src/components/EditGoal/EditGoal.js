@@ -31,11 +31,8 @@ function EditGoal(props) {
 			})
 			.catch((err) => {
 				setErrMessage(err.response.data.message);
-				console.log(err);
 			});
 	};
-
-	console.log(goal);
 
 	return (
 		<div className="edit-page">

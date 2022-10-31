@@ -33,9 +33,6 @@ function SettingsPage() {
 	const [dimensions, setDimensions] = useState(false);
 	const [errMessage, setErrMesage] = useState(null);
 
-	// const [goalForm, setGoalForm] = useState(false);
-	// const [activityLevelForm, setActivityLevelForm] = useState(false);
-
 	const [name, setName] = useState(user.name);
 	const [email, setEmail] = useState(user.email);
 
@@ -46,8 +43,6 @@ function SettingsPage() {
 	const [gender, setGender] = useState(null);
 	const [goal, setGoal] = useState(null);
 	const [activityLevel, setActivityLevel] = useState(null);
-
-	const [chosenActivityLevel, setChosenActivityLevel] = useState("");
 
 	const [female, setFemale] = useState("female");
 	const [male, setMale] = useState("male");
@@ -83,8 +78,6 @@ function SettingsPage() {
 		setEmailForm(false);
 		setPasswordForm(false);
 		setDimensionsForm(false);
-		// setGoalForm(false);
-		// setActivityLevelForm(false);
 	};
 
 	useEffect(() => {
@@ -93,8 +86,6 @@ function SettingsPage() {
 				headers: { Authorization: `Bearer ${storedToken} ` },
 			})
 			.then((response) => {
-				console.log("this is the response,", response);
-
 				if (response.data.dimensions === null) {
 					setLoading(false);
 					setDimensions(false);
@@ -125,7 +116,7 @@ function SettingsPage() {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMesage(err.response.data.message);
 			});
 
 		setShow("");
@@ -192,7 +183,7 @@ function SettingsPage() {
 									type="text"
 									name="name"
 									value={name}
-									className="padding-helper"
+									className="padding-helper input-helper"
 									disabled
 								/>
 							</div>
@@ -205,7 +196,13 @@ function SettingsPage() {
 						<div className="container">
 							<div>
 								<label htmlFor="email">Email</label>
-								<input type="email" name="email" value={email} disabled />
+								<input
+									type="email"
+									name="email"
+									value={email}
+									className="input-helper"
+									disabled
+								/>
 							</div>
 
 							<button onClick={editEmail} className="edit-btn">
@@ -216,7 +213,12 @@ function SettingsPage() {
 						<div className="container">
 							<div>
 								<label htmlFor="password">Password</label>
-								<input type="password" name="password" disabled />
+								<input
+									type="password"
+									name="password"
+									className="input-helper"
+									disabled
+								/>
 							</div>
 
 							<button onClick={editPassword} className="edit-btn">

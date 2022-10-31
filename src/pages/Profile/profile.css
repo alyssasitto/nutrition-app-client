@@ -144,3 +144,130 @@
 	color: red;
 	text-align: right;
 }
+
+@media screen and (min-width: 760px) {
+	.date {
+		font-size: 3rem;
+	}
+
+	.calories {
+		font-size: 4rem;
+	}
+
+	.calendar-icon {
+		height: 7rem;
+	}
+
+	.meal-btn-container {
+		padding: 4rem;
+	}
+
+	.profile-page h3 {
+		font-size: 2.8rem;
+	}
+
+	.food-img {
+		width: 10rem;
+	}
+
+	.add-icon {
+		height: 5rem;
+	}
+
+	.custom-btn {
+		font-size: 3rem;
+	}
+
+	.food-container {
+		padding: 2rem;
+	}
+
+	.food-container p,
+	.delete-btn {
+		font-size: 3rem;
+	}
+
+	.loading-icon {
+		width: 15rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.profile-page {
+		max-height: 100vh;
+	}
+
+	.profile-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100vw;
+		gap: 2rem;
+		padding: 0 3rem;
+
+		/* align-items: flex-start; */
+	}
+
+	.date {
+		font-size: 2rem;
+	}
+
+	.calories {
+		font-size: 3rem;
+	}
+
+	.meals {
+		/* justify-content: flex-start; */
+		width: 80%;
+		align-items: center;
+		position: relative;
+		left: 50%;
+		transform: translate(-50%);
+	}
+
+	.meal-btn-container {
+		width: 100%;
+		padding: 1.5rem;
+	}
+
+	.profile-meal-container {
+		width: 100%;
+	}
+
+	.food-container {
+		width: 100%;
+	}
+
+	.profile-page h3 {
+		font-size: 1.8rem;
+	}
+
+	.food-img {
+		width: 7rem;
+	}
+
+	.add-icon {
+		height: 3rem;
+	}
+
+	.custom-btn {
+		font-size: 1.7rem;
+	}
+
+	.foods {
+		height: 3.5rem;
+		overflow-x: hidden;
+	}
+
+	.food-container {
+		padding: 1rem;
+	}
+
+	.food-container p,
+	.delete-btn {
+		font-size: 1.8rem;
+	}
+
+	.loading-icon {
+		width: 10rem;
+	}
+}

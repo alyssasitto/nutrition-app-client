@@ -60,3 +60,64 @@ div.box.food-details-card {
 	margin-bottom: 1.5rem;
 	font-size: 1.6rem;
 }
+
+@media screen and (min-width: 780px) {
+	div.box.food-details-card {
+		height: 35%;
+	}
+
+	.food-details-card h1 {
+		font-size: 3.5rem;
+	}
+
+	.food-details-card .cals {
+		font-size: 3rem;
+	}
+
+	.macro-types h3 {
+		font-size: 3rem;
+	}
+
+	.macro-types img {
+		width: 8rem;
+	}
+
+	.macro p {
+		font-size: 3rem;
+	}
+
+	.food-details-card button {
+		font-size: 4rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	div.box.food-details-card {
+		height: 60%;
+		width: 45%;
+	}
+
+	.food-details-card h1 {
+		font-size: 3.5rem;
+	}
+
+	.food-details-card .cals {
+		font-size: 3rem;
+	}
+
+	.macro-types h3 {
+		font-size: 3rem;
+	}
+
+	.macro-types img {
+		width: 7rem;
+	}
+
+	.macro p {
+		font-size: 3rem;
+	}
+
+	.food-details-card button {
+		font-size: 3rem;
+	}
+}

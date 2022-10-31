@@ -7,7 +7,7 @@ nav {
 	margin-bottom: 2rem;
 }
 
-ul {
+.navbar ul {
 	margin-top: 40px;
 	margin-left: 30px;
 	display: none;
@@ -44,7 +44,7 @@ div.nav.show ul {
 .list-item {
 	display: inline-block;
 	font-size: 2.3rem;
-	color: #001517;
+	color: #221232;
 	font-weight: bold;
 	margin-bottom: 2.3rem;
 }
@@ -52,4 +52,44 @@ div.nav.show ul {
 .logout-btn {
 	background-color: transparent;
 	border: none;
+}
+
+/* styles for tablet */
+
+@media screen and (min-width: 760px) {
+	nav {
+		padding: 2rem;
+	}
+
+	.buttons {
+		display: none;
+	}
+
+	.nav {
+		width: fit-content;
+		background-color: transparent;
+		position: relative;
+	}
+
+	.navbar ul {
+		display: flex;
+		margin-top: 0;
+		margin-left: 0;
+		gap: 2.5rem;
+	}
+
+	.list-item {
+		margin-bottom: 0;
+		font-size: 3.5rem;
+	}
+}
+
+@media screen and (min-width: 1100px) {
+	nav {
+		padding: 1.5rem;
+	}
+
+	.list-item {
+		font-size: 2.5rem;
+	}
 }

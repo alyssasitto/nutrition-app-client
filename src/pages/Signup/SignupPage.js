@@ -38,16 +38,14 @@ function SignupPage() {
 
 		axios
 			.post(`${API_URL}/signup`, body)
-			.then((response) => {
+			.then(() => {
 				setSuccessMessage(true);
 				setErrMessage(null);
 				setName("");
 				setEmail("");
 				setPassword("");
-				console.log(response.data);
 			})
 			.catch((err) => {
-				console.log(err);
 				setSuccessMessage(false);
 				setErrMessage(err.response.data.message);
 			});
@@ -60,11 +58,11 @@ function SignupPage() {
 	}, []);
 
 	return (
-		<div className={bg + " form-page"}>
-			<img src="images/signup.jpeg" className="hero"></img>
+		<div className={bg + " form-page signup-page"}>
+			<img src="images/signup.png" className="hero"></img>
 			<h1>Signup</h1>
 			<form onSubmit={handleSubmit} className="form">
-				<div className="mb-helper">
+				<div className="mb-helper form-input">
 					<label htmlFor="name">Name</label>
 
 					<div className="input-container">
@@ -73,7 +71,7 @@ function SignupPage() {
 					</div>
 				</div>
 
-				<div className="mb-helper">
+				<div className="mb-helper form-input">
 					<label htmlFor="email">Email</label>
 
 					<div className="input-container">
@@ -87,7 +85,7 @@ function SignupPage() {
 					</div>
 				</div>
 
-				<div>
+				<div className="form-input">
 					<label htmlFor="password" className="password-container">
 						Password
 					</label>
@@ -116,7 +114,7 @@ function SignupPage() {
 				</button>
 			</form>
 
-			<p>
+			<p className="question">
 				Have an account already? <a href="/login">Login </a>
 			</p>
 		</div>

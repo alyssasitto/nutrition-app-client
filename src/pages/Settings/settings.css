@@ -74,7 +74,7 @@
 }
 
 .overlay {
-	background-color: #757aaea9;
+	background-color: #162d2d67;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -103,4 +103,89 @@
 .profile-err a {
 	font-weight: bold;
 	border-bottom: 2px solid #ff7e67;
+}
+
+@media screen and (min-width: 760px) {
+	.settings-page {
+		padding: 1rem 2rem 3rem;
+	}
+
+	.settings-page h2 {
+		font-size: 3.5rem;
+	}
+
+	.settings-page label {
+		font-size: 3rem;
+	}
+
+	.settings-page input {
+		font-size: 3rem;
+	}
+
+	.input-helper {
+		padding: 1.5rem 8rem 1.5rem 1rem !important;
+	}
+
+	.edit-btn {
+		font-size: 3rem;
+		border-radius: 5px;
+		padding: 1rem;
+		width: 25%;
+	}
+
+	.dimensions .input {
+		padding: 2rem 1rem 1rem 0.5rem;
+		width: 9rem;
+	}
+
+	select {
+		font-size: 3rem !important;
+		padding: 1rem !important;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.container {
+		justify-content: flex-start;
+		gap: 2rem;
+	}
+
+	.settings-page h2 {
+		font-size: 2.5rem;
+	}
+
+	.settings-page label {
+		font-size: 2rem;
+	}
+
+	.settings-page input {
+		font-size: 2rem;
+	}
+
+	.input-helper {
+		padding: 1rem 8rem 1rem 1rem !important;
+	}
+
+	.dimensions-container {
+		display: flex;
+		gap: 15rem;
+	}
+
+	.edit-btn {
+		font-size: 2rem;
+		width: 10%;
+	}
+
+	.dimensions .input {
+		padding: 0.5rem;
+		width: 6rem;
+	}
+
+	input[type="radio"] {
+		transform: scale(1);
+	}
+
+	select {
+		font-size: 2rem !important;
+	}
 }

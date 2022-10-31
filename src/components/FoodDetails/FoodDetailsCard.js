@@ -1,27 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 import "./FoodDetails.css";
 import "../Edit.css";
 
-const API_URL = "http://localhost:5005";
-
 function FoodDetails(props) {
-	const storedToken = localStorage.getItem("authToken");
-
-	const [food, setFood] = useState(null);
-
 	const exit = () => {
 		props.setOverlay("");
 		props.setFoodDetailsCard(false);
 	};
-
-	useEffect(() => {
-		// const food = props.food;
-		// const searchedFood = props.searchedFood;
-
-		console.log(props);
-	}, []);
 
 	return (
 		<div className="box food-details-card">

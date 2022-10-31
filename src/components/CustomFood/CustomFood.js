@@ -58,21 +58,26 @@ function CustomFood(props) {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response.data);
-
 				props.setOverLay("");
 				props.setCustomFoodForm(false);
 				props.setLoggedFoodsCopy(response.data.logDay);
 			})
 			.catch((err) => {
-				console.log(err);
 				setErrMessage(err.response.data.message);
 			});
+	};
+
+	const exit = () => {
+		props.setOverLay("");
+		props.setCustomFoodForm(false);
 	};
 
 	return (
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box custom-food">
+				<div onClick={exit} className="close-btn">
+					<img src="images/close.png"></img>
+				</div>
 				<div className="mr-helper">
 					<div className="input-container">
 						<div className="custom-input">

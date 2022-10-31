@@ -30,7 +30,6 @@ function EditEmail(props) {
 				headers: { Authorization: `Bearer ${storedToken}` },
 			})
 			.then((response) => {
-				console.log(response);
 				props.setEmail(response.data.email);
 				user.email = email;
 				setSuccessMessage(response.data.message);

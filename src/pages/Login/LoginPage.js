@@ -62,7 +62,6 @@ function LoginPage() {
 				redirect();
 			})
 			.catch((err) => {
-				console.log(err);
 				setErrMessage(err.response.data.message);
 			});
 	};
@@ -75,10 +74,13 @@ function LoginPage() {
 
 	return (
 		<div className={bg + " form-page"}>
-			<img src="images/login.jpeg" className="hero"></img>
+			<div className="style-box"></div>
+
+			<img src="images/login.png" className="hero"></img>
+
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit} className="form">
-				<div className="mb-helper">
+				<div className="mb-helper form-input">
 					<label htmlFor="email" className="form-label">
 						Email
 					</label>
@@ -94,7 +96,7 @@ function LoginPage() {
 					</div>
 				</div>
 
-				<div>
+				<div className="form-input">
 					<label htmlFor="password" className="form-label">
 						Password
 					</label>
@@ -118,8 +120,7 @@ function LoginPage() {
 					Login
 				</button>
 			</form>
-
-			<p>
+			<p className="question">
 				Don't have an account yet? <a href="/signup">Signup</a>
 			</p>
 		</div>

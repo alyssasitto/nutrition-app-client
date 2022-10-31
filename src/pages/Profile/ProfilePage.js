@@ -15,18 +15,15 @@ import "react-calendar/dist/Calendar.css";
 
 import "./profile.css";
 
+require("../../components/Calendar/Calendar.css");
+
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
 	const { user } = useContext(AuthContext);
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
-	const [food, setFood] = useState(null);
 	const [loading, setLoading] = useState(true);
-	const [dropdown, setDropdown] = useState("hide");
-	const [showDropdown, setShowDropdown] = useState(false);
 	const [loggedFoods, setLoggedFoods] = useState(null);
-
 	const [calender, setCalender] = useState("hide");
 	const [overlay, setOverLay] = useState("");
 	const [customFoodForm, setCustomFoodForm] = useState(false);
@@ -34,6 +31,8 @@ function ProfilePage() {
 	const [calories, setCalories] = useState(0);
 	const [totalCalories, setTotalCalories] = useState(0);
 	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
+
+	const [errMessage, setErrMessage] = useState(null);
 
 	const [date, setDate] = useState(new Date(localStorage.date));
 
@@ -111,7 +110,7 @@ function ProfilePage() {
 				setLoggedFoods(response.data.logDay);
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 	};
 
@@ -136,19 +135,19 @@ function ProfilePage() {
 					let dinner = response.data.logDay.dinner;
 
 					if (breakfast.length !== 0) {
-						breakfast.map((el, index) => {
+						breakfast.map((el) => {
 							breakfastCals += el.calories;
 						});
 					}
 
 					if (lunch.length !== 0) {
-						lunch.map((el, index) => {
+						lunch.map((el) => {
 							lunchCals += el.calories;
 						});
 					}
 
 					if (dinner.length !== 0) {
-						dinner.map((el, index) => {
+						dinner.map((el) => {
 							dinnerCals += el.calories;
 						});
 					}
@@ -172,7 +171,7 @@ function ProfilePage() {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 
 		setShow("");
@@ -183,6 +182,8 @@ function ProfilePage() {
 	return (
 		<div className={bg + " profile-page"}>
 			<div onClick={exit} className={overlay}></div>
+
+			{errMessage && <p>{errMessage}</p>}
 
 			{customFoodForm && (
 				<CustomFood
@@ -210,7 +211,7 @@ function ProfilePage() {
 			)}
 
 			{!loading && (
-				<>
+				<div className="profile-container">
 					<div className="calender-container">
 						<img
 							src="images/calendar.svg"
@@ -240,7 +241,7 @@ function ProfilePage() {
 
 					{calories > 0 && (
 						<div className="meals">
-							<div>
+							<div className="profile-meal-container">
 								<div className="meal-btn-container">
 									<div className="meal-container">
 										<img
@@ -283,7 +284,7 @@ function ProfilePage() {
 								)}
 							</div>
 
-							<div>
+							<div className="profile-meal-container">
 								<div className="meal-btn-container">
 									<div className="meal-container">
 										<img
@@ -325,7 +326,7 @@ function ProfilePage() {
 								)}
 							</div>
 
-							<div>
+							<div className="profile-meal-container">
 								<div className="meal-btn-container">
 									<div className="meal-container">
 										<img
@@ -368,7 +369,7 @@ function ProfilePage() {
 							</div>
 						</div>
 					)}
-				</>
+				</div>
 			)}
 		</div>
 	);

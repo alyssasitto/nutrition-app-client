@@ -52,7 +52,7 @@
 	height: 70vh;
 	margin: 1rem;
 	overflow: scroll;
-	background-color: #ffbfb3;
+	background-color: #fea599;
 	padding: 2rem;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -67,7 +67,7 @@
 
 .food-row {
 	background-color: #fff;
-	padding: 1rem;
+	padding: 1.5rem;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
 	display: flex;
@@ -78,7 +78,11 @@
 
 .food-row-title {
 	display: flex;
-	gap: 0.5rem;
+	gap: 0.8rem;
+}
+
+.food-row-title p {
+	font-size: 1.6rem;
 }
 
 .food-name {
@@ -99,11 +103,76 @@
 .search-message {
 	position: absolute;
 	left: 50%;
-	transform: translate(-50%, -10px);
-	background-color: #cdc2e9;
+	transform: translate(-50%, -20px);
+	color: #438686 !important;
+
 	font-weight: bold;
-	border-radius: 10px;
-	padding: 0.5rem;
-	font-size: 1.5rem;
-	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
+
+	padding: 0.2rem;
+	font-size: 2rem;
+}
+
+@media screen and (min-width: 760px) {
+	.search-container input {
+		padding: 1.5rem 0 1.5rem 5rem;
+		font-size: 2.5rem;
+	}
+
+	.search {
+		top: 0;
+		top: 42%;
+		left: 15px;
+		width: 2.5rem;
+		transform: translate(0, -50%);
+	}
+
+	.search-container button {
+		font-size: 3rem;
+	}
+
+	.search-hero {
+		width: 40rem;
+	}
+
+	.show-container {
+	}
+
+	.sp-food-container {
+		/* width: 70vw; */
+		margin: 0 10rem;
+	}
+
+	.food-row-title {
+		gap: 1.5rem;
+	}
+
+	.food-row-title p {
+		font-size: 3rem;
+		padding: 0;
+	}
+
+	.food-row button {
+		font-size: 2.5rem;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.search-container {
+		transform: scale(0.8);
+		width: 100%;
+	}
+
+	.search-hero {
+		width: 30rem;
+	}
+
+	.search-container button {
+		font-size: 2.5rem;
+	}
+
+	.sp-food-container {
+		/* width: 70vw; */
+		margin: 0 15rem;
+		transform: scale(0.8);
+	}
 }

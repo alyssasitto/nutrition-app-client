@@ -3,8 +3,8 @@ import axios from "axios";
 import { DimensionsContext } from "../../context/dimensions.context";
 import { AuthContext } from "../../context/auth.context";
 
-require("../Edit.css");
 require("../DimensionsForm/dimensions.css");
+require("../Edit.css");
 
 const API_URL = "http://localhost:5005";
 
@@ -137,7 +137,7 @@ function EditDimensions(props) {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
+				setErrMessage(err.response.data.message);
 			});
 	}, []);
 
@@ -147,8 +147,6 @@ function EditDimensions(props) {
 
 			{!loading && (
 				<div>
-					<h2>Dimensions</h2>
-
 					<form
 						onSubmit={handleSubmit}
 						className="box edit-form dimensions-form"
@@ -157,11 +155,11 @@ function EditDimensions(props) {
 							<img src="images/close.png"></img>
 						</div>
 						<div className="height">
-							<label>Height</label>
+							<label>Height:</label>
 							<div className="input-containers">
 								<div className="height-container mb-helper">
 									<label htmlFor="feet" className="label-helper">
-										Feet
+										Feet:
 									</label>
 									<input
 										type="number"
@@ -173,7 +171,7 @@ function EditDimensions(props) {
 
 								<div className="height-container">
 									<label htmlFor="inches" className="label-helper">
-										Inches
+										Inches:
 									</label>
 									<input
 										type="number"
@@ -187,7 +185,7 @@ function EditDimensions(props) {
 						</div>
 
 						<div className="fb-helper">
-							<label htmlFor="age">Age</label>
+							<label htmlFor="age">Age:</label>
 							<input
 								type="number"
 								name="age"
@@ -197,7 +195,7 @@ function EditDimensions(props) {
 						</div>
 
 						<div className="fb-helper">
-							<label htmlFor="weight">Weight</label>
+							<label htmlFor="weight">Weight:</label>
 							<input
 								type="number"
 								name="weight"
@@ -207,7 +205,7 @@ function EditDimensions(props) {
 						</div>
 
 						<div className="gender-contain">
-							<label>Gender</label>
+							<label>Gender:</label>
 							<div className="genders">
 								<div className="gender">
 									<input
@@ -238,7 +236,7 @@ function EditDimensions(props) {
 						</div>
 
 						<div className="select-container">
-							<label>Goal</label>
+							<label>Goal:</label>
 							<select onChange={handleGoal}>
 								<option value={goal} disabled selected>
 									Goal
@@ -254,7 +252,7 @@ function EditDimensions(props) {
 						</div>
 
 						<div className="select-container">
-							<label>Activity level</label>
+							<label>Activity level:</label>
 							<select onChange={handleActivityLevel}>
 								<option value={activityLevel} disabled selected>
 									Activity level
