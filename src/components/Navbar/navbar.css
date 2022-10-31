@@ -54,11 +54,15 @@ div.nav.show ul {
 	border: none;
 }
 
+.logo {
+	width: 4rem;
+}
+
 /* styles for tablet */
 
 @media screen and (min-width: 760px) {
 	nav {
-		padding: 2rem;
+		padding: 0.5rem 2rem;
 	}
 
 	.buttons {
@@ -80,13 +84,17 @@ div.nav.show ul {
 
 	.list-item {
 		margin-bottom: 0;
-		font-size: 3.5rem;
+		font-size: 2.5rem;
+	}
+
+	.logo {
+		width: 6rem;
 	}
 }
 
 @media screen and (min-width: 1100px) {
 	nav {
-		padding: 1.5rem;
+		padding: 0.5rem 2rem;
 	}
 
 	.list-item {
@@ -95,5 +103,9 @@ div.nav.show ul {
 
 	.navbar ul {
 		padding-right: 2rem;
+	}
+
+	.logo {
+		width: 6rem;
 	}
 }

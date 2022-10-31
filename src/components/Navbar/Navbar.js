@@ -26,7 +26,7 @@ function Navbar() {
 	return (
 		<div>
 			<nav className="navbar">
-				<p>logo</p>
+				<img src="images/logo.png" className="logo"></img>
 				<div onClick={handleClick} className="buttons">
 					{!clicked && (
 						<img
