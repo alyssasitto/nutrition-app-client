@@ -6,18 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { NavbarProviderWrapper } from "./context/navbar.context";
 import { AuthProviderWrapper } from "./context/auth.context";
-import { DimensionsProviderWrapper } from "./context/dimensions.context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
 	<Router>
 		<AuthProviderWrapper>
-			<DimensionsProviderWrapper>
-				<NavbarProviderWrapper>
-					<App />
-				</NavbarProviderWrapper>
-			</DimensionsProviderWrapper>
+			<NavbarProviderWrapper>
+				<App />
+			</NavbarProviderWrapper>
 		</AuthProviderWrapper>
 	</Router>
 );
