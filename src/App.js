@@ -17,7 +17,7 @@ import RecipeResultsPage from "./pages/RecipeResults/RecipeResultsPage";
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 
-require("./app.css");
+require("./App.css");
 
 function App() {
 	return (
