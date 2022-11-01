@@ -27,7 +27,7 @@ function Carousel(props) {
 		<div className="carousel-container">
 			<div className="carousel-wrapper">
 				<button onClick={prev} className="left-arrow">
-					<img src="images/left.png"></img>
+					<img src="images/left.png" alt="left arrow icon"></img>
 				</button>
 				<div className="carousel-content-wrapper">
 					<div
@@ -37,7 +37,7 @@ function Carousel(props) {
 						{children}
 					</div>
 					<button onClick={next} className="right-arrow">
-						<img src="images/right.png"></img>
+						<img src="images/right.png" alt="right arrow icon"></img>
 					</button>
 				</div>
 			</div>

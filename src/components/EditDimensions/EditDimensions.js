@@ -13,8 +13,6 @@ function EditDimensions(props) {
 	const [loading, setLoading] = useState(true);
 	const storedToken = localStorage.getItem("authToken");
 
-	const { getDimensions } = useContext(AuthContext);
-
 	const [feet, setFeet] = useState("");
 	const [inches, setInches] = useState("");
 	const [age, setAge] = useState("");
@@ -26,8 +24,6 @@ function EditDimensions(props) {
 	const [female, setFemale] = useState("female");
 	const [maleChecked, setMaleChecked] = useState(false);
 	const [femaleChecked, setFemaleChecked] = useState(false);
-
-	const [isSelected, setIsSelected] = useState("");
 
 	const [errMessage, setErrMessage] = useState(null);
 	const [successMessage, setSuccessMessage] = useState(null);
@@ -58,10 +54,6 @@ function EditDimensions(props) {
 
 	const handleActivityLevel = (e) => {
 		setActivityLevel(e.target.value);
-	};
-
-	const checkValue = () => {
-		console.log("clicked");
 	};
 
 	const handleSubmit = (e) => {

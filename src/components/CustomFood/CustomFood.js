@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 
@@ -76,7 +76,7 @@ function CustomFood(props) {
 		<div className="edit-page">
 			<form onSubmit={handleSubmit} className="box custom-food">
 				<div onClick={exit} className="close-btn">
-					<img src="images/close.png"></img>
+					<img src="images/close.png" className="exit icon"></img>
 				</div>
 				<div className="mr-helper">
 					<div className="input-container">

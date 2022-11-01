@@ -16,7 +16,6 @@ function Dimensions(props) {
 	const [gender, setGender] = useState("");
 	const [goal, setGoal] = useState("");
 	const [activityLevel, setActivityLevel] = useState("");
-	const [redirect, setRedirect] = useState(false);
 
 	const [errMessage, setErrMessage] = useState(null);
 
