@@ -15,7 +15,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function SettingsPage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	const { userd } = useContext(AuthContext);
+	const { user } = useContext(AuthContext);
 
 	const [loading, setLoading] = useState(true);
 
