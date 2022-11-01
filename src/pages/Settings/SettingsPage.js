@@ -15,7 +15,7 @@ const API_URL = "http://localhost:5005";
 
 function SettingsPage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-	const { user, authenticateUser } = useContext(AuthContext);
+	const { userd } = useContext(AuthContext);
 
 	const [loading, setLoading] = useState(true);
 
