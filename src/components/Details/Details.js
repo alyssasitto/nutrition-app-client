@@ -1,7 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context";
-
-// const API_URL = "http://localhost:5005";
 
 function Details() {
 	const { user } = useContext(AuthContext);

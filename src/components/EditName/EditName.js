@@ -1,7 +1,7 @@
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
 
-import { useState, useEffect, useContext, useReducer } from "react";
+import { useState, useContext } from "react";
 
 require("../Edit.css");
 

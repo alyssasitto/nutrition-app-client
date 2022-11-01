@@ -1,10 +1,7 @@
 import Calendar from "react-calendar";
-import { useEffect, useState } from "react";
-import axios from "axios";
-// require("./Calendar.css");
-import "react-calendar/dist/Calendar.css";
+import { useState } from "react";
 
-const API_URL = "http://localhost:5005";
+import "react-calendar/dist/Calendar.css";
 
 function CalendarComponent() {
 	const [date, setDate] = useState(new Date());

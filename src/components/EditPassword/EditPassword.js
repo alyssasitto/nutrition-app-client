@@ -1,6 +1,4 @@
-import { AuthContext } from "../../context/auth.context";
-
-import { useState, useEffect, useContext, useReducer } from "react";
+import { useState } from "react";
 
 import axios from "axios";
 

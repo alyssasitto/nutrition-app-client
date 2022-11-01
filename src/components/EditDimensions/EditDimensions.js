@@ -1,7 +1,5 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { DimensionsContext } from "../../context/dimensions.context";
-import { AuthContext } from "../../context/auth.context";
 
 require("../DimensionsForm/dimensions.css");
 require("../Edit.css");
