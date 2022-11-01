@@ -4,7 +4,7 @@ import axios from "axios";
 require("../DimensionsForm/dimensions.css");
 require("../Edit.css");
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function EditDimensions(props) {
 	const [dimensions, setDimensions] = useState(null);

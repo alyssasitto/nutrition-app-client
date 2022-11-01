@@ -6,7 +6,7 @@ import ActivityLevel from "../ActivityLevelMenu/ActivityLevel";
 
 require("./dimensions.css");
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Dimensions(props) {
 	const [feet, setFeet] = useState("");
