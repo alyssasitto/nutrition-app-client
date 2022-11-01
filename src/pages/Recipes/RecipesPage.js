@@ -1,9 +1,8 @@
 import { useEffect, useState, useContext } from "react";
-import { redirect } from "react-router-dom";
+
 import { NavbarContext } from "../../context/navbar.context";
 import { useNavigate } from "react-router-dom";
-import Carousel from "../../components/Carousel/Carousel";
-import RecipeResultsPage from "../RecipeResults/RecipeResultsPage";
+
 import axios from "axios";
 
 require("./Recipes.css");
@@ -13,10 +12,8 @@ const API_URL = "http://localhost:5005";
 function RecipePage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 
-	const [errMessage, setErrMessage] = useState(null);
-
 	const [recipe, setRecipe] = useState("");
-	const [recipeInfo, setRecipeInfo] = useState({});
+
 	const [filterOptions, setFilterOptions] = useState("hide");
 	const [rotate, setRotate] = useState("");
 	const [cuisine, setCuisine] = useState([]);

@@ -2,14 +2,12 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
-import { DimensionsContext } from "../../context/dimensions.context";
 
-import SearchPage from "../SearchPage/SearchPage";
 import Calendar from "react-calendar";
 import CustomFood from "../../components/CustomFood/CustomFood";
 import { ErrorBoundary } from "react-error-boundary";
 
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "react-calendar/dist/Calendar.css";
 

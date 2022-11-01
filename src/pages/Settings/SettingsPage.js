@@ -1,14 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
-import { DimensionsContext } from "../../context/dimensions.context";
 
 import EditName from "../../components/EditName/EditName";
 import EditEmail from "../../components/EditEmail/EditEmail";
 import EditPassword from "../../components/EditPassword/EditPassword";
 import EditDimensions from "../../components/EditDimensions/EditDimensions";
-import EditGoal from "../../components/EditGoal/EditGoal";
-import EditActivityLevel from "../../components/EditActivityLevel/EditActivityLevel";
 
 import axios from "axios";
 
@@ -19,8 +16,6 @@ const API_URL = "http://localhost:5005";
 function SettingsPage() {
 	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const { user, authenticateUser } = useContext(AuthContext);
-
-	const { getDimensions } = useContext(DimensionsContext);
 
 	const [loading, setLoading] = useState(true);
 

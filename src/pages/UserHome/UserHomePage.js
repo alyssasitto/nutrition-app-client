@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { NavbarContext } from "../../context/navbar.context";
-import { AuthContext } from "../../context/auth.context";
+
 import Dimensions from "../../components/DimensionsForm/Dimensions";
 import Carousel from "../../components/Carousel/Carousel";
 import axios from "axios";
