@@ -58,6 +58,10 @@ div.nav.show ul {
 	width: 4rem;
 }
 
+.buttons {
+	width: 3rem;
+}
+
 /* styles for tablet */
 
 @media screen and (min-width: 760px) {
