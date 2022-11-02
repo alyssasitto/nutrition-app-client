@@ -30,6 +30,10 @@
 	color: #00555a;
 }
 
+.edit-form input {
+	font-size: 1.6rem;
+}
+
 .edit-page button.edit-btn {
 	font-size: 2rem;
 	background-color: #ffb2a4 !important;

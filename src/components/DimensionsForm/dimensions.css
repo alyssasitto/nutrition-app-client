@@ -106,6 +106,7 @@ select {
 	border: 1px solid #5a9b98;
 	padding: 0.3rem;
 	border-radius: 3px;
+	font-size: 1.6rem;
 }
 
 .dimensions-err {
