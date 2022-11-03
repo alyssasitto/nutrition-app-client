@@ -21,6 +21,7 @@ function RecipePage() {
 	const [intolerance, setIntolerance] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [img, setImg] = useState(true);
+	const [errMessage, setErrMessage] = useState(null);
 
 	const navigate = useNavigate();
 
@@ -78,29 +79,33 @@ function RecipePage() {
 			intolerance,
 		};
 
-		setLoading(true);
+		if (recipe === "") {
+			setErrMessage("Please enter a valid recipe");
+		} else {
+			setErrMessage(null);
 
-		setImg(false);
+			setLoading(true);
 
-		axios
-			.post(`${API_URL}/recipe`, body)
-			.then((response) => {
-				console.log(response);
+			setImg(false);
 
-				localStorage.setItem(
-					"recipe list",
-					JSON.stringify(response.data.recipeList)
-				);
+			axios
+				.post(`${API_URL}/recipe`, body)
+				.then((response) => {
+					console.log(response);
 
-				setLoading(false);
+					localStorage.setItem(
+						"recipe list",
+						JSON.stringify(response.data.recipeList)
+					);
 
-				// <redirect to={<RecipeResultsPage />} />;
+					setLoading(false);
 
-				navigate(`/results/${recipe}`);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+					navigate(`/results/${recipe}`);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
 	};
 
 	useEffect(() => {
@@ -435,6 +440,7 @@ function RecipePage() {
 				</button>
 			</form>
 
+			{errMessage && <p className="recipe-err-message">{errMessage}</p>}
 			{loading && (
 				<img
 					src="images/loading.gif"

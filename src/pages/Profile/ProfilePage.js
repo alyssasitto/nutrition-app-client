@@ -250,21 +250,11 @@ function ProfilePage() {
 										<h3>Add Breakfast</h3>
 									</div>
 									<button onClick={searchBreakfast}>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											stroke="black"
-											class="w-6 h-6"
+										<img
+											src="images/add.svg"
 											className="add-food-btn"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-											/>
-										</svg>
+											alt="Add icon"
+										></img>
 									</button>
 								</div>
 								<button
@@ -307,21 +297,11 @@ function ProfilePage() {
 										<h3>Add Lunch</h3>
 									</div>
 									<button onClick={searchLunch}>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											stroke="black"
-											class="w-6 h-6"
+										<img
+											src="images/add.svg"
 											className="add-food-btn"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-											/>
-										</svg>
+											alt="Add icon"
+										></img>
 									</button>
 								</div>
 								<button
@@ -364,21 +344,11 @@ function ProfilePage() {
 									</div>
 
 									<button onClick={searchDinner} className="add-btn">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											stroke="black"
-											class="w-6 h-6"
+										<img
+											src="images/add.svg"
 											className="add-food-btn"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-											/>
-										</svg>
+											alt="Add icon"
+										></img>
 									</button>
 								</div>
 								<button
