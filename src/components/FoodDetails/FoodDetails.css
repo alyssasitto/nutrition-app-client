@@ -24,6 +24,7 @@ div.box.food-details-card {
 .food-details-card button {
 	border: none;
 	font-size: 2rem;
+	color: #072d2b;
 	background-color: #d3baeda7;
 	padding: 1rem;
 	border-radius: 5px;
