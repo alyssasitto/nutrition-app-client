@@ -111,7 +111,7 @@
 	width: 20px;
 } */
 
-@media screen and (min-width: 780px) {
+@media screen and (min-width: 760px) {
 	.recipe-search-container {
 		margin-top: 5rem;
 	}
@@ -130,7 +130,8 @@
 	}
 
 	.plus-icon {
-		height: 4.5rem;
+		height: 3.5rem;
+		width: 3.5rem;
 	}
 
 	.inner-box {
