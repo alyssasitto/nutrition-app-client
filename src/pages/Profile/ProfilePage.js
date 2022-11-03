@@ -205,10 +205,12 @@ function ProfilePage() {
 
 			<h2 className="date">{dateString}</h2>
 
-			<h2 className="calories">
-				{calories} - {totalCalories.toFixed()} ={" "}
-				{(calories - totalCalories).toFixed()}
-			</h2>
+			{calories && (
+				<h2 className="calories">
+					{calories} - {totalCalories.toFixed()} ={" "}
+					{(calories - totalCalories).toFixed()}
+				</h2>
+			)}
 
 			{!loading && (
 				<div className="profile-container">
