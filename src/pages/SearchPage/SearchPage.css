@@ -52,7 +52,7 @@
 	height: 70vh;
 	margin: 1rem;
 	overflow: scroll;
-	background-color: #fea599;
+	background-color: #ba9cdb5c;
 	padding: 2rem;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -98,6 +98,7 @@
 .food-row-btns button {
 	background-color: transparent;
 	border: none;
+	font-size: 1.6rem;
 }
 
 .search-message {

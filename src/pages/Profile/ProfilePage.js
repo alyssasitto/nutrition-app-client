@@ -113,6 +113,8 @@ function ProfilePage() {
 	};
 
 	useEffect(() => {
+		setLoading(true);
+
 		const body = {
 			id: user.id,
 			date: dateString,
@@ -181,6 +183,14 @@ function ProfilePage() {
 		<div className={bg + " profile-page"}>
 			<div onClick={exit} className={overlay}></div>
 
+			{loading && (
+				<img
+					src="images/loading.gif"
+					className="loading-icon"
+					alt="loading icon"
+				></img>
+			)}
+
 			{errMessage && <p>{errMessage}</p>}
 
 			{customFoodForm && (
@@ -199,14 +209,6 @@ function ProfilePage() {
 				{calories} - {totalCalories.toFixed()} ={" "}
 				{(calories - totalCalories).toFixed()}
 			</h2>
-
-			{loading && (
-				<img
-					src="images/loading.gif"
-					className="loading-icon"
-					alt="loading icon"
-				></img>
-			)}
 
 			{!loading && (
 				<div className="profile-container">
