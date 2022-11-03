@@ -1,7 +1,7 @@
 nav {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.3rem 0.5rem;
+	padding: 0rem 0.5rem;
 	align-items: center;
 	background-color: #33888d;
 	margin-bottom: 2rem;
@@ -25,7 +25,7 @@ nav {
 }
 
 .icon {
-	height: 30px;
+	height: 3rem;
 }
 
 div.nav.show {
@@ -55,7 +55,7 @@ div.nav.show ul {
 }
 
 .logo {
-	width: 4rem;
+	width: 4.5rem;
 }
 
 .buttons {
