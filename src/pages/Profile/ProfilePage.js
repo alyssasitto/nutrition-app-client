@@ -255,7 +255,7 @@ function ProfilePage() {
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke-width="1.5"
-											stroke="currentColor"
+											stroke="black"
 											class="w-6 h-6"
 											className="add-food-btn"
 										>
@@ -312,7 +312,7 @@ function ProfilePage() {
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke-width="1.5"
-											stroke="currentColor"
+											stroke="black"
 											class="w-6 h-6"
 											className="add-food-btn"
 										>
@@ -369,7 +369,7 @@ function ProfilePage() {
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke-width="1.5"
-											stroke="currentColor"
+											stroke="black"
 											class="w-6 h-6"
 											className="add-food-btn"
 										>
