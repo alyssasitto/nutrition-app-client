@@ -26,7 +26,7 @@ function ProfilePage() {
 	const [overlay, setOverLay] = useState("");
 	const [customFoodForm, setCustomFoodForm] = useState(false);
 	const [meal, setMeal] = useState("");
-	const [calories, setCalories] = useState(0);
+	const [calories, setCalories] = useState(null);
 	const [totalCalories, setTotalCalories] = useState(0);
 	const [loggedFoodsCopy, setLoggedFoodsCopy] = useState(loggedFoods);
 
