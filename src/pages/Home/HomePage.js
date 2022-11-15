@@ -1,6 +1,11 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { NavbarContext } from "../../context/navbar.context";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
 
 require("./home.css");
 
@@ -28,6 +33,28 @@ function HomePage() {
 					</p>
 				</div>
 			</header>
+
+			<Swiper
+				slidesPerView={4}
+				centeredSlides={true}
+				spaceBetween={30}
+				grabCursor={true}
+				pagination={{
+					clickable: true,
+				}}
+				modules={[Pagination]}
+				className="mySwiper"
+			>
+				<SwiperSlide>Slide 1</SwiperSlide>
+				<SwiperSlide>Slide 2</SwiperSlide>
+				<SwiperSlide>Slide 3</SwiperSlide>
+				<SwiperSlide>Slide 4</SwiperSlide>
+				<SwiperSlide>Slide 5</SwiperSlide>
+				<SwiperSlide>Slide 6</SwiperSlide>
+				<SwiperSlide>Slide 7</SwiperSlide>
+				<SwiperSlide>Slide 8</SwiperSlide>
+				<SwiperSlide>Slide 9</SwiperSlide>
+			</Swiper>
 
 			<section className="direction-helper">
 				<img src="images/phone.jpeg"></img>
