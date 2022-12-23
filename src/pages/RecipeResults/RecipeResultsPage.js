@@ -1,15 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { NavbarContext } from "../../context/navbar.context";
 
 require("./RecipeResults.css");
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function RecipeResultsPage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
 	const initialState = localStorage.getItem("recipe list")
 		? JSON.parse(localStorage.getItem("recipe list"))
 		: [];
@@ -41,15 +38,8 @@ function RecipeResultsPage() {
 			});
 	};
 
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
-	console.log(recipeList);
 	return (
-		<div className={"recipe-results " + bg}>
+		<div className={"recipe-results"}>
 			{recipeList && recipeList.length === 0 && (
 				<div className="no-results-container">
 					<img src="images/no-results.png" className="no-results"></img>

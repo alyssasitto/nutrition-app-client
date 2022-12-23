@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
-import { NavbarContext } from "../../context/navbar.context";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 
@@ -9,7 +8,6 @@ require("../Form.css");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function LoginPage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const { storeToken, authenticateUser, user } = useContext(AuthContext);
 
 	const [email, setEmail] = useState("");
@@ -66,14 +64,8 @@ function LoginPage() {
 			});
 	};
 
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={bg + " form-page"}>
+		<div className={"form-page"}>
 			<div className="style-box"></div>
 
 			<img src="images/login.png" className="hero"></img>

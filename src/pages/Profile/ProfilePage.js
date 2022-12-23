@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 
 import Calendar from "react-calendar";
@@ -19,7 +18,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function ProfilePage() {
 	const { user } = useContext(AuthContext);
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const [loading, setLoading] = useState(true);
 	const [loggedFoods, setLoggedFoods] = useState(null);
 	const [calender, setCalender] = useState("hide");
@@ -173,14 +171,10 @@ function ProfilePage() {
 			.catch((err) => {
 				setErrMessage(err.response.data.message);
 			});
-
-		setShow("");
-		setBg("");
-		setClicked(false);
 	}, [date, loggedFoodsCopy]);
 
 	return (
-		<div className={bg + " profile-page"}>
+		<div className={"profile-page"}>
 			<div onClick={exit} className={overlay}></div>
 
 			{loading && (

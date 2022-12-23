@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { NavbarContext } from "../../context/navbar.context";
 import { AuthContext } from "../../context/auth.context";
 
 import EditName from "../../components/EditName/EditName";
@@ -14,7 +13,6 @@ require("./settings.css");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function SettingsPage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const { user } = useContext(AuthContext);
 
 	const [loading, setLoading] = useState(true);
@@ -113,14 +111,10 @@ function SettingsPage() {
 			.catch((err) => {
 				setErrMesage(err.response.data.message);
 			});
-
-		setShow("");
-		setBg("");
-		setClicked(false);
 	}, [gender]);
 
 	return (
-		<div className={bg + " settings"}>
+		<div className={"settings"}>
 			<div onClick={exit} className={overlay}></div>
 
 			{nameForm && (

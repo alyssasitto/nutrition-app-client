@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/auth.context";
-import { NavbarContext } from "../../context/navbar.context";
 import "./SearchPage.css";
 import FoodDetails from "../../components/FoodDetails/FoodDetailsCard";
 
@@ -12,7 +11,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 function SearchPage() {
 	const { user } = useContext(AuthContext);
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 
 	const [searchedFood, setSearchedFood] = useState("");
 	const [foodList, setFoodList] = useState([]);
@@ -113,14 +111,8 @@ function SearchPage() {
 		}
 	};
 
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={bg + " search-page"}>
+		<div className={"search-page"}>
 			<div onClick={exit} className={overlay}></div>
 			{foodDetailsCard && (
 				<FoodDetails

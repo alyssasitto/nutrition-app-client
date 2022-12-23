@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 
-import { NavbarContext } from "../../context/navbar.context";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
@@ -10,8 +9,6 @@ require("./Recipes.css");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function RecipePage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
 	const [recipe, setRecipe] = useState("");
 
 	const [filterOptions, setFilterOptions] = useState("hide");
@@ -108,14 +105,8 @@ function RecipePage() {
 		}
 	};
 
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={"recipe-page " + bg}>
+		<div className={"recipe-page"}>
 			<form className="recipe-search-container">
 				<div className="filter-box">
 					<div onClick={showFilterOptions} className="filter-btn">

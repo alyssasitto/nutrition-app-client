@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/Home/HomePage";
@@ -14,13 +14,23 @@ import RecipeResultsPage from "./pages/RecipeResults/RecipeResultsPage";
 
 import IsAnon from "./components/IsAnon/IsAnon";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
+import { useState } from "react";
+import { useEffect } from "react";
 
 require("./App.css");
 
 function App() {
+	const location = useLocation();
+
+	const [closeNavbar, setCloseNavbar] = useState("");
+
+	useEffect(() => {
+		setCloseNavbar("close");
+	}, [location.pathname]);
+
 	return (
 		<div className={"App "}>
-			<Navbar />
+			<Navbar closeNavbar={closeNavbar} setCloseNavbar={setCloseNavbar} />
 			<Routes>
 				<Route
 					path="/"

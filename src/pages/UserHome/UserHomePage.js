@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import { NavbarContext } from "../../context/navbar.context";
 
 import Dimensions from "../../components/DimensionsForm/Dimensions";
 import Carousel from "../../components/Carousel/Carousel";
@@ -10,7 +9,6 @@ require("./UserHome.css");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function UserHomePage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
 	const [dimensions, setDimensions] = useState(null);
 	const [macros, setMacros] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -60,14 +58,10 @@ function UserHomePage() {
 			.catch((err) => {
 				setErrMessage(err.response.data.message);
 			});
-
-		setShow("");
-		setBg("");
-		setClicked(false);
 	}, []);
 
 	return (
-		<div className={bg + " user-home-page"}>
+		<div className={"user-home-page"}>
 			{errMessage && <p>{errMessage}</p>}
 
 			{loading && (

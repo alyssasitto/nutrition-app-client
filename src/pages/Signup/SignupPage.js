@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { NavbarContext } from "../../context/navbar.context";
 import axios from "axios";
 
 require("../Form.css");
@@ -7,8 +6,6 @@ require("../Form.css");
 const API_URL = process.env.REACT_APP_API_URL;
 
 function SignupPage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -51,14 +48,8 @@ function SignupPage() {
 			});
 	};
 
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={bg + " form-page signup-page"}>
+		<div className={"form-page signup-page"}>
 			<img src="images/signup.png" className="hero"></img>
 			<h1>Signup</h1>
 			<form onSubmit={handleSubmit} className="form">

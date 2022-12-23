@@ -1,20 +1,10 @@
-import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { NavbarContext } from "../../context/navbar.context";
 
 require("./home.css");
 
 function HomePage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={"home-page " + bg}>
+		<div className={"home-page"}>
 			<header>
 				<img src="images/hero.png" alt="Hero image"></img>
 				<div>

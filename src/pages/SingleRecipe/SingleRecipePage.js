@@ -1,26 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import { NavbarContext } from "../../context/navbar.context";
 
 require("./SingleRecipe.css");
 
 function SingleRecipePage() {
-	const { bg, setBg, setShow, setClicked } = useContext(NavbarContext);
-
 	const initialState = localStorage.getItem("single recipe")
 		? JSON.parse(localStorage.getItem("single recipe"))
 		: [];
 	const [recipe, setRecipe] = useState(initialState);
 
-	console.log(recipe);
-
-	useEffect(() => {
-		setShow("");
-		setBg("");
-		setClicked(false);
-	}, []);
-
 	return (
-		<div className={bg}>
+		<div>
 			{recipe && recipe.length === 0 && (
 				<div>
 					<img

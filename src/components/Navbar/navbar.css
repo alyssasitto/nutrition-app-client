@@ -10,35 +10,32 @@ nav {
 .navbar ul {
 	margin-top: 40px;
 	margin-left: 30px;
-	display: none;
+	/* display: none; */
 }
 
-.nav {
+.nav,
+.nav.close {
 	position: absolute;
 	right: 0;
 	background-color: #33888d;
 	top: 0;
 	height: 100%;
 	width: 0px;
+	overflow-x: hidden;
 	z-index: 3;
 	transition: all 0.5s ease-in;
-}
-
-.icon {
-	height: 3rem;
 }
 
 div.nav.show {
 	width: 200px;
 }
 
-div.nav.show ul {
-	display: block;
+div.nav.show.close {
+	display: none;
 }
 
-.close-icon {
-	position: relative;
-	z-index: 4;
+div.nav.show ul {
+	display: block;
 }
 
 .list-item {
@@ -60,6 +57,28 @@ div.nav.show ul {
 
 .buttons {
 	width: 3rem;
+	height: 3rem;
+	position: relative;
+}
+
+.close-icon {
+	z-index: 999;
+}
+
+.buttons img {
+	position: absolute;
+}
+
+.navbar.dark::before {
+	content: "";
+	height: 40px;
+	width: 40px;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.592);
+	position: absolute;
+	width: 100vw;
+	height: 100%;
 }
 
 /* styles for tablet */
@@ -73,7 +92,8 @@ div.nav.show ul {
 		display: none;
 	}
 
-	.nav {
+	.nav,
+	.nav.close {
 		width: fit-content;
 		background-color: transparent;
 		position: relative;
